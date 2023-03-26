@@ -11,6 +11,7 @@
 
 namespace App\Entity;
 
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -79,9 +80,9 @@ class Comment
         $this->content = $content;
     }
 
-    public function getPublishedAt(): \DateTime
+    public function getPublishedAt(): \DateTimeImmutable
     {
-        return $this->publishedAt;
+        return DateTimeImmutable::createFromMutable($this->publishedAt);
     }
 
     public function setPublishedAt(\DateTime $publishedAt): void

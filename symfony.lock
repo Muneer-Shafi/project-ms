@@ -14,6 +14,15 @@
     "dflydev/dot-access-data": {
         "version": "v3.0.1"
     },
+    "doctrine/annotations": {
+        "version": "1.14",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.10",
+            "ref": "64d8583af5ea57b7afa4aba4b159907f3a148b05"
+        }
+    },
     "doctrine/cache": {
         "version": "2.1.1"
     },
@@ -122,6 +131,18 @@
     "monolog/monolog": {
         "version": "2.3.5"
     },
+    "nelmio/cors-bundle": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.5",
+            "ref": "6bea22e6c564fba3a1391615cada1437d0bde39c"
+        },
+        "files": [
+            "config/packages/nelmio_cors.yaml"
+        ]
+    },
     "nette/schema": {
         "version": "v1.2.2"
     },
@@ -130,6 +151,30 @@
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
+    },
+    "nyholm/psr7": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "0cd4d2d0e7f646fda75f9944f747a56e6ed13d4c"
+        },
+        "files": [
+            "config/packages/nyholm_psr7.yaml"
+        ]
+    },
+    "overblog/graphiql-bundle": {
+        "version": "0.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.1",
+            "ref": "96d185c63491cd15c1570f6243ec1808f4462970"
+        },
+        "files": [
+            "config/routes/dev/graphiql.yaml"
+        ]
     },
     "phpstan/phpstan": {
         "version": "1.2.0"
@@ -520,6 +565,15 @@
     },
     "symfony/yaml": {
         "version": "v6.0.0"
+    },
+    "thecodingmachine/graphqlite-bundle": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "4.0",
+            "ref": "8aae303ca95671f95ef356b7034a2144ea4060ad"
+        }
     },
     "twig/extra-bundle": {
         "version": "v3.3.4"
