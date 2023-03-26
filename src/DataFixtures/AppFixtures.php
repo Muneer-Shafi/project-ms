@@ -15,6 +15,7 @@ use App\Entity\Comment;
 use App\Entity\Post;
 use App\Entity\Tag;
 use App\Entity\User;
+use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -32,6 +33,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        UserFactory::createMany(50);
         $this->loadUsers($manager);
         $this->loadTags($manager);
         $this->loadPosts($manager);
