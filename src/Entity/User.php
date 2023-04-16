@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Entity;
@@ -14,26 +15,41 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Table(name: 'user')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
+    public function __construct(
+
+        #[ORM\Column(type: Types::STRING, unique: true)]
+        #[Assert\NotBlank]
+        #[Assert\Length(min: 2, max: 50)]
+        private string $username,
+
+        #[ORM\Column(type: Types::STRING, unique: true)]
+        #[Assert\Email]
+        private string $email,
+
+
+
+    ) {
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]
-    private ?int $id = null;
+    private int $id;
+
 
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
-    private ?string $fullName = null;
-
-    #[ORM\Column(type: Types::STRING, unique: true)]
-    #[Assert\NotBlank]
-    #[Assert\Length(min: 2, max: 50)]
-    private ?string $username = null;
-
-    #[ORM\Column(type: Types::STRING, unique: true)]
-    #[Assert\Email]
-    private ?string $email = null;
+    private string $firstName;
 
     #[ORM\Column(type: Types::STRING)]
-    private ?string $password = null;
+    private ?string $lastName;
+
+
+    #[ORM\Column(type: Types::STRING)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 8, max: 50)]
+    private string $password;
 
     /**
      * @var string[]
@@ -46,15 +62,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    public function setFullName(string $fullName): void
-    {
-        $this->fullName = $fullName;
-    }
-
-    public function getFullName(): ?string
-    {
-        return $this->fullName;
-    }
 
     public function getUserIdentifier(): string
     {
@@ -70,10 +77,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->username = $username;
     }
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+    public function setLastName(string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
+    }
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+    public function getLastName(): string
+    {
+        return $this->lastName;
     }
 
     public function setEmail(string $email): void

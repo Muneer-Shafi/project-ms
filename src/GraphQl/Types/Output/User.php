@@ -14,14 +14,19 @@ final class User
 {
 
     #[Field]
-    public function id(UserEntity $UserEntity): ?int
+    public function id(UserEntity $UserEntity): int
     {
         return $UserEntity->getId();
     }
     #[Field]
-    public function name(UserEntity $UserEntity): string
+    public function firstName(UserEntity $UserEntity): string
     {
-        return $UserEntity->getFullName();
+        return $UserEntity->getFirstName();
+    }
+    #[Field]
+    public function lastName(UserEntity $UserEntity): string
+    {
+        return $UserEntity->getLastName();
     }
 
     #[Field]

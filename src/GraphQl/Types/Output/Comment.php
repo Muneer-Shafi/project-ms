@@ -32,9 +32,9 @@ final class Comment
     {
         return $CommentEntity->getContent();
     }
-    #[Field]
-    public function commentedAt(CommentEntity $CommentEntity): DateTimeImmutable
-    {
-        return $CommentEntity->getPublishedAt();
-    }
+    // #[Field]
+    // public function commentedAt(CommentEntity $CommentEntity): DateTimeImmutable
+    // {
+    //     return $CommentEntity->getPublishedAt();
+    // }
 }
