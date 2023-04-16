@@ -45,7 +45,7 @@ class BlogControllerTest extends WebTestCase
         /** @var UserRepository $userRepository */
         $userRepository = $this->client->getContainer()->get(UserRepository::class);
         /** @var User $user */
-        $user = $userRepository->findOneByUsername('jane_admin');
+        $user = $userRepository->findOneByUsername('muneer_shafi');
         $this->client->loginUser($user);
     }
 

@@ -90,7 +90,7 @@ class UserControllerTest extends WebTestCase
         $userRepository = $client->getContainer()->get(UserRepository::class);
 
         /** @var User $user */
-        $user = $userRepository->findOneByUsername('jane_admin');
+        $user = $userRepository->findOneByUsername('muneer_shafi');
 
         $newUserPassword = 'new-password';
 
