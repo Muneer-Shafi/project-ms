@@ -39,8 +39,6 @@ services:
 
     networks:
       - symfony
-
-
 networks:
   symfony:
 
