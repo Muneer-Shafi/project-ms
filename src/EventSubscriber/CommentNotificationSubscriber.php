@@ -1,13 +1,6 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+declare(strict_types=1);
 
 namespace App\EventSubscriber;
 
@@ -57,7 +50,7 @@ class CommentNotificationSubscriber implements EventSubscriberInterface
 
         $linkToPost = $this->urlGenerator->generate('blog_post', [
             'slug' => $post->getSlug(),
-            '_fragment' => 'comment_'.$comment->getId(),
+            '_fragment' => 'comment_' . $comment->getId(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
 
         $subject = $this->translator->trans('notification.comment_created');
@@ -71,8 +64,7 @@ class CommentNotificationSubscriber implements EventSubscriberInterface
             ->from($this->sender)
             ->to($emailAddress)
             ->subject($subject)
-            ->html($body)
-        ;
+            ->html($body);
 
         // In config/packages/dev/mailer.yaml the delivery of messages is disabled.
         // That's why in the development environment you won't actually receive any email.

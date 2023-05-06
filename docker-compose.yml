@@ -22,10 +22,11 @@ services:
       - 10302:80 # Ports that are exposed, you can connect to port 8001 to port 80 of the container.
     networks:
       - symfony
+
   database:
     container_name: mysql_container
     image: mysql:8.0.31
-    command: --default-authentication-plugin=mysql_native_password
+    # command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_HOST: 127.0.0.1
       MYSQL_ROOT_PASSWORD: test

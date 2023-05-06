@@ -1,13 +1,6 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -47,8 +40,7 @@ class PostRepository extends ServiceEntityRepository
             ->leftJoin('p.tags', 't')
             ->where('p.publishedAt <= :now')
             ->orderBy('p.publishedAt', 'DESC')
-            ->setParameter('now', new \DateTime())
-        ;
+            ->setParameter('now', new \DateTime());
 
         if (null !== $tag) {
             $qb->andWhere(':tag MEMBER OF p.tags')
@@ -73,9 +65,8 @@ class PostRepository extends ServiceEntityRepository
 
         foreach ($searchTerms as $key => $term) {
             $queryBuilder
-                ->orWhere('p.title LIKE :t_'.$key)
-                ->setParameter('t_'.$key, '%'.$term.'%')
-            ;
+                ->orWhere('p.title LIKE :t_' . $key)
+                ->setParameter('t_' . $key, '%' . $term . '%');
         }
 
         /** @var Post[] $result */
@@ -83,8 +74,7 @@ class PostRepository extends ServiceEntityRepository
             ->orderBy('p.publishedAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
 
         return $result;
     }

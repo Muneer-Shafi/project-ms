@@ -1,13 +1,6 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+declare(strict_types=1);
 
 namespace App\Command;
 
@@ -63,7 +56,8 @@ class DeleteUserCommand extends Command
     {
         $this
             ->addArgument('username', InputArgument::REQUIRED, 'The username of an existing user')
-            ->setHelp(<<<'HELP'
+            ->setHelp(
+                <<<'HELP'
                 The <info>%command.name%</info> command deletes users from the database:
 
                   <info>php %command.full_name%</info> <comment>username</comment>

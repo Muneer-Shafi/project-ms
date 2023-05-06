@@ -113,6 +113,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->password = $password;
     }
+    public function getFullName():string{
+        return $this->firstName.' '.$this->lastName;
+    }
 
     /**
      * Returns the roles or permissions granted to the user for security.
