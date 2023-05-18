@@ -54,6 +54,11 @@
                                             <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ path('relation_new') }}">
+                                            <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
+                                        </a>
+                                    </li>
 
                                     {% if is_granted('ROLE_ADMIN') %}
                                         <li>

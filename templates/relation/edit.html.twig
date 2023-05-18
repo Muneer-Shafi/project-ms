@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'user_edit' %}
+
+{% block main %}
+	<h1>{{ 'title.edit_user'|trans }}</h1>
+
+	{{ form_start(form) }}
+	{{ form_row(form.name) }}
+	{{ form_row(form.shortName) }}
+	{{ form_row(form.remarks) }}
+	{{ form_row(form.country) }}
+	{{ form_row(form.cocNumber) }}
+
+
+	<div class="card my-3">
+
+		<h3>Addresses</h3>
+		<ul class="addresses" data-index="{{ form.addresses|length > 0 ? form.addresses|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(form.addresses.vars.prototype)|e('html_attr') }}">
+			{% for address in form.addresses %}
+				<li>{{ form_row(address.name) }}</li>
+				<li>{{ form_row(address.addressLine1) }}</li>
+				<li>{{ form_row(address.addressLine2) }}</li>
+				<li>{{ form_row(address.pinCode) }}</li>
+				<li>{{ form_row(address.country) }}</li>
+				<li>{{ form_row(address.city) }}</li>
+			{% endfor %}
+		</ul>
+
+		<button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add a Address</button>
+
+
+		<button type="submit" class="btn btn-primary">
+			<i class="fa fa-save" aria-hidden="true"></i>
+			{{ 'action.save'|trans }}
+		</button>
+
+	</div>
+
+	{{ form_end(form) }}
+{% endblock %}
+{% block sidebar %}
+	<div class="section">
+		<a href="{{ path('user_change_password') }}" class="btn btn-lg btn-block btn-danger">
+			<i class="fa fa-lock" aria-hidden="true"></i>
+			{{ 'action.change_password'|trans }}
+		</a>
+	</div>
+
+	{{ parent() }}
+
+	{{ show_source_code(_self) }}
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		document.querySelectorAll('.add_item_link').forEach(btn => {
+btn.addEventListener("click", addFormToCollection)
+});
+
+const addFormToCollection = (e) => {
+const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+const item = document.createElement('li');
+
+item.innerHTML = collectionHolder.dataset.prototype.replace(/__name__/g, collectionHolder.dataset.index);
+
+collectionHolder.appendChild(item);
+
+collectionHolder.dataset.index ++;
+};
+	</script>
+{% endblock %}
