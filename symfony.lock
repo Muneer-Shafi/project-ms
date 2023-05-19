@@ -354,6 +354,12 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/messenger": {
+        "version": "6.2",
+        "recipe": {
+            "version": "6.0"
+        }
+    },
     "symfony/mime": {
         "version": "v6.0.0"
     },

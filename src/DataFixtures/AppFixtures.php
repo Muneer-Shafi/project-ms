@@ -6,6 +6,10 @@ use App\Entity\Comment;
 use App\Entity\Post;
 use App\Entity\Tag;
 use App\Entity\User;
+use App\Factory\AddressFactory;
+use App\Factory\ContactFactory;
+use App\Factory\CurrencyFactory;
+use App\Factory\RelationFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -25,6 +29,13 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         UserFactory::createMany(50);
+        CurrencyFactory::createMany(5);
+
+        RelationFactory::createMany(50, [
+            'contacts' => ContactFactory::new()->many(5),
+            'addresses' => AddressFactory::new()->many(5)
+        ]);
+        // RelationFactory::createMany(50);
         $this->loadUsers($manager);
         $this->loadTags($manager);
         $this->loadPosts($manager);
@@ -32,8 +43,8 @@ class AppFixtures extends Fixture
 
     private function loadUsers(ObjectManager $manager): void
     {
-        foreach ($this->getUserData() as [$firstName,$lastName, $username, $password, $email, $roles]) {
-            $user = new User($username,$email);
+        foreach ($this->getUserData() as [$firstName, $lastName, $username, $password, $email, $roles]) {
+            $user = new User($username, $email);
             $hashPassword = $this->passwordHasher->hashPassword($user, $password);
             $user->setFirstName($firstName);
             $user->setUsername($username);
@@ -97,7 +108,7 @@ class AppFixtures extends Fixture
     {
         return [
             // $userData = [$fullname, $username, $password, $email, $roles];
-            ['Muneer','shafi', 'muneer_shafi', 'muneer123', 'zmzahidmuneer@gmail.com', ['ROLE_ADMIN']],
+            ['Muneer', 'shafi', 'muneer_shafi', 'muneer123', 'zmzahidmuneer@gmail.com', ['ROLE_ADMIN']],
             ['Tom', 'Doe', 'tom_admin', 'kitten', 'tom_admin@symfony.com', ['ROLE_ADMIN']],
             ['John', 'Doe', 'john_user', 'kitten', 'john_user@symfony.com', ['ROLE_USER']],
         ];
