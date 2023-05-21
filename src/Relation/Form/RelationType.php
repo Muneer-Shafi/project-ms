@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Form;
+namespace App\Relation\Form;
 
-use App\Entity\Relation;
+use App\Form\AddressType;
 use App\Form\Type\DateTimePickerType;
 use App\Form\Type\TagsInputType;
+use App\Relation\Domain\Entity\Relation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;

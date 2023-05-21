@@ -10,11 +10,13 @@ return static function (GraphqliteConfig $graphQlLite): void {
         ->controllers([
             'App\GraphQl\Resolvers\Query\\',
             'App\GraphQl\Resolvers\Mutations\\',
+            'App\Relation\UI\GraphQl\Resolvers\Query\\'
             // 'App\User\Infrastructure\GraphQl\Resolvers\Query\\',
             // 'App\User\Infrastructure\GraphQl\Resolvers\Mutations\\',
         ])
         ->types([
             'App\GraphQl\Types\\',
+            'App\Relation\UI\GraphQL\Types\\'
             // 'App\User\Infrastructure\GraphQl\Types\\',
         ]);
 

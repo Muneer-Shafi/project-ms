@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Relation\Domain\Entity\Relation;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,35 +12,35 @@ class Contact
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(length: 50)]
-    private ?string $firstName = null;
+    private string $firstName;
 
     #[ORM\Column(length: 50)]
     private ?string $lastName = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $intials = null;
+    #[ORM\Column(name: 'intials', length: 50)]
+    private string $initials;
 
     #[ORM\Column(length: 50)]
-    private ?string $gender = null;
+    private string $gender;
 
     #[ORM\Column(length: 50)]
-    private ?string $telephone = null;
+    private string $telephone;
 
     #[ORM\Column(length: 100)]
-    private ?string $email = null;
+    private string $email;
 
     #[ORM\ManyToOne(inversedBy: 'contacts')]
-    private ?Relation $relation = null;
+    private Relation $relation;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFirstName(): ?string
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
@@ -63,14 +64,14 @@ class Contact
         return $this;
     }
 
-    public function getIntials(): ?string
+    public function getInitials(): string
     {
-        return $this->intials;
+        return $this->initials;
     }
 
-    public function setIntials(string $intials): self
+    public function setInitials(string $initials): self
     {
-        $this->intials = $intials;
+        $this->initials = $initials;
 
         return $this;
     }
@@ -87,7 +88,7 @@ class Contact
         return $this;
     }
 
-    public function getTelephone(): ?string
+    public function getTelephone(): string
     {
         return $this->telephone;
     }
@@ -99,7 +100,7 @@ class Contact
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }

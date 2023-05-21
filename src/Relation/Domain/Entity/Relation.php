@@ -1,7 +1,10 @@
 <?php
+declare(strict_types=1);
+namespace App\Relation\Domain\Entity;
 
-namespace App\Entity;
-
+use App\Entity\Address;
+use App\Entity\Contact;
+use App\Entity\Currency;
 use App\Repository\RelationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

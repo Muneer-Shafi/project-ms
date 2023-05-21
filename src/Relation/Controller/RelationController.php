@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace App\Relation\Controller;
 
 use App\Entity\Address;
-use App\Entity\Relation;
+
 use App\Entity\User;
 use App\Form\ChangePasswordType;
-use App\Form\RelationType;
+
+use App\Relation\Domain\Entity\Relation;
+use App\Relation\Form\RelationType;
+use App\Repository\RelationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,11 +20,27 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Http\Logout\LogoutUrlGenerator;
-
+use Webmozart\Assert\Assert;
 
 #[Route('/relation'), IsGranted('ROLE_USER')]
 class RelationController extends AbstractController
 {
+    public function __construct(
+        private  RelationRepository $relationRepository
+    )
+    {
+    }
+
+    #[Route('/', name: 'relation_index', methods: ['GET'])]
+    public function  index():Response{
+
+        $relation = $this->relationRepository->find(102);
+        Assert($relation instanceof Relation);
+        dd($relation->getAddresses()->toArray(),$relation->getContacts()->toArray());
+
+
+    }
+    
     #[Route('/new', name: 'relation_new', methods: ['GET', 'POST'])]
     public function new(
         #[CurrentUser] User $user,
