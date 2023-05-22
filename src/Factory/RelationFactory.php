@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Factory;
 
-use App\Entity\Relation;
+use App\Relation\Domain\Entity\Relation;
 use App\Repository\RelationRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -66,6 +67,9 @@ final class RelationFactory extends ModelFactory
             'currency' => CurrencyFactory::new(),
             'name' => self::faker()->company(),
             'shortName' => self::faker()->companySuffix(),
+            'email' => self::faker()->email(),
+            'cocNumber' => self::faker()->randomNumber(),
+            'remarks' => self::faker()->text(25),
         ];
     }
 

@@ -5,35 +5,63 @@
 {% block footer %}{% endblock %}
 
 {% block body %}
-    <div class="page-header">
-        <h1>{{ 'title.homepage'|trans|raw }}</h1>
-    </div>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="jumbotron">
-                <p>
-                    {{ 'help.browse_app'|trans|raw }}
-                </p>
-                <p>
-                    <a class="btn btn-primary btn-lg" href="{{ path('blog_index') }}">
-                        <i class="fa fa-users" aria-hidden="true"></i> {{ 'action.browse_app'|trans }}
-                    </a>
-                </p>
-            </div>
-        </div>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+<button type="button" class="btn btn-link">Link</button>
 
-        <div class="col-sm-6">
-            <div class="jumbotron">
-                <p>
-                    {{ 'help.browse_admin'|trans|raw }}
-                </p>
-                <p>
-                    <a class="btn btn-primary btn-lg" href="{{ path('admin_index') }}">
-                        <i class="fa fa-lock" aria-hidden="true"></i> {{ 'action.browse_admin'|trans }}
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
+	<div class="page-header">
+		<h1>{{ 'title.homepage'|trans|raw }}</h1>
+	</div>
+	<div class="card border-primary mb-3" style="max-width: 20rem;">
+		<div class="card-header">Header</div>
+		<div class="card-body">
+			<h4 class="card-title">Primary card title</h4>
+			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		</div>
+	</div>
+<div class="card border-primary mb-3" style="max-width: 20rem;">
+	<div class="card-header">Header</div>
+	<div class="card-body">
+		<h4 class="card-title">Primary card title</h4>
+		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	</div>
+</div>
+
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="jumbotron">
+				<p>
+					{{ 'help.browse_app'|trans|raw }}
+				</p>
+				<p>
+					<a class="btn btn-primary btn-lg" href="{{ path('blog_index') }}">
+						<i class="fa fa-users" aria-hidden="true"></i>
+						{{ 'action.browse_app'|trans }}
+					</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="jumbotron">
+				<p>
+					{{ 'help.browse_admin'|trans|raw }}
+				</p>
+				<p>
+					<a class="btn btn-primary btn-lg" href="{{ path('admin_index') }}">
+						<i class="fa fa-lock" aria-hidden="true"></i>
+						{{ 'action.browse_admin'|trans }}
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
 {% endblock %}

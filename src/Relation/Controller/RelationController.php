@@ -34,7 +34,7 @@ class RelationController extends AbstractController
     #[Route('/', name: 'relation_index', methods: ['GET'])]
     public function  index():Response{
 
-        $relation = $this->relationRepository->find(102);
+        $relation = $this->relationRepository->findAll()[0];
         Assert($relation instanceof Relation);
         dd($relation->getAddresses()->toArray(),$relation->getContacts()->toArray());
 
