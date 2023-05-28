@@ -23,22 +23,9 @@ final class PostQuery
     ){
 
     }
-    
-
-    /**
-     * @return Post[]
-     */
 
     #[Query]
-    public function getPosts():array{
-
-        return  $this->postRepository->findAll();
-    }
-
-
-
-    #[Query]
-    public function allPosts(
+    public function getPosts(
         #[InjectUser] User $user,
         ?string $after,
         int $first = 5,

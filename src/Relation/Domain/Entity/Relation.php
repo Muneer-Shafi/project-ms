@@ -13,16 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: RelationRepository::class)]
 class Relation
 {
+
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(length: 200)]
-    private ?string $name = null;
+    private string $name;
 
     #[ORM\Column(length: 100)]
-    private ?string $shortName = null;
+    private string $shortName;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $cocNumber = null;
@@ -49,12 +51,12 @@ class Relation
         $this->addresses = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -66,7 +68,7 @@ class Relation
         return $this;
     }
 
-    public function getShortName(): ?string
+    public function getShortName(): string
     {
         return $this->shortName;
     }
@@ -125,10 +127,7 @@ class Relation
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, Contact>
-     */
+    
     public function getContacts(): Collection
     {
         return $this->contacts;

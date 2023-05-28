@@ -13,29 +13,39 @@ use App\Relation\Domain\Entity\Relation as RelationEntity;
 class Relation
 {
     #[Field]
-    public function name(RelationEntity $relation): ?string
+    public function id(RelationEntity $relation): int
+    {
+        return $relation->getId();
+    }
+    #[Field]
+    public function name(RelationEntity $relation): string
     {
         return $relation->getName();
+    }
+    #[Field]
+    public function shortName(RelationEntity $relation): string
+    {
+        return $relation->getShortName();
     }
 
 
     #[Field]
-    public function email(RelationEntity $relation): ?string
+    public function email(RelationEntity $relation): string
     {
         return $relation->getEmail();
 
 
     }
 
-    /**
-     * @param RelationEntity $relation
-     * @return list<Address>
-     */
-    #[Field]
-    public function addresses(RelationEntity $relation): array
-    {
-        return $relation->getAddresses()->toArray();
-    }
+//    /**
+//     * @param RelationEntity $relation
+//     * @return list<Address>
+//     */
+//    #[Field]
+//    public function addresses(RelationEntity $relation): array
+//    {
+//        return $relation->getAddresses()->toArray();
+//    }
 
     /**
      * @param RelationEntity $relation

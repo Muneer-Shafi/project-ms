@@ -13,13 +13,13 @@ class Currency
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id ;
 
     #[ORM\Column(length: 50)]
-    private ?string $code = null;
+    private string $code;
 
     #[ORM\Column(length: 10, nullable: true)]
-    private ?string $symbol = null;
+    private string $symbol;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $remarks = null;
@@ -27,12 +27,12 @@ class Currency
     #[ORM\OneToOne(mappedBy: 'currency', cascade: ['persist', 'remove'])]
     private ?Relation $relation = null;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getCode(): ?string
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -44,7 +44,7 @@ class Currency
         return $this;
     }
 
-    public function getSymbol(): ?string
+    public function getSymbol(): string
     {
         return $this->symbol;
     }

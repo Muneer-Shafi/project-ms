@@ -1,5 +1,7 @@
 import './styles/app.scss';
 
+import '../node_modules/bootswatch/cosmo'
+
 // loads the Bootstrap jQuery plugins
 import 'bootstrap-sass/assets/javascripts/bootstrap/transition.js';
 import 'bootstrap-sass/assets/javascripts/bootstrap/alert.js';

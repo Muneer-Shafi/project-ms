@@ -9,6 +9,8 @@ use App\Entity\User;
 use App\Factory\AddressFactory;
 use App\Factory\ContactFactory;
 use App\Factory\CurrencyFactory;
+use App\Factory\ProductFactory;
+use App\Factory\ProductGroupFactory;
 use App\Factory\RelationFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -30,6 +32,9 @@ class AppFixtures extends Fixture
     {
         UserFactory::createMany(50);
         CurrencyFactory::createMany(5);
+
+        ProductGroupFactory::createMany(5);
+        ProductFactory::createMany(36);
 
         RelationFactory::createMany(50, [
             'contacts' => ContactFactory::new()->many(5),
