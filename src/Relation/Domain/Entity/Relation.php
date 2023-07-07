@@ -146,7 +146,6 @@ class Relation
     public function removeContact(Contact $contact): self
     {
         if ($this->contacts->removeElement($contact)) {
-            // set the owning side to null (unless already changed)
             if ($contact->getRelation() === $this) {
                 $contact->setRelation(null);
             }
