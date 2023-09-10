@@ -19,8 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\Security\Http\Logout\LogoutUrlGenerator;
-use Webmozart\Assert\Assert;
+
 
 #[Route('/relation'), IsGranted('ROLE_USER')]
 class RelationController extends AbstractController
@@ -34,9 +33,10 @@ class RelationController extends AbstractController
     #[Route('/', name: 'relation_index', methods: ['GET'])]
     public function  index():Response{
 
-        $relation = $this->relationRepository->findAll()[0];
-        Assert($relation instanceof Relation);
-        dd($relation->getAddresses()->toArray(),$relation->getContacts()->toArray());
+        $relations = $this->relationRepository->findAll();
+        return $this->render('relation/list.html.twig', [
+            'relations' => $relations,
+        ]);
 
 
     }
@@ -84,7 +84,7 @@ class RelationController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'relation$relation.updated_successfully');
 
-            return $this->redirectToRoute('admin_relation$relation_edit', ['id' => $relation->getId()]);
+            return $this->redirectToRoute('relation_edit', ['id' => $relation->getId()]);
         }
 
         return $this->render('relation/edit.html.twig', [

@@ -1801,7 +1801,7 @@ bootstrap-tagsinput@^0.7.1:
   resolved "https://registry.npmjs.org/bootstrap-tagsinput/-/bootstrap-tagsinput-0.7.1.tgz"
   integrity sha512-xSks67GWgXLnmO5gqp788vhh7WoXd9mHj5uKE5zg8rvw3sNYYSCjrSlrPRlPdpYKwmuxeuf2jsNjBSWEucyB1w==
 
-bootstrap@^3.3:
+bootstrap@^3.3, bootstrap@^3.4.1:
   version "3.4.1"
   resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-3.4.1.tgz"
   integrity sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==

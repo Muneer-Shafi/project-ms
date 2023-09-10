@@ -8,7 +8,7 @@
         "@symfony/ux-live-component": "file:vendor/symfony/ux-live-component/assets",
         "@symfony/webpack-encore": "^4.0",
         "bloodhound-js": "^1.2.3",
-        "bootstrap": "^3.3",
+        "bootstrap": "^3.4.1",
         "bootstrap-sass": "^3.3.7",
         "bootstrap-tagsinput": "^0.7.1",
         "bootswatch": "^3.3.7",

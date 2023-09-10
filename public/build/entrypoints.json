@@ -2,26 +2,35 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.js",
-        "/build/vendors-node_modules_core-js_modules_es_array_find_js-node_modules_core-js_modules_es_object_-eef3d1.js",
-        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap-sass_assets-b6f48f.js",
-        "/build/app.js"
+        "/build/runtime.6112e635.js",
+        "/build/608.f8d2a5ac.js",
+        "/build/38.8771d54b.js",
+        "/build/app.cb4bc5d6.js"
       ],
       "css": [
-        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap-sass_assets-b6f48f.css",
-        "/build/app.css"
+        "/build/app.7620b1a3.css"
       ]
     },
     "admin": {
       "js": [
-        "/build/runtime.js",
-        "/build/vendors-node_modules_core-js_modules_es_array_find_js-node_modules_core-js_modules_es_object_-eef3d1.js",
-        "/build/vendors-node_modules_bootstrap-tagsinput_dist_bootstrap-tagsinput_js-node_modules_eonasdan-bo-438794.js",
-        "/build/admin.js"
+        "/build/runtime.6112e635.js",
+        "/build/608.f8d2a5ac.js",
+        "/build/919.8d42c61e.js",
+        "/build/admin.f36f4580.js"
       ],
       "css": [
-        "/build/admin.css"
+        "/build/admin.85606dba.css"
       ]
     }
+  },
+  "integrity": {
+    "/build/runtime.6112e635.js": "sha384-wAN9qmCkjF+OzLI04mgYolwo9BordhWyfXbufRvFJUUS46ttjCDVoW4mrjtOqi9Q",
+    "/build/608.f8d2a5ac.js": "sha384-rFsnjoVJ2wvSAUq1ZMqHmEWsFYK86UwbkFqKL44dSY31/PwBC0pTMaQRTyyQfLGq",
+    "/build/38.8771d54b.js": "sha384-AjePv4ZgyaXnHgJj2ARjE8asQYgPypTrmzfpXByWHFURgZRHNEWw5Ofh09H5laxx",
+    "/build/app.cb4bc5d6.js": "sha384-PBVb6GsrD51B5tpAuVeXOMqJ15pTII3+op0Z+nc/Fp/6/DuCc592aNry2Cotdh2K",
+    "/build/app.7620b1a3.css": "sha384-Lgt/lOgfqXMYGYwvNu/f6PfA3vGEkmGTe1eUx5opDdUoYcrGpbOD0enq+2LMhkHc",
+    "/build/919.8d42c61e.js": "sha384-IMY3Njfoqzt8dgpbQt/qMzBCfqcgzMdtabJEMRcBHJFrRCMXkl22n0X4Z/955oZ3",
+    "/build/admin.f36f4580.js": "sha384-gCdv12qjnU+3c43VPc7n/4Ori3flY64h2BzcBc0jRkqx3NF23c18ZxEUVu2+Iq1a",
+    "/build/admin.85606dba.css": "sha384-TsIuAs/F7fjYKnbTWkUTwTNstjh+9KtVUIxl7Mo3bvtxVQE75l02ZzmWAa3/spHb"
   }
 }

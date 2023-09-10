@@ -1,130 +1,139 @@
 {% extends 'base.html.twig' %}
-{% form_theme form _self %}
+{#{% form_theme form _self %}#}
+{#{%- block form_row -%}#}
+{#    {%- set widget_attr = {} -%}#}
+{#    {%- if help is not empty -%}#}
+{#        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}#}
+{#    {%- endif -%}#}
+{#    <div class="bg-dark">#}
+{#    {{- form_label(form) -}}#}
+{#    {{- form_errors(form) -}}#}
+{#    {{- form_widget(form, widget_attr) -}}#}
+{#    {{- form_help(form) -}}#}
+{#    </div>{%- endblock form_row -%}#}
+{% block body_id 'user_edit' %}
+{% block main %}
+    <h1>{{ 'title.edit_user'|trans }}</h1>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab">General
+                Info</a>
+
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Addresses</a>
+
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link disabled" href="#" aria-selected="false" tabindex="-1" role="tab">Contacts</a>
+
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">General Info</a>
+                <a class="dropdown-item" href="#">Addresses</a>
+                <a class="dropdown-item" href="#">Contacts</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </li>
+    </ul>
+    {{ form_start(form) }}
+    <button type="submit" class="btn btn-primary">
+        <i class="fa fa-save" aria-hidden="true"></i>
+        {{ 'action.save'|trans }}
+    </button>
+    {{ form_row(form.name) }}
+    {{ form_row(form.shortName) }}
+    {{ form_row(form.remarks) }}
+    {{ form_row(form.country) }}
+    {{ form_row(form.cocNumber) }}
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active show" id="home" role="tabpanel"></div>
+        <div class="tab-pane fade" id="profile" role="tabpanel">
+            <ul class="addresses" data-index="{{ form.addresses|length > 0 ? form.addresses|last.vars.name + 1 : 0 }}"
+                data-prototype="{{ form_widget(form.addresses.vars.prototype)|e('html_attr') }}">
+                {% for address in form.addresses %}
+                    <li>{{ form_row(address.name) }}</li>
+                    <li>{{ form_row(address.addressLine1) }}</li>
+                    <li>{{ form_row(address.addressLine2) }}</li>
+                    <li>{{ form_row(address.pinCode) }}</li>
+                    <li>{{ form_row(address.country) }}</li>
+                    <li>{{ form_row(address.city) }}</li>
+                {% endfor %}
+                <button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add
+                    a Address
+                </button>
+
+            </ul>
+        </div>
+
+        <div class="tab-pane fade" id="dropdown1">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro
+                fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone
+                skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings
+                gentrify squid 8-bit cred pitchfork.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown2">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master
+                cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party
+                locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they
+                sold out farm-to-table VHS viral locavore cosby sweater.</p>
+        </div>
+    </div>
 
 
-{%- block form_row -%}
-{%- set widget_attr = {} -%}
-{%- if help is not empty -%}
-	{%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
-{%- endif -%}
-<div class="bg-dark" >
-	{{- form_label(form) -}}
-	{{- form_errors(form) -}}
-	{{- form_widget(form, widget_attr) -}}
-	{{- form_help(form) -}}
-</div>{%- endblock form_row -%}{% block body_id 'user_edit' %}{% block main %}
-<h1>{{ 'title.edit_user'|trans }}</h1>
+    <div class="card my-3"></div>
+
+    {{ form_end(form) }}
+
+    <script>
+        const addFormToCollection = (e) => {
+            const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+            const item = document.createElement('li');
+
+            item.innerHTML = collectionHolder.dataset.prototype.replace(/__name__/g, collectionHolder.dataset.index);
+
+            collectionHolder.appendChild(item);
+
+            collectionHolder.dataset.index++;
+
+            addTagFormDeleteLink(item);
+
+        };
+        document.querySelectorAll('.add_item_link').forEach(btn => {
+            btn.addEventListener("click", addFormToCollection)
+        });
+
+        document.querySelectorAll('ul.tags li').forEach((tag) => {
+            addTagFormDeleteLink(tag)
+        })
 
 
-<ul class="nav nav-tabs" role="tablist">
-	<li class="nav-item" role="presentation">
-		<a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab">General Info</a>
+        const addTagFormDeleteLink = (item) => {
+            const removeFormButton = document.createElement('button');
+            removeFormButton.innerText = 'Delete this tag';
 
-	</li>
-	<li class="nav-item" role="presentation">
-		<a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Addresses</a>
+            item.append(removeFormButton);
 
-	</li>
-	<li class="nav-item" role="presentation">
-		<a class="nav-link disabled" href="#" aria-selected="false" tabindex="-1" role="tab">Contacts</a>
-
-	</li>
-	<li class="nav-item dropdown">
-		<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-		<div class="dropdown-menu">
-			<a class="dropdown-item" href="#">General Info</a>
-			<a class="dropdown-item" href="#">Addresses</a>
-			<a class="dropdown-item" href="#">Contacts</a>
-			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="#">Separated link</a>
-		</div>
-	</li>
-</ul>
-{{ form_start(form) }}
-<button type="submit" class="btn btn-primary">
-	<i class="fa fa-save" aria-hidden="true"></i>
-	{{ 'action.save'|trans }}
-</button>
-{{ form_row(form.name) }}
-{{ form_row(form.shortName) }}
-{{ form_row(form.remarks) }}
-{{ form_row(form.country) }}
-{{ form_row(form.cocNumber) }}
-<div id="myTabContent" class="tab-content">
-	<div class="tab-pane fade active show" id="home" role="tabpanel"></div>
-	<div class="tab-pane fade" id="profile" role="tabpanel">
-		<ul class="addresses" data-index="{{ form.addresses|length > 0 ? form.addresses|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(form.addresses.vars.prototype)|e('html_attr') }}">
-			{% for address in form.addresses %}
-				<li>{{ form_row(address.name) }}</li>
-				<li>{{ form_row(address.addressLine1) }}</li>
-				<li>{{ form_row(address.addressLine2) }}</li>
-				<li>{{ form_row(address.pinCode) }}</li>
-				<li>{{ form_row(address.country) }}</li>
-				<li>{{ form_row(address.city) }}</li>
-			{% endfor %}
-			<button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add a Address</button>
-
-		</ul>
-	</div>
-
-	<div class="tab-pane fade" id="dropdown1">
-		<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-	</div>
-	<div class="tab-pane fade" id="dropdown2">
-		<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-	</div>
-</div>
-
-
-<div class="card my-3"></div>
-
-{{ form_end(form) }}
-
-<script>
-	const addFormToCollection = (e) => {
-const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
-
-const item = document.createElement('li');
-
-item.innerHTML = collectionHolder.dataset.prototype.replace(/__name__/g, collectionHolder.dataset.index);
-
-collectionHolder.appendChild(item);
-
-collectionHolder.dataset.index ++;
-
-addTagFormDeleteLink(item);
-
-};
-document.querySelectorAll('.add_item_link').forEach(btn => {
-btn.addEventListener("click", addFormToCollection)
-});
-
-document.querySelectorAll('ul.tags li').forEach((tag) => {
-addTagFormDeleteLink(tag)
-})
-
-
-const addTagFormDeleteLink = (item) => {
-const removeFormButton = document.createElement('button');
-removeFormButton.innerText = 'Delete this tag';
-
-item.append(removeFormButton);
-
-removeFormButton.addEventListener('click', (e) => {
-e.preventDefault();
+            removeFormButton.addEventListener('click', (e) => {
+                e.preventDefault();
 // remove the li for the tag form
-item.remove();
-});
-}
-</script>{% endblock %}{% block sidebar %}
-<div class="section">
-	<a href="{{ path('user_change_password') }}" class="btn btn-lg btn-block btn-danger">
-		<i class="fa fa-lock" aria-hidden="true"></i>
-		{{ 'action.change_password'|trans }}
-	</a>
-</div>
+                item.remove();
+            });
+        }
+    </script>{% endblock %}{% block sidebar %}
+    <div class="section">
+        <a href="{{ path('user_change_password') }}" class="btn btn-lg btn-block btn-danger">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            {{ 'action.change_password'|trans }}
+        </a>
+    </div>
 
-{{ parent() }}
+    {{ parent() }}
 
-{{ show_source_code(_self) }}{% endblock %}
+    {{ show_source_code(_self) }}{% endblock %}
 
