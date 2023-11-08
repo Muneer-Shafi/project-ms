@@ -30,6 +30,14 @@ class RelationController extends AbstractController
     {
     }
 
+    #[Route('/home', name: 'relation_index', methods: ['GET'])]
+        public function home(): Response
+    {
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
     #[Route('/', name: 'relation_index', methods: ['GET'])]
     public function  index():Response{
 
@@ -55,10 +63,6 @@ class RelationController extends AbstractController
 
         $form = $this->createForm(RelationType::class, $relation);
         $form->handleRequest($request);
-
-
-        // dd($form);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
