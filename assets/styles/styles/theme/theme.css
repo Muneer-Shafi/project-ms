@@ -1,0 +1,15 @@
+@import './tokens.css';
+@import './colors.module.css';
+@import './typography.module.css';
+/*TODO fix me in night mode*/
+/*@import './theme.dark.css' (prefers-color-scheme: dark);*/
+@import './theme.light.css';
+:root {
+    color-scheme: light;
+}
+/*html[data-theme='light'] {*/
+/*    color-scheme: light;*/
+/*}*/
+/*html[data-theme='dark'] {*/
+/*    color-scheme: dark;*/
+/*}*/

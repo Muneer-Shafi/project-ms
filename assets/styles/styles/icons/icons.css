@@ -1,0 +1,694 @@
+@import '../theme/theme.css';
+
+:root {
+    --icon-font-family: 'Material Symbols Rounded';
+
+    --md-filled-icon-button-selected-container-color: var(--md-sys-color-primary);
+    --md-filled-icon-button-container-shape: 9999px;
+    --md-filled-icon-button-container-width: 40px;
+    --md-filled-icon-button-icon-size: 22px;
+
+    --md-filled-tonal-icon-button-selected-container-color: var(--md-sys-color-secondary-container);
+    --md-filled-tonal-icon-button-container-shape: 9999px;
+    --md-filled-tonal-icon-button-container-width: 40px;
+    --md-filled-tonal-icon-button-container-height: 40px;
+    --md-filled-tonal-icon-button-icon-size: 24px;
+
+    --md-outlined-icon-button-outline-color: var(--md-sys-color-outline);
+    --md-outlined-icon-button-outline-width: 1px;
+    --md-outlined-icon-button-container-shape: 9999px;
+    --md-outlined-icon-button-container-width: 40px;
+    --md-outlined-icon-button-container-height: 40px;
+    --md-outlined-icon-button-icon-size: 24px;
+}
+
+:root,
+[data-theme='light'] {
+    --icon-color: #1b1c1c;
+    --icon-inverse-color: #ffffff;
+    --widget-icon-color: #1b1c1c;
+    --theme-icon-content: '\e51c';
+    --icon-hover-bg: rgba(230, 230, 230, 0.8);
+}
+
+[data-theme='dark'] {
+    --icon-color: #ffffff;
+    --icon-inverse-color: #1b1c1c;
+    --widget-icon-color: rgb(222, 227, 233);
+    --theme-icon-content: '\e518';
+    --icon-hover-bg: rgba(37, 37, 37, 0.8);
+}
+
+:where(
+        .menu-icon,
+        .lot-icon,
+        .blank-checkbox-icon,
+        .checkbox-icon,
+        .info-icon,
+        .edit-icon,
+        .task-icon,
+        .user-icon,
+        .video-icon,
+        .maintenance-icon,
+        .users-icon,
+        .users-group-icon,
+        .search-icon,
+        .expand-dropdown-icon,
+        .theme-icon,
+        .three-dot-icon,
+        .support-icon,
+        .setting-icon,
+        .new-tab,
+        .log-icon,
+        .audit-log-icon,
+        .person-icon,
+        .circular-plus-icon,
+        .collection-plus-icon,
+        .create-icon,
+        .lock-icon,
+        .language-icon,
+        .close-icon,
+        .admin-icon,
+        .notification-icon,
+        .run-icon,
+        .refresh-icon,
+        .merge-icon,
+        .currency-icon,
+        .arrow-right,
+        .nav-item-icon,
+        .menu-bar-icon
+    ) {
+    font-size: var(--md-filled-icon-button-icon-size);
+    background: none;
+    font-family: var(--icon-font-family);
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 600,
+        'GRAD' 0,
+        'opsz' 48;
+    color: var(--md-sys-color-on-surface);
+}
+
+:where(
+        .sidebar-plus-icon,
+        .expand-icon,
+        .relation-icon,
+        .developer-icon,
+        .product-icon,
+        .planning-icon,
+        .report-icon,
+        .order-icon,
+        .warehouse-icon,
+        .mass-balance-icon,
+        .lots-icon,
+        .logistic-icon,
+        .production-icon,
+        .own-factory-icon,
+        .root-data-icon,
+        .finance-icon,
+        .right-icon,
+        .market-place-icon,
+        .sales-icon,
+        .purchase-icon
+    ) {
+    font-size: 24px;
+    font-family: var(--icon-font-family);
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48;
+}
+
+.website-icon {
+    appearance: none;
+    border: none;
+    font-size: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+:where(.email-icon) {
+    border: none;
+    color: var(--widget-icon-color);
+}
+
+.email-icon::before {
+    content: '\e0be';
+}
+
+.close-icon::before {
+    content: '\e5cd';
+}
+
+.website-icon::before {
+    content: '\e894';
+    color: var(--widget-icon-color);
+}
+
+.three-dot-icon::after {
+    content: '\e5d3';
+}
+
+.notification-icon::before {
+    content: '\e7f4';
+}
+
+.user-icon::before {
+    content: '\e853';
+}
+.line-vertical {
+    transform: rotate(90deg);
+}
+.line-vertical::before {
+    content: '\f108';
+}
+
+.video-icon::before {
+    content: '\e04a';
+}
+
+.maintenance-icon::before {
+    content: '\ea3d';
+}
+
+.lot-icon::before {
+    content: '\f569';
+}
+
+.edit-icon::before {
+    content: '\f88d';
+}
+
+.euro-icon::before {
+    content: '\ea15';
+}
+
+.info-icon::before {
+    content: '\e88e';
+}
+
+.blank-checkbox-icon::before {
+    content: '\e835';
+}
+
+.checkbox-icon::before {
+    content: '\e834';
+    cursor: inherit;
+}
+.users-icon::before {
+    content: '\e7ef';
+}
+
+.users-group-icon::before {
+    content: '\f233';
+}
+.doc-help-icon::before {
+    color: var(--md-sys-color-on-primary-container);
+    content: '\e887';
+}
+
+.theme-icon::before {
+    content: var(--theme-icon-content);
+}
+
+.logout-icon::before {
+    content: '\f1ff';
+}
+
+.expand-dropdown-icon::before {
+    content: '\e5cf';
+}
+
+.language-icon::before {
+    content: '\e894';
+}
+
+.setting-icon::before {
+    content: '\e8b8';
+}
+
+.support-icon::before {
+    content: '\f0e2';
+}
+
+.iphone-icon::before {
+    content: '\e325';
+}
+
+.knowledge-icon::before {
+    content: '\ef42';
+}
+
+.release-icon::before {
+    content: '\e031';
+}
+
+.document-icon::before {
+    content: '\e873';
+}
+
+.admin-icon::before {
+    content: '\f650';
+}
+
+.account-setting-icon::before {
+    content: '\f835';
+}
+
+.twoFa-icon::before {
+    content: '\e32a';
+}
+
+.translation-icon::before {
+    content: '\e894';
+}
+
+.domain-icon::before {
+    content: '\e7ee';
+}
+
+.billing-icon::before {
+    content: '\e8cc';
+}
+
+.user-manage-icon::before {
+    content: '\f02e';
+}
+
+.invoice-admin-icon::before {
+    content: '\f650';
+}
+
+.database-icon::before {
+    content: '\f20e';
+}
+
+.search-icon::before {
+    content: '\e8b6';
+}
+
+.number-scheme-icon::before {
+    content: '\e3fe';
+}
+
+.permission-icon::before {
+    content: '\f05d';
+}
+
+.config-overview-icon::before {
+    content: '\e8b9';
+}
+.readonly-db-icon::before {
+    content: '\e328';
+}
+
+.collection-plus-icon::before {
+    content: '\e145';
+    color: var(--icon-inverse-color);
+    cursor: pointer;
+}
+
+.circular-plus-icon::before {
+    content: '\e147';
+}
+
+.log-icon::before {
+    content: '\e85d';
+}
+
+.audit-log-icon::before {
+    content: '\e85d';
+}
+
+.create-icon::before {
+    content: '\f5a1';
+}
+
+.run-icon::before {
+    content: '\ef6f';
+}
+
+.task-icon::before {
+    content: '\eb8e';
+}
+
+.person-icon::before {
+    content: '\e7fd';
+}
+
+.merge-icon::before {
+    content: '\e252';
+}
+
+.currency-icon::before {
+    content: '\ea15';
+}
+
+.lock-icon::before {
+    content: '\e897';
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 48;
+}
+
+.refresh-icon::before {
+    content: '\e5d5';
+}
+
+.arrow-right::before {
+    content: '\e941';
+}
+
+.pre-finalized::before {
+    content: '\e941';
+}
+
+.purchase-icon::before {
+    content: '\e854';
+}
+
+.sales-icon::before {
+    content: '\e8cb';
+}
+
+.relation-icon::before {
+    content: '\e7ef';
+}
+
+.product-icon::before {
+    content: '\e70b';
+}
+
+.developer-icon::before {
+    content: '\f84d';
+}
+
+.planning-icon::before {
+    content: '\ebcc';
+}
+
+.report-icon::before {
+    content: '\f190';
+}
+
+.order-icon::before {
+    content: '\e050';
+}
+
+.finance-icon::before {
+    content: '\e84f';
+}
+
+.market-place-icon::before {
+    content: '\e8d1';
+}
+
+.production-icon::before {
+    content: '\eff0';
+}
+
+.lots-icon::before {
+    content: '\f86e';
+}
+
+.root-data-icon::before {
+    content: '\eb4c';
+}
+
+.own-factory-icon::before {
+    content: '\ebbc';
+}
+
+.logistic-icon::before {
+    content: '\e576';
+}
+
+.mass-balance-icon::before {
+    content: '\eaf6';
+}
+
+:where(.right-icon)::before {
+    content: '\e037';
+    font-size: 16px;
+}
+
+.purchase-icon::before {
+    content: '\e854';
+}
+
+.sales-icon::before {
+    content: '\e8cb';
+}
+
+.relation-icon::before {
+    content: '\e7ef';
+}
+
+.product-icon::before {
+    content: '\e70b';
+}
+
+.developer-icon::before {
+    content: '\f84d';
+}
+
+.planning-icon::before {
+    content: '\ebcc';
+}
+
+.report-icon::before {
+    content: '\f190';
+}
+
+.order-icon::before {
+    content: '\e050';
+}
+
+.warehouse-icon::before {
+    content: '\ebb8';
+}
+
+.production-icon::before {
+    content: '\eff0';
+}
+
+.lots-icon::before {
+    content: '\f86e';
+}
+
+.root-data-icon::before {
+    content: '\eb4c';
+}
+
+.own-factory-icon::before {
+    content: '\ebbc';
+}
+
+.logistic-icon::before {
+    content: '\e576';
+}
+
+.mass-balance-icon::before {
+    content: '\eaf6';
+}
+
+.sidebar-plus-icon::before {
+    content: '\e145';
+}
+
+.nav-item-icon::before {
+    content: '\e409';
+}
+
+.expand-icon::before {
+    content: '\e5cf';
+}
+
+:where(
+        .theme-icon,
+        .video-icon,
+        .setting-icon,
+        .new-tab,
+        .maintenance-icon,
+        .notification-icon,
+        .language-icon,
+        .admin-icon,
+        .task-icon,
+        .user-icon
+    ) {
+    height: var(--md-outlined-icon-button-container-width);
+    aspect-ratio: 1 / 1;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+}
+
+:where(
+        .theme-icon,
+        .setting-icon,
+        .video-icon,
+        .new-tab,
+        .search-icon,
+        .maintenance-icon,
+        .notification-icon,
+        .language-icon,
+        .admin-icon,
+        .task-icon,
+        .doc-help-icon,
+        .user-icon,
+        .users-group-icon
+    ):hover {
+    background-color: var(--md-sys-color-surface-container-highest);
+}
+/*Additional icon used*/
+
+:where(.icon) {
+    font-family: var(--icon-font-family);
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 600,
+        'GRAD' 0,
+        'opsz' 48;
+    padding: 0;
+    font-size: var(--md-filled-icon-button-icon-size);
+    color: inherit;
+}
+
+.icon-save::before {
+    content: '\e161';
+}
+
+.icon-share::before {
+    content: '\e80d';
+}
+
+.icon-plus::before {
+    content: '\e145';
+}
+
+.icon-send::before {
+    content: '\e163';
+}
+.icon-delete::before {
+    content: '\e872';
+}
+.icon-cancel::before {
+    content: '\e5c9';
+}
+.icon-reset-lock::before {
+    content: '\eade';
+}
+.icon-visibility::before {
+    content: '\e8f4';
+}
+.icon-lock::before {
+    content: '\e897';
+}
+.icon-edit::before {
+    content: '\e745';
+}
+
+.icon-confirm::before {
+    content: '\e5ca';
+}
+.icon-truck::before {
+    content: '\e558';
+}
+.icon-info::before {
+    content: '\e88e';
+}
+.icon-show::before {
+    content: '\e8f4';
+}
+.icon-lock-open::before {
+    content: '\e898';
+}
+
+.icon-download::before {
+    content: '\f090';
+}
+.icon-split::before {
+    content: '\e0b6';
+}
+.icon-copy::before {
+    content: '\e14d';
+}
+.icon-undo::before {
+    content: '\e166';
+}
+.icon-move-order::before {
+    content: '\f587';
+}
+.icon-calculator::before {
+    content: '\ea5f';
+}
+.icon-archive::before {
+    content: '\e149';
+}
+.icon-paste::before {
+    content: '\e14f';
+}
+.icon-run::before {
+    content: '\ef6f';
+}
+.icon-log::before {
+    content: '\f071';
+}
+
+.new-tab::before {
+    content: '\f743';
+}
+.icon-flag::before {
+    content: '\e153';
+}
+.icon-flag-final::before {
+    content: '\f06e';
+}
+
+.icon-filter::before {
+    content: '\ef4f';
+}
+
+.icon-clear::before {
+    content: '\f0ff';
+}
+.icon-flag::before {
+    content: '\e153';
+}
+.icon-flag-final::before {
+    content: '\f06e';
+}
+
+.visibility-off::before {
+    content: '\e8f5';
+}
+
+.school-icon::before {
+    content: '\e80c';
+}
+.support-icon::before {
+    content: '\f0e2';
+}
+.call-icon::before {
+    content: '\e0b0';
+}
+
+.first-icon::before {
+    content: '\e5dc';
+}
+
+.previous-icon::before {
+    content: '\e314';
+}
+
+.next-icon::before {
+    content: '\e315';
+}
+
+.last-icon::before {
+    content: '\e5dd';
+}

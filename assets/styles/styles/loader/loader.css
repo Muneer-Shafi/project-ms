@@ -1,0 +1,41 @@
+:root {
+    --md-circular-progress-color: var(--md-sys-color-primary);
+    --md-circular-progress-size: 20px;
+    --md-circular-progress-active-indicator-width: 6px;
+}
+
+.loader {
+    --md-circular-progress-size: 70px;
+    border: var(--md-circular-progress-active-indicator-width) solid var(--md-circular-progress-color);
+    border-left-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 45vh;
+    bottom: 50vh;
+    z-index: 3000;
+    left: 50vw;
+    right: 50vw;
+    width: var(--md-circular-progress-size);
+    aspect-ratio: 1 / 1;
+    animation: loaderSpin 1.3s linear infinite;
+}
+.primary-loader {
+    --md-circular-progress-active-indicator-width: 3px;
+    border: var(--md-circular-progress-active-indicator-width) solid var(--md-circular-progress-color);
+    border-left-color: transparent;
+    border-radius: 50%;
+    position: relative;
+    width: var(--md-circular-progress-size);
+    aspect-ratio: 1 / 1;
+    animation: loaderSpin 1.3s linear infinite;
+}
+
+@keyframes loaderSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

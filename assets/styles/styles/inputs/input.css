@@ -1,0 +1,164 @@
+@import 'textarea.css';
+@import 'tagify.css';
+:root {
+    --input-padding: 6px 0px 6px 4px;
+    --md-outlined-text-field-padding: 6px 0px 6px 4px;
+    --md-outlined-text-field-focus-outline-color: var(--md-sys-color-primary);
+}
+
+:where(
+        [type='text'],
+        input[type='datetime'],
+        input[type='datetime-local'],
+        input[type='date'],
+        input[type='password'],
+        input[type='month'],
+        input[type='time'],
+        input[type='week'],
+        input[type='number'],
+        input[type='email'],
+        input[type='url'],
+        textarea,
+        .select2-input,
+        input[type='search'],
+        input[type='tel'],
+        input[type='color']
+    ) {
+    --input-width: clamp(10ch, 27ch, 30ch);
+    --input-height: 28px;
+    --input-background: none;
+    --input-text-color: inherit;
+    --input-outline: none;
+    margin: 0;
+    min-width: var(--input-width);
+    width: var(--input-width);
+    min-height: var(--input-height);
+    padding: var(--md-outlined-text-field-padding);
+    background: var(--input-background);
+    color: var(--input-text-color);
+    border: 1px solid var(--md-outlined-text-field-focus-outline-color);
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: var(--input-outline);
+    resize: none;
+    text-overflow: ellipsis;
+}
+
+:where(.input-sm, .text-input-small) {
+    --input-width: clamp(6ch, 10ch, 30ch);
+}
+
+:where(
+        input[inputmode='decimal'],
+        input[inputmode='numeric'],
+        input.exchangerate,
+        input.amount,
+        input.percentage,
+        input.quantity
+    ) {
+    text-align: right;
+    padding-right: 6px;
+}
+:where(
+        [type='text'],
+        input[readonly],
+        input[type='datetime'],
+        input[type='datetime-local'],
+        input[type='date'],
+        input[type='password'],
+        input[type='month'],
+        input[type='time'],
+        input[type='week'],
+        input[type='number'],
+        input[type='email'],
+        input[type='url'],
+        textarea,
+        .select2-input,
+        input[type='search'],
+        input[type='tel'],
+        input[type='color']
+    ):where(:not(:disabled)):where(:focus) {
+    --input-outline: 1px solid var(--md-outlined-text-field-focus-outline-color);
+}
+:where(
+        input[type='text'],
+        input[type='datetime'],
+        input[type='datetime-local'],
+        input[type='date'],
+        input[type='password'],
+        input[type='month'],
+        input[type='time'],
+        input[type='week'],
+        input[type='number'],
+        input[type='email'],
+        input[type='url'],
+        textarea,
+        .select2-container-disabled,
+        .select2-input,
+        input[type='search'],
+        input[type='tel'],
+        input[type='color']
+    ):disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+:where(input[readonly='readonly'], input[readonly], textarea[readonly='readonly']) {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+:where(input[required]):where(input.ng-invalid, input:invalid):not([type='radio'], [type='checkbox']) {
+    border: 1px solid var(--md-custom-text-required-field-color);
+}
+/*--------------------this styling is applied to native html select----------------------------*/
+select {
+    --input-width: clamp(10ch, 27ch, 30ch);
+    --input-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--input-width);
+    height: var(--input-height);
+    padding: var(--md-outlined-text-field-padding);
+    border: 1px solid var(--md-sys-color-secondary);
+    background: none;
+    border-radius: 4px;
+}
+select:focus {
+    outline: 1px solid var(--md-outlined-text-field-focus-outline-color);
+}
+
+/*--------------------------------file input styling ---------------------------------------*/
+
+/* file upload button */
+input[type='file']::file-selector-button {
+    height: 32px;
+    cursor: pointer;
+    color: inherit;
+    border: 1px solid var(--md-outlined-text-field-focus-outline-color);
+    background: none;
+    padding: 0 14px;
+    border-radius: 100px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    transition: background-color 200ms;
+}
+
+:where(input[type='file']::file-selector-button)::before {
+    content: 'hell';
+    font-size: 18px;
+}
+input[type='file']::file-selector-button:hover {
+    background: var(--md-sys-color-surface-container-high);
+}
+
+input[type='file']::file-selector-button:before {
+    content: '\f09b';
+    align-items: center;
+    display: flex;
+    color: #466275;
+    font-size: calc(var(--icon-font-size));
+    font-family: var(--icon-font-family);
+}

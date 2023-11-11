@@ -1,0 +1,23 @@
+:root {
+    --md-filled-button-container-color: var(--md-sys-color-primary);
+    --md-filled-button-container-shape: 9999px;
+    --md-filled-button-label-text-color: var(--md-sys-color-on-primary);
+}
+
+.filled-button {
+    background: var(--md-filled-button-container-color);
+    border: none;
+    color: var(--md-filled-button-label-text-color);
+}
+
+:where(.filled-button):hover:not(:disabled) {
+    box-shadow:
+        0px 1px 3px 1px color-mix(in srgb, var(--md-sys-color-on-primary) 15%, transparent),
+        0 1px 2px 0px color-mix(in srgb, var(--md-sys-color-on-primary) 30%, transparent);
+}
+
+:where(.filled-button):disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+    pointer-events: none;
+}

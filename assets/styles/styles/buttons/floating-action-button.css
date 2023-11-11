@@ -1,0 +1,34 @@
+:root {
+    --md-fab-container-color: var(--md-filled-button-container-color);
+    --md-fab-lowered-container-color: var(--md-sys-color-surface-container-low);
+    --md-fab-container-shape: 16px;
+    --md-fab-icon-color: var(--md-filled-button-label-text-color);
+    --md-fab-icon-size: 60px;
+}
+:where(.floating-action-button) {
+    display: flex;
+    justify-content: center;
+    height: var(--md-fab-icon-size);
+    align-items: center;
+    font-family: var(--md-sys-typescale-title-large-font-family-name);
+    font-style: var(--md-sys-typescale-title-large-font-family-style);
+    font-weight: var(--md-sys-typescale-title-large-font-weight);
+    font-size: var(--md-sys-typescale-title-large-font-size);
+    line-height: var(--md-sys-typescale-title-large-line-height);
+    letter-spacing: var(--md-sys-typescale-title-large-letter-spacing);
+    cursor: pointer;
+    border-radius: 50%;
+    padding: var(--button-padding);
+    background: var(--md-fab-container-color);
+    color: var(--md-fab-icon-color);
+}
+.floating-action-button {
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    align-items: center;
+    justify-content: center;
+    --button-height: clamp(20px, 20%, 70px);
+    --button-bg-color: rgba(70, 98, 117, 1);
+    bottom: clamp(5px, 5%, 100px);
+    right: clamp(5px, 5%, 100px);
+}

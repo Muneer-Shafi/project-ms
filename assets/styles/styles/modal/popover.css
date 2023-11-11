@@ -1,0 +1,99 @@
+:root {
+    --md-dialog-container-color: var(--md-sys-color-surface-container-high);
+    --md-dialog-headline-color: var(--md-sys-color-on-surface);
+    --md-dialog-supporting-text-color: var(--md-sys-color-on-surface-variant);
+}
+:where(.pop-over) {
+    border: 0;
+    padding: 0;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.24);
+    width: 40vw;
+    padding-bottom: 2ch;
+    color: var(--md-dialog-headline-color);
+    background: var(--md-dialog-container-color);
+    font-family: var(--md-sys-typescale-body-medium-font-family-name);
+    font-style: var(--md-sys-typescale-body-medium-font-family-style);
+    font-weight: var(--md-sys-typescale-body-medium-font-weight);
+    font-size: var(--md-sys-typescale-body-medium-font-size);
+    letter-spacing: var(--md-sys-typescale-body-medium-letter-spacing);
+    line-height: var(--md-sys-typescale-body-medium-line-height);
+    border-radius: 1ch;
+    height: fit-content;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+:where(.flash-pop-over) {
+    border: 0;
+    padding: 0;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.24);
+    width: 25vw;
+    height: fit-content;
+    color: var(--md-dialog-headline-color);
+    background: var(--md-dialog-container-color);
+    border-radius: 1ch;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+:where(.pop-over)::backdrop {
+    background-color: rgba(200, 200, 200, 0.3);
+    backdrop-filter: blur(2px);
+}
+:where([popover])::-webkit-scrollbar {
+    width: 5px;
+}
+:where([popover])::-webkit-scrollbar-thumb {
+    background-color: rgb(47, 47, 47);
+}
+:where(.pop-over .popover-content) {
+    padding: 0 20px;
+}
+
+.pop-over:popover-open {
+    animation: fadeIn 150ms ease-in-out;
+}
+
+/*TODO fix me use generic class*/
+.pop-over .close-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+[popover] > .popover-header {
+    display: flex;
+    position: sticky;
+    z-index: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-weight: 500;
+    padding: 8px 8px;
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    top: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+[popover] > main {
+    display: flex;
+    padding: 1ch;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    0% {
+        scale: 0.8;
+        opacity: 0;
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}

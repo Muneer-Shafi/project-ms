@@ -1,0 +1,17 @@
+:root {
+    --md-elevated-button-container-color: var(--md-sys-color-surface);
+    --md-elevated-button-container-shape: 9999px;
+    --md-elevated-button-label-text-color: var(--md-sys-color-on-surface);
+}
+
+.elevated-button {
+    background: var(--md-elevated-button-container-color);
+    color: var(--md-elevated-button-label-text-color);
+    box-shadow: 0 4px 5px color-mix(in srgb, var(--md-sys-color-on-surface) 40%, transparent);
+}
+
+:where(.elevated-button):hover {
+    box-shadow:
+        0px 1px 3px 1px color-mix(in srgb, var(--md-sys-color-on-surface) 15%, transparent),
+        0px 1px 2px 0px color-mix(in srgb, var(--md-sys-color-on-surface) 10%, transparent);
+}

@@ -1,0 +1,36 @@
+@import 'md-filled-button.css';
+@import 'md-tonal-button.css';
+@import 'md-outlined-button.css';
+@import 'md-elevated-button.css';
+@import 'md-text-button.css';
+@import '../floating-action-button.css';
+.md-button {
+    height: 32px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: nowrap;
+    border: none;
+    border-radius: 100px;
+    padding: 8px 16px;
+    cursor: pointer;
+    gap: 4px;
+    font-size: 12px !important;
+    transition: all 0.2s ease 0s;
+    font-family: var(--md-sys-typescale-title-large-font-family-name);
+    font-style: var(--md-sys-typescale-title-large-font-family-style);
+    font-weight: var(--md-sys-typescale-title-large-font-weight);
+    line-height: var(--md-sys-typescale-title-large-line-height);
+    letter-spacing: var(--md-sys-typescale-title-large-letter-spacing);
+}
+.md-button-sm {
+    height: 16px;
+}
+:where(.md-button.bg-danger) {
+    color: color-mix(in srgb, var(--md-sys-color-error-light) 100%, transparent);
+    outline: 1px solid color-mix(in srgb, var(--md-sys-color-error-light) 50%, transparent);
+    background-color: color-mix(in srgb, var(--md-sys-color-error-light) 1%, transparent);
+}
+:where(.md-button.bg-danger):not(:disabled):hover {
+    background-color: color-mix(in srgb, var(--md-sys-color-error-light) 15%, transparent);
+}

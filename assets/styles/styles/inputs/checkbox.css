@@ -1,0 +1,63 @@
+:root {
+    --md-checkbox-outline-color: var(--md-sys-color-on-surface-variant);
+    --md-checkbox-selected-container-color: var(--md-sys-color-primary);
+    --md-checkbox-selected-icon-color: var(--md-sys-color-on-primary);
+    --md-checkbox-container-shape: 2px;
+    --md-checkbox-icon-size: 20px;
+}
+
+:where(input[type='checkbox']) {
+    appearance: none;
+    width: var(--md-checkbox-icon-size);
+    box-sizing: border-box;
+    color: var(--md-checkbox-selected-container-color);
+    display: flex;
+    font-weight: bold;
+    padding: 12px;
+    aspect-ratio: 1 / 1;
+    place-content: center;
+    outline: none;
+    border-radius: 50%;
+}
+
+:where(input[type='checkbox']):where(:not(:disabled)):hover {
+    background: var(--md-sys-color-surface-container-high-light);
+    outline: 4px solid var(--md-sys-color-surface-container-high-light);
+}
+
+:where(input[type='checkbox']):disabled::before {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+:where(input[type='checkbox']):where(:checked)::before {
+    content: '\e834';
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+    font-family: var(--icon-font-family);
+    font-variation-settings:
+        'FILL' 10,
+        'wght' 800,
+        'GRAD' 0,
+        'opsz' 48;
+}
+
+:where(input[type='checkbox']):where(:not(:checked)):before {
+    content: '\e835';
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    font-size: 20px;
+    font-family: var(--icon-font-family);
+    font-variation-settings:
+        'FILL' 10,
+        'wght' 800,
+        'GRAD' 0,
+        'opsz' 48;
+}
+
+:where(input[type='checkbox']):where(:not(:disabled)):focus {
+    background: var(--md-sys-color-surface-container-high-light);
+    outline: 4px solid var(--md-sys-color-surface-container-high-light);
+}
