@@ -8,12 +8,11 @@
             {{ error.messageKey|trans(error.messageData, 'security') }}
         </div>
     {% endif %}
-    <div class="row" {{ stimulus_controller('login') }}{# @see assets/controllers/login-controller.js #}>
-        <div class="col-sm-5">
+    <div class="grid-container" {{ stimulus_controller('login') }}{# @see assets/controllers/login-controller.js #}>
             <div class="well">
                 <form action="{{ path('security_login') }}" method="post">
-                    <fieldset>
-                        <legend><i class="fa fa-lock" aria-hidden="true"></i> {{ 'title.login'|trans }}</legend>
+                    <div class="md-card">
+                        <div class="md-card-header"><i class="fa fa-lock" aria-hidden="true"></i> {{ 'title.login'|trans }}</div>
                         <div class="form-group">
                             <label for="username">{{ 'label.username'|trans }}</label>
                             <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" {{ stimulus_target('login', 'username') }} />
@@ -33,13 +32,12 @@
                         </div>
                         <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}"/>
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-                        <button type="submit" class="btn btn-primary">
+                        <md-filled-button type="submit" >
                             <i class="fa fa-sign-in" aria-hidden="true"></i> {{ 'action.sign_in'|trans }}
-                        </button>
-                    </fieldset>
+                        </md-filled-button>
+                    </div>
                 </form>
             </div>
-        </div>
 
         <div id="login-help" class="col-sm-7">
             <h3>
@@ -47,7 +45,7 @@
                 {{ 'help.login_users'|trans }}
             </h3>
 
-            <table class="table table-striped table-bordered table-hover">
+            <table class="info-table">
                 <thead>
                     <tr>
                         <th scope="col">{{ 'label.username'|trans }}</th>

@@ -2,7 +2,7 @@
 /public/build/images/glyphicons-*
 
 .php-version
-
+./public
 ###> symfony/framework-bundle ###
 /.idea
 /.env.local
@@ -12,6 +12,7 @@
 /public/bundles/
 /public/build/
 /var/
+
 /vendor/
 /docker/mysql
 ###< symfony/framework-bundle ###

@@ -1,9 +1,12 @@
 
 // start the Stimulus application
 import './bootstrap';
+import './styles/styles/main.css'
 // assets/app.js
 import { registerReactControllerComponents } from '@symfony/ux-react';
 import "@material/web/icon/icon.js";
+import "@material/web/chips/chip-set";
+import "@material/web/chips/filter-chip";
 import "@material/web/button/elevated-button.js";
 import "@material/web/button/filled-button.js";
 import "@material/web/button/outlined-button.js";

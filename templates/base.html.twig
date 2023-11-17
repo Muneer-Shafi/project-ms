@@ -1,148 +1,174 @@
-
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %}Symfony Demo application{% endblock %}</title>
-        <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('blog_rss') }}">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}Symfony Demo application{% endblock %}</title>
+    <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('blog_rss') }}">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
 
-    <body id="{% block body_id %}{% endblock %}">
-        {% block header %}
-            <header>
-                    <md-filled-button id="usage-anchor">{{ 'menu.choose_language'|trans }}</md-filled-button>
-                    <md-menu id="usage-menu" anchor="usage-anchor">
-                        {% for locale in locales() %}    
-                                <md-menu-item  {% if app.request.locale == locale.code %}aria-checked="true" class="active"{% else %}aria-checked="false"{% endif %} role="menuitem" >
-                                        <a href="{{ path(app.request.get('_route', 'blog_index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }} <small>{{ locale.code[0:2] }}</small></a>
+<body id="{% block body_id %}{% endblock %}">
+{% block header %}
+    <header class="columns gap-md">
+        <md-filled-button id="usage-anchor">{{ 'menu.choose_language'|trans }}</md-filled-button>
+        <md-menu id="usage-menu" anchor="usage-anchor">
+            {% for locale in locales() %}
+                <md-menu-item {% if app.request.locale == locale.code %}aria-checked="true" class="active"
+                              {% else %}aria-checked="false"{% endif %} role="menuitem">
+                    <a href="{{ path(app.request.get('_route', 'blog_index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}
+                        <small>{{ locale.code[0:2] }}</small></a>
 
-                                </md-menu-item>
-                        {% endfor %}
-                    </md-menu>
-                <div class="navbar navbar-default navbar-static-top" role="navigation">
-                    <div class="container">
-                        <div class="navbar-header col-md-3 col-lg-2">
-                            <a class="navbar-brand" href="{{ path('homepage') }}">
-                                Symfony Demo
+                </md-menu-item>
+            {% endfor %}
+        </md-menu>
+        <md-outlined-button id="user-menu">User menu</md-outlined-button>
+        <md-menu id="usage-menu" anchor="usage-anchor">
+            {% for locale in locales() %}
+                {% if app.user %}
+                    <md-menu-item>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                           id="user">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span class="caret"></span>
+                            <span class="sr-only">{{ app.user.fullname }}</span>
+                        </a>
+                        <md-menu-item>
+                            <a href="{{ path('user_edit') }}">
+                                <i class="fa fa-edit" aria-hidden="true"></i> {{ 'menu.user'|trans }}
                             </a>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <a href="{{ logout_path() }}">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
+                            </a>
+                        </md-menu-item>
+                    </md-menu-item>
+                {% endif %}
+            {% endfor %}
+        </md-menu>
+        <div class="navbar-header col-md-3 col-lg-2">
+            <a class="navbar-brand" href="{{ path('homepage') }}">
+                Symfony Demo
+            </a>
 
-                            <button type="button" class="navbar-toggle"
-                                    data-toggle="collapse"
-                                    data-target=".navbar-collapse">
-                                <span class="sr-only">{{ 'menu.toggle_nav'|trans }}</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav navbar-right">
-
-                                {% block header_navigation_links %}
-                                    <li>
-                                        <a href="{{ path('blog_index') }}">
-                                            <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('relation_new') }}">
-                                            <i class="fa fa-home" aria-hidden="true"></i> {{ 'relation'|trans }}
-                                        </a>
-                                    </li>
-
-                                    {% if is_granted('ROLE_ADMIN') %}
-                                        <li>
-                                            <a href="{{ path('admin_post_index') }}">
-                                                <i class="fa fa-lock" aria-hidden="true"></i> {{ 'menu.admin'|trans }}
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endblock %}
-
-                                <li>
-                                    <a href="{{ path('blog_search') }}"> <i class="fa fa-search"></i> {{ 'menu.search'|trans }}</a>
-                                </li>
-
-                                {% if app.user %}
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="user">
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                            <span class="caret"></span>
-                                            <span class="sr-only">{{ app.user.fullname }}</span>
-                                        </a>
-                                        <ul class="dropdown-menu user" role="menu" aria-labelledby="user">
-                                            <li>
-                                                <a href="{{ path('user_edit') }}">
-                                                    <i class="fa fa-edit" aria-hidden="true"></i> {{ 'menu.user'|trans }}
-                                                </a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <a href="{{ logout_path() }}">
-                                                    <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                {% endif %}
-
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="locales">
-                                        <i class="fa fa-globe" aria-hidden="true"></i>
-                                        <span class="caret"></span>
-                                        <span class="sr-only"></span>
-                                    </a>
-                                  
-
-
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </header>
-        {% endblock %}
-
-        <div class="container">
-            {% block body %}
-                            <div class="row">
-                    <div id="main" class="col-sm-9">
-                        {{ include('default/_flash_messages.html.twig') }}
-                        {% block main %}{% endblock %}
-                    </div>
-
-{#                    <div id="sidebar" class="col-sm-3">#}
-{#                        {% block sidebar %}#}
-{#                            {{ render_esi(controller('Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction', {#}
-{#                                'template': 'blog/about.html.twig',#}
-{#                                'sharedAge': 600,#}
-{#                                '_locale': app.request.locale#}
-{#                            })) }}#}
-{#                        {% endblock %}#}
-{#                    </div>#}
-                </div>
-            {% endblock %}
+            <button type="button" class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">{{ 'menu.toggle_nav'|trans }}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
 
-        {% block footer %}
+                {% block header_navigation_links %}
+                    <li>
+                        <a href="{{ path('blog_index') }}">
+                            <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('relation_new') }}">
+                            <i class="fa fa-home" aria-hidden="true"></i> {{ 'relation'|trans }}
+                        </a>
+                    </li>
 
-        {% endblock %}
-        <script type="module">
-        // This example uses anchor as an ID reference
-        const anchorEl = document.body.querySelector('#usage-anchor');
-        const menuEl = document.body.querySelector('#usage-menu');
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('admin_post_index') }}">
+                                <i class="fa fa-lock" aria-hidden="true"></i> {{ 'menu.admin'|trans }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endblock %}
 
-        anchorEl.addEventListener('click', () => { menuEl.open = !menuEl.open; });
-        </script>
-        
-    </body>
+                <li>
+                    <a href="{{ path('blog_search') }}"> <i class="fa fa-search"></i> {{ 'menu.search'|trans }}</a>
+                </li>
+
+                {% if app.user %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                           id="user">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span class="caret"></span>
+                            <span class="sr-only">{{ app.user.fullname }}</span>
+                        </a>
+                        <ul class="dropdown-menu user" role="menu" aria-labelledby="user">
+                            <li>
+                                <a href="{{ path('user_edit') }}">
+                                    <i class="fa fa-edit" aria-hidden="true"></i> {{ 'menu.user'|trans }}
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{ logout_path() }}">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                       id="locales">
+                        <i class="fa fa-globe" aria-hidden="true"></i>
+                        <span class="caret"></span>
+                        <span class="sr-only"></span>
+                    </a>
+
+
+                </li>
+            </ul>
+        </div>
+        </div>
+        </div>
+    </header>
+{% endblock %}
+
+<div class="container">
+    {% block body %}
+        <div class="row">
+            <div id="main" class="col-sm-9">
+                {{ include('default/_flash_messages.html.twig') }}
+                {% block main %}{% endblock %}
+            </div>
+
+            {#                    <div id="sidebar" class="col-sm-3"> #}
+            {#                        {% block sidebar %} #}
+            {#                            {{ render_esi(controller('Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction', { #}
+            {#                                'template': 'blog/about.html.twig', #}
+            {#                                'sharedAge': 600, #}
+            {#                                '_locale': app.request.locale #}
+            {#                            })) }} #}
+            {#                        {% endblock %} #}
+            {#                    </div> #}
+        </div>
+    {% endblock %}
+</div>
+
+{% block footer %}
+
+{% endblock %}
+<script type="module">
+    // This example uses anchor as an ID reference
+    const anchorEl = document.body.querySelector('#usage-anchor');
+    const menuEl = document.body.querySelector('#usage-menu');
+
+    anchorEl.addEventListener('click', () => {
+        menuEl.open = !menuEl.open;
+    });
+</script>
+
+</body>
 </html>

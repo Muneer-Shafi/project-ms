@@ -1,4 +1,6 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm
+
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         zlib1g-dev \
@@ -22,18 +24,20 @@ COPY build/php/opcache.ini /usr/local/etc/php/conf.d/
 COPY build/php/custom.ini /usr/local/etc/php/conf.d/
 
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN #curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN curl -sS https://get.symfony.com/cli/installer | bash
-
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN chmod +x /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
-RUN composer self-update 1.9.0
-RUN wget --no-check-certificate https://phar.phpunit.de/phpunit-6.5.3.phar && \
-    mv phpunit*.phar phpunit.phar && \
-    chmod +x phpunit.phar && \
-    mv phpunit.phar /usr/local/bin/phpunit
+
+#RUN wget --no-check-certificate https://phar.phpunit.de/phpunit-6.5.3.phar && \
+#    mv phpunit*.phar phpunit.phar && \
+#    chmod +x phpunit.phar && \
+#    mv phpunit.phar /usr/local/bin/phpunit
 
 RUN usermod -u 1000 www-data
 RUN usermod -a -G www-data root
@@ -41,5 +45,5 @@ RUN mkdir -p /var/www
 RUN chown -R www-data:www-data /var/www
 RUN mkdir -p /var/www/.composer
 RUN chown -R www-data:www-data /var/www/.composer
-
+#RUN composer self-update
 WORKDIR /var/www/project/

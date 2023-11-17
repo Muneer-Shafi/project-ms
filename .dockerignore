@@ -2,3 +2,4 @@ var
 vendor
 .vscode
 .idea
+.env.test
