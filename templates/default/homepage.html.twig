@@ -1,10 +1,31 @@
 {% extends 'base.html.twig' %}
-
 {% block body_id 'homepage' %}
-{% block header %}{% endblock %}
+{% block header %}
+{% endblock %}
 {% block footer %}{% endblock %}
-
 {% block body %}
+
+	<md-tabs aria-label="Content to view">
+		<md-primary-tab id="photos-tab" aria-controls="photos-panel">
+			Photos
+		</md-primary-tab>
+		<md-primary-tab id="videos-tab" aria-controls="videos-panel">
+			Videos
+		</md-primary-tab>
+		<md-primary-tab id="music-tab" aria-controls="music-panel">
+			Music
+		</md-primary-tab>
+	</md-tabs>
+
+	<div id="photos-panel" role="tabpanel" aria-labelledby="photos-tab">
+		...asfasd
+	</div>
+	<div id="videos-panel" role="tabpanel" aria-labelledby="videos-tab" hidden>
+	tests
+	</div>
+	<div id="music-panel" role="tabpanel" aria-labelledby="music-tab" hidden>
+		..teatsdf.
+	</div>
 	<div class="grid-container">
 		<div class="col-sm-6">
 			<div class="jumbotron">

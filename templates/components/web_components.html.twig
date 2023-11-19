@@ -1,0 +1,22 @@
+{% macro Menu(props) %}
+    <div>
+        <div style="margin: 16px;">
+            <md-filled-button id="{{ props.id }}-fixed-anchor">{{ props.label }}</md-filled-button>
+        </div>
+
+        <!-- Fixed menus do not require a common ancestor with the anchor. -->
+        <md-menu positioning="fixed" id="{{ props.id }}-fixed" anchor="{{ props.id }}-fixed-anchor">
+            {{ props.items }}
+        </md-menu>
+    </div>
+
+    <script type="module">
+        const anchorEl = document.body.querySelector('#{{ props.id }}-fixed-anchor');
+        const menuEl = document.body.querySelector('#{{ props.id }}-fixed');
+        if(anchorEl !==null){
+
+            anchorEl?.addEventListener('click', () => { menuEl.open = !menuEl.open; });
+        }
+
+    </script>
+{% endmacro %}

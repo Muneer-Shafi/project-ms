@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Relation\Controller;
 
-use App\Entity\Address;
+use App\Relation\Domain\Entity\RelationAddress;
 
 use App\Entity\User;
 use App\Form\ChangePasswordType;
@@ -25,7 +25,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class RelationController extends AbstractController
 {
     public function __construct(
-        private  RelationRepository $relationRepository
+        private readonly RelationRepository $relationRepository
     )
     {
     }
@@ -56,7 +56,7 @@ class RelationController extends AbstractController
         EntityManagerInterface $entityManager,
     ): Response {
         $relation = new Relation();
-        $address = new Address();
+        $address = new RelationAddress();
         $address->setName('pampore');
 
         $relation->getAddresses()->add($address);
@@ -77,7 +77,7 @@ class RelationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'relation_edit')]
+    #[Route('/{id<\d+>}/edit', name: 'relation_edit', methods: ['GET', 'POST'])]
     // #[IsGranted('edit', subject: 'relation', message: 'Posts can only be edited by their authors.')]
     public function edit(Request $request, Relation $relation, EntityManagerInterface $entityManager): Response
     {
@@ -100,7 +100,7 @@ class RelationController extends AbstractController
     /**
      * Deletes a Post entity.
      */
-    #[Route('/{id}/delete', methods: ['POST'], name: 'admin_post_delete')]
+    #[Route('/{id}/delete', name: 'admin_post_delete', methods: ['POST'])]
     #[IsGranted('delete', subject: 'relation')]
     public function delete(Request $request, Relation $relation, EntityManagerInterface $entityManager): Response
     {

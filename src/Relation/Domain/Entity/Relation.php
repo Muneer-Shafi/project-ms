@@ -2,9 +2,9 @@
 declare(strict_types=1);
 namespace App\Relation\Domain\Entity;
 
-use App\Entity\Address;
-use App\Entity\Contact;
 use App\Entity\Currency;
+use App\Relation\Domain\Entity\RelationAddress;
+use App\Relation\Domain\Entity\RelationContact;
 use App\Repository\RelationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -39,10 +39,10 @@ class Relation
     #[ORM\JoinColumn(nullable: false)]
     private ?Currency $currency = null;
 
-    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: Contact::class)]
+    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationContact::class)]
     private Collection $contacts;
 
-    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: Address::class)]
+    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationAddress::class)]
     private Collection $addresses;
 
     public function __construct()
@@ -133,7 +133,7 @@ class Relation
         return $this->contacts;
     }
 
-    public function addContact(Contact $contact): self
+    public function addContact(RelationContact $contact): self
     {
         if (!$this->contacts->contains($contact)) {
             $this->contacts->add($contact);
@@ -143,7 +143,7 @@ class Relation
         return $this;
     }
 
-    public function removeContact(Contact $contact): self
+    public function removeContact(RelationContact $contact): self
     {
         if ($this->contacts->removeElement($contact)) {
             if ($contact->getRelation() === $this) {

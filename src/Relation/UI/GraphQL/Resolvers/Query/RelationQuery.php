@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Relation\UI\GraphQL\Resolvers\Query;
 
-use _PHPStan_a3459023a\React\Dns\RecordNotFoundException;
+use _PHPStan_d55c4f2c2\React\Dns\RecordNotFoundException;
 use App\Relation\Domain\Entity\Relation;
 use App\Repository\RelationRepository;
 use TheCodingMachine\GraphQLite\Annotations\Query;

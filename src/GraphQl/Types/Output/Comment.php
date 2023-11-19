@@ -12,7 +12,7 @@ use DateTimeImmutable;
 use TheCodingMachine\GraphQLite\Annotations\Field;
 use TheCodingMachine\GraphQLite\Annotations\Type;
 
-#[Type(name: 'CommentType', class: CommentEntity::class,)]
+#[Type(class: CommentEntity::class, name: 'CommentType',)]
 final class Comment
 {
 

@@ -1,13 +1,14 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Relation\Domain\Entity;
 
 use App\Relation\Domain\Entity\Relation;
 use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
-class Address
+class RelationAddress
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

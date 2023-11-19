@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Form;
 
-use App\Entity\Address;
-use App\Entity\Post;
-use App\Form\Type\DateTimePickerType;
-use App\Form\Type\TagsInputType;
+
+
+use App\Relation\Domain\Entity\RelationAddress;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -70,7 +69,7 @@ class AddressType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Address::class,
+            'data_class' => RelationAddress::class,
         ]);
     }
 }

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\GraphQl\Types\Output;
+namespace App\Relation\UI\GraphQL\Types\Output;
 
-use App\Entity\Contact as ContactEntity;
+use App\Relation\Domain\Entity\RelationContact as ContactEntity;
 use TheCodingMachine\GraphQLite\Annotations\Field;
 use TheCodingMachine\GraphQLite\Annotations\Type;
 

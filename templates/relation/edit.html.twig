@@ -5,91 +5,82 @@
 {#    {%- if help is not empty -%}#}
 {#        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}#}
 {#    {%- endif -%}#}
-{#    <div class="bg-dark">#}
+{#    <div class="form-group">#}
 {#    {{- form_label(form) -}}#}
 {#    {{- form_errors(form) -}}#}
 {#    {{- form_widget(form, widget_attr) -}}#}
 {#    {{- form_help(form) -}}#}
-{#    </div>{%- endblock form_row -%}#}
+{#    </div>#}
+{#{%- endblock form_row -%}#}
+{#{% block form_label %}#}
+{#    <div style="background: red">#}
+{#        <li>{{ label }}</li>#}
+{#    </div>#}
+
+{#{% endblock %}#}
 {% block body_id 'user_edit' %}
 {% block main %}
-    <h1>{{ 'title.edit_user'|trans }}</h1>
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab">General
-                Info</a>
+    <md-tabs aria-label="Content to view">
+        <md-secondary-tab id="photos-tab" aria-controls="photos-panel" active>
+            Photos
+        </md-secondary-tab>
+        <md-secondary-tab id="videos-tab" aria-controls="videos-panel">
+            Videos
+        </md-secondary-tab>
+        <md-secondary-tab id="music-tab" aria-controls="music-panel">
+            Music
+        </md-secondary-tab>
+    </md-tabs>
+<div>
+    <div id="photos-panel" role="tabpanel" aria-labelledby="photos-tab">
 
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Addresses</a>
+        <h1>{{ 'title.edit_user'|trans }}</h1>
+        {{ form_start(form) }}
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-save" aria-hidden="true"></i>
+            {{ 'action.save'|trans }}
+        </button>
+        {{ form_row(form.name) }}
+        {{ form_row(form.shortName) }}
+        {{ form_row(form.remarks) }}
+        {{ form_row(form.country) }}
+        {{ form_row(form.cocNumber) }}
+        <ul class="addresses" data-index="{{ form.addresses|length > 0 ? form.addresses|last.vars.name + 1 : 0 }}"
+            data-prototype="{{ form_widget(form.addresses.vars.prototype)|e('html_attr') }}">
+            {% for address in form.addresses %}
+                <li>{{ form_row(address.name) }}</li>
+                <li>{{ form_row(address.addressLine1) }}</li>
+                <li>{{ form_row(address.addressLine2) }}</li>
+                <li>{{ form_row(address.pinCode) }}</li>
+                <li>{{ form_row(address.country) }}</li>
+                <li>{{ form_row(address.city) }}</li>
+            {% endfor %}
+            <button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add
+                a Address
+            </button>
 
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link disabled" href="#" aria-selected="false" tabindex="-1" role="tab">Contacts</a>
+        </ul>
+        {{ form_end(form) }}
+    </div>
+    <div id="videos-panel" role="tabpanel" aria-labelledby="videos-tab" hidden>
+        test
+    </div>
+    <div id="music-panel" role="tabpanel" aria-labelledby="music-tab" hidden>
+</div>
 
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-               aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">General Info</a>
-                <a class="dropdown-item" href="#">Addresses</a>
-                <a class="dropdown-item" href="#">Contacts</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-        </li>
-    </ul>
-    {{ form_start(form) }}
-    <button type="submit" class="btn btn-primary">
-        <i class="fa fa-save" aria-hidden="true"></i>
-        {{ 'action.save'|trans }}
-    </button>
-    {{ form_row(form.name) }}
-    {{ form_row(form.shortName) }}
-    {{ form_row(form.remarks) }}
-    {{ form_row(form.country) }}
-    {{ form_row(form.cocNumber) }}
-    <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade active show" id="home" role="tabpanel"></div>
-        <div class="tab-pane fade" id="profile" role="tabpanel">
-            <ul class="addresses" data-index="{{ form.addresses|length > 0 ? form.addresses|last.vars.name + 1 : 0 }}"
-                data-prototype="{{ form_widget(form.addresses.vars.prototype)|e('html_attr') }}">
-                {% for address in form.addresses %}
-                    <li>{{ form_row(address.name) }}</li>
-                    <li>{{ form_row(address.addressLine1) }}</li>
-                    <li>{{ form_row(address.addressLine2) }}</li>
-                    <li>{{ form_row(address.pinCode) }}</li>
-                    <li>{{ form_row(address.country) }}</li>
-                    <li>{{ form_row(address.city) }}</li>
-                {% endfor %}
-                <button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add
-                    a Address
-                </button>
 
-            </ul>
-        </div>
-
-        <div class="tab-pane fade" id="dropdown1">
-            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro
-                fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone
-                skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings
-                gentrify squid 8-bit cred pitchfork.</p>
-        </div>
-        <div class="tab-pane fade" id="dropdown2">
-            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master
-                cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party
-                locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they
-                sold out farm-to-table VHS viral locavore cosby sweater.</p>
-        </div>
     </div>
 
 
-    <div class="card my-3"></div>
-
-    {{ form_end(form) }}
-
     <script>
+        const tabs = document.body.querySelector('#tabs')
+        tabs.addEventListener('change', (event) => {
+            console.log(event)
+            if (event.target.activeTabIndex === 2) {
+                console.log('test')
+                // ... perform logic only if index of selected item is 2.
+            }
+        });
         const addFormToCollection = (e) => {
             const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
 
@@ -125,7 +116,8 @@
                 item.remove();
             });
         }
-    </script>{% endblock %}{% block sidebar %}
+    </script>{% endblock %}
+{% block sidebar %}
     <div class="section">
         <a href="{{ path('user_change_password') }}" class="btn btn-lg btn-block btn-danger">
             <i class="fa fa-lock" aria-hidden="true"></i>

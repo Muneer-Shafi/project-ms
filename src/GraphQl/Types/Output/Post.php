@@ -10,7 +10,7 @@ use App\Entity\Post as PostEntity;
 use TheCodingMachine\GraphQLite\Annotations\Field;
 use TheCodingMachine\GraphQLite\Annotations\Type;
 
-#[Type(name: 'PostType', class: PostEntity::class,)]
+#[Type(class: PostEntity::class, name: 'PostType',)]
 final class Post
 {
 

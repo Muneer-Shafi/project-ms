@@ -1,13 +1,14 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Relation\Domain\Entity;
 
 use App\Relation\Domain\Entity\Relation;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
-class Contact
+class RelationContact
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
