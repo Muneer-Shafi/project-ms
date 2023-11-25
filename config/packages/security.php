@@ -23,7 +23,15 @@ return static function (SecurityConfig $security) {
         //        ->entryPoint(AuthenticationEntryPoint::class)
         //        ->customAuthenticators([UserAuthenticator::class])
         ->lazy(true);
-        $mainFirewall->entryPoint('form_login');
+    $mainFirewall->entryPoint('form_login');
+    $mainFirewall->jsonLogin()
+        ->checkPath('api_login')
+        ->usernamePath('email')
+
+        ->successHandler('lexik_jwt_authentication.handler.authentication_success')
+        ->failureHandler('lexik_jwt_authentication.handler.authentication_failure')
+        ->passwordPath('password');
+
     $mainFirewall->formLogin()
         ->loginPath('security_login')
         ->checkPath('security_login')

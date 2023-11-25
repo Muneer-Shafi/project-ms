@@ -104,7 +104,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->email = $email;
     }
 
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -181,5 +181,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i
         [$this->id, $this->username, $this->password] = $data;
+    }
+    public function jsonSerialize(): array
+    {
+        return [
+            'name' => $this->firstName,
+            'username' => $this->getUserName(),
+            'email' => $this->email,
+            'roles' => $this->roles,
+        ];
     }
 }
