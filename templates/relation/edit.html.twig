@@ -1,74 +1,82 @@
 {% extends 'base.html.twig' %}
-{#{% form_theme form _self %}#}
-{#{%- block form_row -%}#}
-{#    {%- set widget_attr = {} -%}#}
-{#    {%- if help is not empty -%}#}
-{#        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}#}
-{#    {%- endif -%}#}
-{#    <div class="form-group">#}
-{#    {{- form_label(form) -}}#}
-{#    {{- form_errors(form) -}}#}
-{#    {{- form_widget(form, widget_attr) -}}#}
-{#    {{- form_help(form) -}}#}
-{#    </div>#}
-{#{%- endblock form_row -%}#}
-{#{% block form_label %}#}
-{#    <div style="background: red">#}
-{#        <li>{{ label }}</li>#}
-{#    </div>#}
+{# {% form_theme form _self %} #}
+{# {%- block form_row -%} #}
+{#    {%- set widget_attr = {} -%} #}
+{#    {%- if help is not empty -%} #}
+{#        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%} #}
+{#    {%- endif -%} #}
+{#    <div class="form-group"> #}
+{#    {{- form_label(form) -}} #}
+{#    {{- form_errors(form) -}} #}
+{#    {{- form_widget(form, widget_attr) -}} #}
+{#    {{- form_help(form) -}} #}
+{#    </div> #}
+{# {%- endblock form_row -%} #}
+{# {% block form_label %} #}
+{#    <div style="background: red"> #}
+{#        <li>{{ label }}</li> #}
+{#    </div> #}
 
-{#{% endblock %}#}
+{# {% endblock %} #}
 {% block body_id 'user_edit' %}
-{% block main %}
+{% block body %}
     <md-tabs aria-label="Content to view">
-        <md-secondary-tab id="photos-tab" aria-controls="photos-panel" active>
-            Photos
+        <md-secondary-tab id="general-tab" aria-controls="general-panel" active>
+            General
         </md-secondary-tab>
-        <md-secondary-tab id="videos-tab" aria-controls="videos-panel">
-            Videos
+        <md-secondary-tab id="contact-tab" aria-controls="contact-panel">
+            Contact
+        </md-secondary-tab>
+        <md-secondary-tab id="address-tab" aria-controls="address-panel">
+            Address
+        </md-secondary-tab>
+        <md-secondary-tab id="address-tab" aria-controls="address-panel">
+            Finance
+        </md-secondary-tab>
+        <md-secondary-tab id="custom-tab" aria-controls="custom-panel">
+            Custom
         </md-secondary-tab>
         <md-secondary-tab id="music-tab" aria-controls="music-panel">
             Music
         </md-secondary-tab>
     </md-tabs>
-<div>
-    <div id="photos-panel" role="tabpanel" aria-labelledby="photos-tab">
-
-        <h1>{{ 'title.edit_user'|trans }}</h1>
+    <div>
         {{ form_start(form) }}
-        <button type="submit" class="btn btn-primary">
-            <i class="fa fa-save" aria-hidden="true"></i>
-            {{ 'action.save'|trans }}
-        </button>
-        {{ form_row(form.name) }}
-        {{ form_row(form.shortName) }}
-        {{ form_row(form.remarks) }}
-        {{ form_row(form.country) }}
-        {{ form_row(form.cocNumber) }}
-        <ul class="addresses" data-index="{{ form.addresses|length > 0 ? form.addresses|last.vars.name + 1 : 0 }}"
-            data-prototype="{{ form_widget(form.addresses.vars.prototype)|e('html_attr') }}">
-            {% for address in form.addresses %}
-                <li>{{ form_row(address.name) }}</li>
-                <li>{{ form_row(address.addressLine1) }}</li>
-                <li>{{ form_row(address.addressLine2) }}</li>
-                <li>{{ form_row(address.pinCode) }}</li>
-                <li>{{ form_row(address.country) }}</li>
-                <li>{{ form_row(address.city) }}</li>
-            {% endfor %}
-            <button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add
-                a Address
-            </button>
+        <div class="columns">
+            <md-filled-button type="submit" >
+                <i class="fa fa-save" aria-hidden="true"></i>
+                {{ 'action.save'|trans }}
+            </md-filled-button>
+        </div>
 
-        </ul>
+        <div id="general-panel" role="tabpanel" aria-labelledby="photos-tab">
+            <h1>{{ 'title.edit_user'|trans }}</h1>
+            {{ form_row(form.name) }}
+            {{ form_row(form.shortName) }}
+            {{ form_row(form.remarks) }}
+            {{ form_row(form.country) }}
+            {{ form_row(form.cocNumber) }}
+        </div>
+        <div id="contact-panel" role="tabpanel" aria-labelledby="contact-tab" hidden>
+            <ul class="addresses" data-index="{{ form.addresses|length > 0 ? form.addresses|last.vars.name + 1 : 0 }}"
+                data-prototype="{{ form_widget(form.addresses.vars.prototype)|e('html_attr') }}">
+                {% for address in form.addresses %}
+                    <li>{{ form_row(address.name) }}</li>
+                    <li>{{ form_row(address.addressLine1) }}</li>
+                    <li>{{ form_row(address.addressLine2) }}</li>
+                    <li>{{ form_row(address.pinCode) }}</li>
+                    <li>{{ form_row(address.country) }}</li>
+                    <li>{{ form_row(address.city) }}</li>
+                {% endfor %}
+                <button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add
+                    a Address
+                </button>
+
+            </ul>
+        </div>
+        <div id="address-panel" role="tabpanel" aria-labelledby="address-tab" hidden>
+        </div>
         {{ form_end(form) }}
-    </div>
-    <div id="videos-panel" role="tabpanel" aria-labelledby="videos-tab" hidden>
-        test
-    </div>
-    <div id="music-panel" role="tabpanel" aria-labelledby="music-tab" hidden>
-</div>
-
-
     </div>
 
 

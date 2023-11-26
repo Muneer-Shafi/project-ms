@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 # These lines define a route using YAML configuration. The controller used by
 # the route (FrameworkBundle:Template:template) is a convenient shortcut when
 # the template can be rendered without executing any logic in your own controller.

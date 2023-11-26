@@ -6,7 +6,7 @@ export default function (props) {
      notify()
     return (
       <div>
-        <button onClick={notify}>Notify!</button>
+        {/*<button onClick={notify}>Notify!</button>*/}
         <ToastContainer />
       </div>
     );

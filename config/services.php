@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-
-// config/services.php
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use App\Authentication\Events\JWTCreatedListener;
 use App\EventSubscriber\CommentNotificationSubscriber;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler;
 use Symfony\Component\Security\Http\Logout\LogoutUrlGenerator;
 
@@ -36,7 +36,12 @@ return function (ContainerConfigurator $container) {
         '$sender'=>'%app.notifications.email_sender%'
     ]);
 //    $services->bind(LogoutUrlGenerator::class,'@security.logout_url_generator');
-
+    $services->set(JWTCreatedListener::class)
+        ->arg('$requestStack', service(RequestStack::class))
+        ->tag('kernel.event_listener', [
+            'event' => 'lexik_jwt_authentication.on_jwt_created',
+            'method' => 'onJWTCreated',
+        ]);
 
     $services->set(PdoSessionHandler::class)
         ->args([

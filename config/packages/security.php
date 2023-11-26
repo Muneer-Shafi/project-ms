@@ -24,10 +24,10 @@ return static function (SecurityConfig $security) {
         //        ->customAuthenticators([UserAuthenticator::class])
         ->lazy(true);
     $mainFirewall->entryPoint('form_login');
+//    $mainFirewall->pattern('/api')->stateless(true)->jwt([]);
     $mainFirewall->jsonLogin()
         ->checkPath('api_login')
         ->usernamePath('email')
-
         ->successHandler('lexik_jwt_authentication.handler.authentication_success')
         ->failureHandler('lexik_jwt_authentication.handler.authentication_failure')
         ->passwordPath('password');
@@ -37,6 +37,7 @@ return static function (SecurityConfig $security) {
         ->checkPath('security_login')
         ->enableCsrf(true)
         ->defaultTargetPath('blog_index');
+
 
     $mainFirewall->rememberMe()
         ->secret('%kernel.secret%')
