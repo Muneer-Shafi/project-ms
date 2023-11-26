@@ -1,11 +1,18 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Factory;
 
 use App\Entity\Post;
-use App\Entity\Tag;
 use App\Repository\PostRepository;
-use Doctrine\Persistence\ObjectManager;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -13,21 +20,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<Post>
  *
- * @method        Post|Proxy create(array|callable $attributes = [])
- * @method static Post|Proxy createOne(array $attributes = [])
- * @method static Post|Proxy find(object|array|mixed $criteria)
- * @method static Post|Proxy findOrCreate(array $attributes)
- * @method static Post|Proxy first(string $sortedField = 'id')
- * @method static Post|Proxy last(string $sortedField = 'id')
- * @method static Post|Proxy random(array $attributes = [])
- * @method static Post|Proxy randomOrCreate(array $attributes = [])
+ * @method        Post|Proxy                     create(array|callable $attributes = [])
+ * @method static Post|Proxy                     createOne(array $attributes = [])
+ * @method static Post|Proxy                     find(object|array|mixed $criteria)
+ * @method static Post|Proxy                     findOrCreate(array $attributes)
+ * @method static Post|Proxy                     first(string $sortedField = 'id')
+ * @method static Post|Proxy                     last(string $sortedField = 'id')
+ * @method static Post|Proxy                     random(array $attributes = [])
+ * @method static Post|Proxy                     randomOrCreate(array $attributes = [])
  * @method static PostRepository|RepositoryProxy repository()
- * @method static Post[]|Proxy[] all()
- * @method static Post[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Post[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Post[]|Proxy[] findBy(array $attributes)
- * @method static Post[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static Post[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static Post[]|Proxy[]                 all()
+ * @method static Post[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Post[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Post[]|Proxy[]                 findBy(array $attributes)
+ * @method static Post[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static Post[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  */
 final class PostFactory extends ModelFactory
 {
@@ -55,9 +62,10 @@ final class PostFactory extends ModelFactory
             'slug' => self::faker()->slug(),
             'summary' => self::faker()->sentence(),
             'title' => self::faker()->company(),
-            'tags'=>TagFactory::createMany(3)
+            'tags' => TagFactory::createMany(3),
         ];
     }
+
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
      */

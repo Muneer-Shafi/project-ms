@@ -2,9 +2,17 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Entity;
 
-use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -75,7 +83,7 @@ class Comment
 
     public function getPublishedAt(): \DateTimeImmutable
     {
-        return DateTimeImmutable::createFromMutable($this->publishedAt);
+        return \DateTimeImmutable::createFromMutable($this->publishedAt);
     }
 
     public function setPublishedAt(\DateTime $publishedAt): void

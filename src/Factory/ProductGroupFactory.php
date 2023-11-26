@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Factory;
 
 use App\Entity\ProductGroup;
@@ -11,21 +20,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<ProductGroup>
  *
- * @method        ProductGroup|Proxy create(array|callable $attributes = [])
- * @method static ProductGroup|Proxy createOne(array $attributes = [])
- * @method static ProductGroup|Proxy find(object|array|mixed $criteria)
- * @method static ProductGroup|Proxy findOrCreate(array $attributes)
- * @method static ProductGroup|Proxy first(string $sortedField = 'id')
- * @method static ProductGroup|Proxy last(string $sortedField = 'id')
- * @method static ProductGroup|Proxy random(array $attributes = [])
- * @method static ProductGroup|Proxy randomOrCreate(array $attributes = [])
+ * @method        ProductGroup|Proxy                     create(array|callable $attributes = [])
+ * @method static ProductGroup|Proxy                     createOne(array $attributes = [])
+ * @method static ProductGroup|Proxy                     find(object|array|mixed $criteria)
+ * @method static ProductGroup|Proxy                     findOrCreate(array $attributes)
+ * @method static ProductGroup|Proxy                     first(string $sortedField = 'id')
+ * @method static ProductGroup|Proxy                     last(string $sortedField = 'id')
+ * @method static ProductGroup|Proxy                     random(array $attributes = [])
+ * @method static ProductGroup|Proxy                     randomOrCreate(array $attributes = [])
  * @method static ProductGroupRepository|RepositoryProxy repository()
- * @method static ProductGroup[]|Proxy[] all()
- * @method static ProductGroup[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static ProductGroup[]|Proxy[] createSequence(iterable|callable $sequence)
- * @method static ProductGroup[]|Proxy[] findBy(array $attributes)
- * @method static ProductGroup[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static ProductGroup[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static ProductGroup[]|Proxy[]                 all()
+ * @method static ProductGroup[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static ProductGroup[]|Proxy[]                 createSequence(iterable|callable $sequence)
+ * @method static ProductGroup[]|Proxy[]                 findBy(array $attributes)
+ * @method static ProductGroup[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static ProductGroup[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  *
  * @phpstan-method        Proxy<ProductGroup> create(array|callable $attributes = [])
  * @phpstan-method static Proxy<ProductGroup> createOne(array $attributes = [])

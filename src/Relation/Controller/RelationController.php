@@ -2,14 +2,20 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Relation\Controller;
 
-use App\Relation\Domain\Entity\RelationAddress;
-
 use App\Entity\User;
-use App\Form\ChangePasswordType;
-
 use App\Relation\Domain\Entity\Relation;
+use App\Relation\Domain\Entity\RelationAddress;
 use App\Relation\Form\RelationType;
 use App\Repository\RelationRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,18 +26,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-
 #[Route('/relation'), IsGranted('ROLE_USER')]
 class RelationController extends AbstractController
 {
     public function __construct(
         private readonly RelationRepository $relationRepository
-    )
-    {
+    ) {
     }
 
     #[Route('/home', name: 'relation_index', methods: ['GET'])]
-        public function home(): Response
+    public function home(): Response
     {
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
@@ -39,16 +43,15 @@ class RelationController extends AbstractController
     }
 
     #[Route('/', name: 'relation_index', methods: ['GET'])]
-    public function  index():Response{
-
+    public function index(): Response
+    {
         $relations = $this->relationRepository->findAll();
+
         return $this->render('relation/list.html.twig', [
             'relations' => $relations,
         ]);
-
-
     }
-    
+
     #[Route('/new', name: 'relation_new', methods: ['GET', 'POST'])]
     public function new(
         #[CurrentUser] User $user,

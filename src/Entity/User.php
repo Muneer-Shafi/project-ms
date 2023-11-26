@@ -2,6 +2,15 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;
@@ -15,9 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Table(name: 'user')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-
     public function __construct(
-
         #[ORM\Column(type: Types::STRING, unique: true)]
         #[Assert\NotBlank]
         #[Assert\Length(min: 2, max: 50)]
@@ -26,9 +33,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         #[ORM\Column(type: Types::STRING, unique: true)]
         #[Assert\Email]
         private string $email,
-
-
-
     ) {
     }
 
@@ -37,14 +41,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
-
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
     private string $firstName;
 
     #[ORM\Column(type: Types::STRING)]
     private ?string $lastName;
-
 
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
@@ -62,7 +64,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-
     public function getUserIdentifier(): string
     {
         return (string) $this->username;
@@ -77,10 +78,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->username = $username;
     }
+
     public function setFirstName(string $firstName): void
     {
         $this->firstName = $firstName;
     }
+
     public function setLastName(string $lastName): void
     {
         $this->lastName = $lastName;
@@ -90,10 +93,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->email;
     }
+
     public function getFirstName(): string
     {
         return $this->firstName;
     }
+
     public function getLastName(): string
     {
         return $this->lastName;
@@ -113,7 +118,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->password = $password;
     }
-    public function getFullName():string{
+
+    public function getFullName(): string
+    {
         return $this->firstName.' '.$this->lastName;
     }
 
@@ -182,6 +189,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // add $this->salt too if you don't use Bcrypt or Argon2i
         [$this->id, $this->username, $this->password] = $data;
     }
+
     public function jsonSerialize(): array
     {
         return [

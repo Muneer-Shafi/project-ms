@@ -1,5 +1,15 @@
 <?php
+
 declare(strict_types=1);
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace App\Factory;
 
@@ -12,21 +22,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<Currency>
  *
- * @method        Currency|Proxy create(array|callable $attributes = [])
- * @method static Currency|Proxy createOne(array $attributes = [])
- * @method static Currency|Proxy find(object|array|mixed $criteria)
- * @method static Currency|Proxy findOrCreate(array $attributes)
- * @method static Currency|Proxy first(string $sortedField = 'id')
- * @method static Currency|Proxy last(string $sortedField = 'id')
- * @method static Currency|Proxy random(array $attributes = [])
- * @method static Currency|Proxy randomOrCreate(array $attributes = [])
+ * @method        Currency|Proxy                     create(array|callable $attributes = [])
+ * @method static Currency|Proxy                     createOne(array $attributes = [])
+ * @method static Currency|Proxy                     find(object|array|mixed $criteria)
+ * @method static Currency|Proxy                     findOrCreate(array $attributes)
+ * @method static Currency|Proxy                     first(string $sortedField = 'id')
+ * @method static Currency|Proxy                     last(string $sortedField = 'id')
+ * @method static Currency|Proxy                     random(array $attributes = [])
+ * @method static Currency|Proxy                     randomOrCreate(array $attributes = [])
  * @method static CurrencyRepository|RepositoryProxy repository()
- * @method static Currency[]|Proxy[] all()
- * @method static Currency[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Currency[]|Proxy[] createSequence(iterable|callable $sequence)
- * @method static Currency[]|Proxy[] findBy(array $attributes)
- * @method static Currency[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static Currency[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static Currency[]|Proxy[]                 all()
+ * @method static Currency[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Currency[]|Proxy[]                 createSequence(iterable|callable $sequence)
+ * @method static Currency[]|Proxy[]                 findBy(array $attributes)
+ * @method static Currency[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static Currency[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  *
  * @phpstan-method        Proxy<Currency> create(array|callable $attributes = [])
  * @phpstan-method static Proxy<Currency> createOne(array $attributes = [])

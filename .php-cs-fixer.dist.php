@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 $fileHeaderComment = <<<COMMENT
 This file is part of the Symfony package.

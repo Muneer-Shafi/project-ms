@@ -1,13 +1,21 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Authentication\Events;
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+namespace App\Authentication\Events;
 
 use App\Entity\User;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class JWTAuthenticationSuccessEvent
 {
@@ -25,7 +33,7 @@ class JWTAuthenticationSuccessEvent
     {
         $data = $event->getData();
         $user = $event->getUser();
-        if (! $user instanceof User) {
+        if (!$user instanceof User) {
             return;
         }
         $data['user'] = $user->jsonSerialize();

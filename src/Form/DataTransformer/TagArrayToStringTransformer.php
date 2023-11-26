@@ -2,6 +2,15 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Form\DataTransformer;
 
 use App\Entity\Tag;
@@ -27,9 +36,6 @@ class TagArrayToStringTransformer implements DataTransformerInterface
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function transform($tags): string
     {
         // The value received is an array of Tag objects generated with
@@ -40,8 +46,6 @@ class TagArrayToStringTransformer implements DataTransformerInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @phpstan-param string|null $string
      *
      * @phpstan-return array<int, Tag>

@@ -1,6 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace App\Repository;
 
@@ -22,8 +31,9 @@ class DoctrinePostRepository
     /**
      * @param positive-int $first
      *
-     * @return list<Edge>
      * @throws \Exception
+     *
+     * @return list<Edge>
      */
     public function getEdges(int $first, ?Cursor $after): array
     {
@@ -38,13 +48,11 @@ class DoctrinePostRepository
                 ->getQuery();
         }
 
-
         $paginator = new Paginator($postQB);
 
+        $posts = iterator_to_array($paginator->getIterator());
 
-        $posts = \iterator_to_array($paginator->getIterator());
-
-        return \array_map(
+        return array_map(
             function (Post $post): Edge {
                 return new Edge($post, new Cursor((string) $post->getId()));
             },
@@ -139,7 +147,7 @@ class DoctrinePostRepository
      * @psalm-suppress MissingThrowsDocblock
      * Count query will never throw non unique result exception.
      */
-    public function hasPreviousPage( ?Cursor $after): bool
+    public function hasPreviousPage(?Cursor $after): bool
     {
         if (null === $after) {
             return false;
@@ -152,7 +160,6 @@ class DoctrinePostRepository
                 ->setParameter('cursor', $after->value)
                 ->getQuery()
                 ->getSingleScalarResult() > 0
-            ;
+        ;
     }
-
 }

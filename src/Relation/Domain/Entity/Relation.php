@@ -1,10 +1,19 @@
 <?php
+
 declare(strict_types=1);
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Relation\Domain\Entity;
 
 use App\Entity\Currency;
-use App\Relation\Domain\Entity\RelationAddress;
-use App\Relation\Domain\Entity\RelationContact;
 use App\Repository\RelationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -13,8 +22,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: RelationRepository::class)]
 class Relation
 {
-
-    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -127,7 +134,7 @@ class Relation
 
         return $this;
     }
-    
+
     public function getContacts(): Collection
     {
         return $this->contacts;

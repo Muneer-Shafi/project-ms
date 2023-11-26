@@ -25,7 +25,7 @@ return function (RoutingConfigurator $routes) {
         ->defaults([
             '_locale' => '%locale%'
         ]);
-    $routes->import('../src/Authentication/', 'annotation')
+    $routes->import('../src/Authentication/Controller/', 'annotation')
         ->prefix('/{_locale}')
         ->requirements(['_locale' => '%app_locales%'])
         ->defaults([

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Factory;
 
 use App\Entity\VatNumber;
@@ -11,21 +20,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<VatNumber>
  *
- * @method        VatNumber|Proxy create(array|callable $attributes = [])
- * @method static VatNumber|Proxy createOne(array $attributes = [])
- * @method static VatNumber|Proxy find(object|array|mixed $criteria)
- * @method static VatNumber|Proxy findOrCreate(array $attributes)
- * @method static VatNumber|Proxy first(string $sortedField = 'id')
- * @method static VatNumber|Proxy last(string $sortedField = 'id')
- * @method static VatNumber|Proxy random(array $attributes = [])
- * @method static VatNumber|Proxy randomOrCreate(array $attributes = [])
+ * @method        VatNumber|Proxy                     create(array|callable $attributes = [])
+ * @method static VatNumber|Proxy                     createOne(array $attributes = [])
+ * @method static VatNumber|Proxy                     find(object|array|mixed $criteria)
+ * @method static VatNumber|Proxy                     findOrCreate(array $attributes)
+ * @method static VatNumber|Proxy                     first(string $sortedField = 'id')
+ * @method static VatNumber|Proxy                     last(string $sortedField = 'id')
+ * @method static VatNumber|Proxy                     random(array $attributes = [])
+ * @method static VatNumber|Proxy                     randomOrCreate(array $attributes = [])
  * @method static VatNumberRepository|RepositoryProxy repository()
- * @method static VatNumber[]|Proxy[] all()
- * @method static VatNumber[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static VatNumber[]|Proxy[] createSequence(iterable|callable $sequence)
- * @method static VatNumber[]|Proxy[] findBy(array $attributes)
- * @method static VatNumber[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static VatNumber[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static VatNumber[]|Proxy[]                 all()
+ * @method static VatNumber[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static VatNumber[]|Proxy[]                 createSequence(iterable|callable $sequence)
+ * @method static VatNumber[]|Proxy[]                 findBy(array $attributes)
+ * @method static VatNumber[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static VatNumber[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  *
  * @phpstan-method        Proxy<VatNumber> create(array|callable $attributes = [])
  * @phpstan-method static Proxy<VatNumber> createOne(array $attributes = [])

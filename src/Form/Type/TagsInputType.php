@@ -2,6 +2,15 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Form\Type;
 
 use App\Form\DataTransformer\TagArrayToStringTransformer;
@@ -28,9 +37,6 @@ class TagsInputType extends AbstractType
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -42,17 +48,11 @@ class TagsInputType extends AbstractType
             ->addModelTransformer(new TagArrayToStringTransformer($this->tags), true);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         $view->vars['tags'] = $this->tags->findAll();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getParent(): ?string
     {
         return TextType::class;

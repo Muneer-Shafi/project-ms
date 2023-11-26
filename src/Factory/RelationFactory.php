@@ -1,5 +1,15 @@
 <?php
+
 declare(strict_types=1);
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace App\Factory;
 
@@ -12,21 +22,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<Relation>
  *
- * @method        Relation|Proxy create(array|callable $attributes = [])
- * @method static Relation|Proxy createOne(array $attributes = [])
- * @method static Relation|Proxy find(object|array|mixed $criteria)
- * @method static Relation|Proxy findOrCreate(array $attributes)
- * @method static Relation|Proxy first(string $sortedField = 'id')
- * @method static Relation|Proxy last(string $sortedField = 'id')
- * @method static Relation|Proxy random(array $attributes = [])
- * @method static Relation|Proxy randomOrCreate(array $attributes = [])
+ * @method        Relation|Proxy                     create(array|callable $attributes = [])
+ * @method static Relation|Proxy                     createOne(array $attributes = [])
+ * @method static Relation|Proxy                     find(object|array|mixed $criteria)
+ * @method static Relation|Proxy                     findOrCreate(array $attributes)
+ * @method static Relation|Proxy                     first(string $sortedField = 'id')
+ * @method static Relation|Proxy                     last(string $sortedField = 'id')
+ * @method static Relation|Proxy                     random(array $attributes = [])
+ * @method static Relation|Proxy                     randomOrCreate(array $attributes = [])
  * @method static RelationRepository|RepositoryProxy repository()
- * @method static Relation[]|Proxy[] all()
- * @method static Relation[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Relation[]|Proxy[] createSequence(iterable|callable $sequence)
- * @method static Relation[]|Proxy[] findBy(array $attributes)
- * @method static Relation[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static Relation[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static Relation[]|Proxy[]                 all()
+ * @method static Relation[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Relation[]|Proxy[]                 createSequence(iterable|callable $sequence)
+ * @method static Relation[]|Proxy[]                 findBy(array $attributes)
+ * @method static Relation[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static Relation[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  *
  * @phpstan-method        Proxy<Relation> create(array|callable $attributes = [])
  * @phpstan-method static Proxy<Relation> createOne(array $attributes = [])

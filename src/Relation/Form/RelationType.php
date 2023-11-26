@@ -2,13 +2,21 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Relation\Form;
 
 use App\Form\AddressType;
 use App\Form\Type\DateTimePickerType;
 use App\Form\Type\TagsInputType;
 use App\Relation\Domain\Entity\Relation;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -27,9 +35,6 @@ class RelationType extends AbstractType
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -51,7 +56,7 @@ class RelationType extends AbstractType
                 'label' => 'label.remarks',
             ])
             ->add('country', CountryType::class, [
-                'mapped' =>false,
+                'mapped' => false,
                 'help' => 'help.country',
                 'label' => 'label.country',
             ])
@@ -61,14 +66,14 @@ class RelationType extends AbstractType
                 'allow_add' => true,
                 'entry_options' => ['label' => false],
             ]);
-            // ->add('publishedAt', DateTimePickerType::class, [
-            //     'label' => 'label.published_at',
-            //     'help' => 'help.post_publication',
-            // ])
-            // ->add('tags', TagsInputType::class, [
-            //     'label' => 'label.tags',
-            //     'required' => false,
-            // ]);
+        // ->add('publishedAt', DateTimePickerType::class, [
+        //     'label' => 'label.published_at',
+        //     'help' => 'help.post_publication',
+        // ])
+        // ->add('tags', TagsInputType::class, [
+        //     'label' => 'label.tags',
+        //     'required' => false,
+        // ]);
         // form events let you modify information or fields at different steps
         // of the form handling process.
         // See https://symfony.com/doc/current/form/events.html
@@ -81,9 +86,6 @@ class RelationType extends AbstractType
         // });
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

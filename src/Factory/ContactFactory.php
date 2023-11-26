@@ -1,13 +1,20 @@
 <?php
+
 declare(strict_types=1);
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace App\Factory;
 
 use App\Entity\Contact;
-use App\Repository\ContactRepository;
 use Zenstruck\Foundry\ModelFactory;
-use Zenstruck\Foundry\Proxy;
-use Zenstruck\Foundry\RepositoryProxy;
 
 final class ContactFactory extends ModelFactory
 {
@@ -21,14 +28,13 @@ final class ContactFactory extends ModelFactory
         parent::__construct();
     }
 
-
     protected function getDefaults(): array
     {
         return [
             'email' => self::faker()->email(),
             'firstName' => self::faker()->firstName(),
-            'gender' => self::faker()->randomElement(['Male','Female']),
-            'initials' => self::faker()->randomElement(['Mr','Mrs','Sir']),
+            'gender' => self::faker()->randomElement(['Male', 'Female']),
+            'initials' => self::faker()->randomElement(['Mr', 'Mrs', 'Sir']),
             'lastName' => self::faker()->lastName(),
             'telephone' => self::faker()->phoneNumber(50),
         ];
