@@ -1,9 +1,0 @@
-.react-datepicker-wrapper {
-    width: var(--input-width) !important;
-}
-.react-datepicker-wrapper input[type='text'] {
-    width: 100%;
-}
-.react-datepicker__close-icon::after {
-    padding: 0;
-}
