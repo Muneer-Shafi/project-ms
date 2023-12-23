@@ -4,11 +4,8 @@
   "build/admin.css": "/build/admin.css",
   "build/admin.js": "/build/admin.js",
   "build/runtime.js": "/build/runtime.js",
-  "build/assets_controllers_login-controller_js.js": "/build/assets_controllers_login-controller_js.js",
-  "build/vendors-node_modules_core-js_internals_add-to-unscopables_js-node_modules_core-js_internals_a-dd2802.js": "/build/vendors-node_modules_core-js_internals_add-to-unscopables_js-node_modules_core-js_internals_a-dd2802.js",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-3070a6.css": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-3070a6.css",
-  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-3070a6.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-3070a6.js",
-  "build/vendors-node_modules_bootstrap-tagsinput_dist_bootstrap-tagsinput_js-node_modules_core-js_mod-c78b2d.js": "/build/vendors-node_modules_bootstrap-tagsinput_dist_bootstrap-tagsinput_js-node_modules_core-js_mod-c78b2d.js",
-  "build/fonts/materialsymbolsrounded_small.woff2": "/build/fonts/materialsymbolsrounded_small.56583b9e.woff2",
-  "build/images/select2-spinner.gif": "/build/images/select2-spinner.56d4c7ce.gif"
+  "build/vendors-node_modules_jquery_dist_jquery_js-node_modules_core-js_internals_make-built-in_js.js": "/build/vendors-node_modules_jquery_dist_jquery_js-node_modules_core-js_internals_make-built-in_js.js",
+  "build/vendors-node_modules_bootstrap-tagsinput_dist_bootstrap-tagsinput_js-node_modules_eonasdan-bo-189521.js": "/build/vendors-node_modules_bootstrap-tagsinput_dist_bootstrap-tagsinput_js-node_modules_eonasdan-bo-189521.js",
+  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_bootstrap_dist_css_boots-a2515c.css": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_bootstrap_dist_css_boots-a2515c.css",
+  "build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_bootstrap_dist_css_boots-a2515c.js": "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_bootstrap_dist_css_boots-a2515c.js"
 }

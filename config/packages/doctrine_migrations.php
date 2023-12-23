@@ -16,11 +16,4 @@ return static function (ContainerConfigurator $containerConfigurator, DoctrineMi
         ->versionColumnName('version')
         ->versionColumnLength(191)
         ->executedAtColumnName('executed_at');
-
-//    <!--doctrine_migrations:-->
-//<!--    migrations_paths:-->
-//<!--        # namespace is arbitrary but should be different from App\Migrations-->
-//<!--        # as migrations classes should NOT be autoloaded-->
-//<!--        'DoctrineMigrations': '%kernel.project_dir%/migrations'-->
-//<!--    enable_profiler: false-->
 };

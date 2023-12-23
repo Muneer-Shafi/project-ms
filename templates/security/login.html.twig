@@ -30,11 +30,11 @@
             {{ error.messageKey|trans(error.messageData, 'security') }}
         </div>
     {% endif %}
-    <div class="container login-container" {{ stimulus_controller('login') }}{# @see assets/controllers/login-controller.js #}>
+    <div class="login-container" {{ stimulus_controller('login') }}>
 
         <form action="{{ path('security_login') }}" method="post">
-            <div class="md-card">
-                <div class="md-card-header"> {{ 'title.login'|trans }}
+            <div class="card">
+                <div class="card-header"> {{ 'title.login'|trans }}
                 </div>
                 <div class="form-group">
                     <label for="username">{{ 'label.username'|trans }}</label>
@@ -59,9 +59,9 @@
                 </div>
                 <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}"/>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-                <md-filled-button type="submit">
+                <button type="submit">
                     <i class="fa fa-sign-in" aria-hidden="true"></i> {{ 'action.sign_in'|trans }}
-                </md-filled-button>
+                </button>
             </div>
         </form>
     </div>

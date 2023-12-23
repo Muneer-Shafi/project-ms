@@ -69,59 +69,68 @@
 
 <header class="columns space-between" id="pageHeader">
     {% block header %}
-        <div class="columns gap-md">
-            {% block header_navigation_links %}
-                <a href="{{ path('blog_index') }}">
-                    <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
-                </a>
-                <a href="{{ path('relation_new') }}">
-                    <i class="fa fa-home" aria-hidden="true"></i> {{ 'relation'|trans }}
-                </a>
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
 
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('admin_post_index') }}">
-                        <i class="fa fa-lock" aria-hidden="true"></i> {{ 'menu.admin'|trans }}
-                    </a>
-                {% endif %}
-            {% endblock %}
-        </div>
-        <div class="columns gap-md">
-            {% set items %}
-                {% for locale in locales() %}
-                    <md-menu-item {% if app.request.locale == locale.code %}aria-checked="true" class="active"
-                                  {% else %}aria-checked="false"{% endif %} role="menuitem">
-                        <a href="{{ path(app.request.get('_route', 'blog_index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}
-                            <small>{{ locale.code[0:2] }}</small></a>
-                    </md-menu-item>
-                {% endfor %}
-            {% endset %}
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{{ path('blog_index') }}" class="nav-link px-2 link-secondary">Blog</a></li>
+          <li><a href="{{ path('relation_new') }}" class="nav-link px-2 link-body-emphasis">Relation</a></li>
+           {% if is_granted('ROLE_ADMIN') %}
+          <li><a href="{{ path('admin_post_index') }}" class="nav-link px-2 link-body-emphasis">Admin Section</a></li>
+           {% endif %}
+          <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
+        </ul>
 
-            {{ web.Menu({id:'languages',items:items,label:'Choose language'}) }}
-            {% if app.user %}
-                {% set items %}
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
 
-                    <md-menu-item>
+        <div class="dropdown text-end">
+             {% if app.user %}
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                            id="user">
                             <i class="fa fa-user" aria-hidden="true"></i>
                             <span class="caret"></span>
                             <span class="sr-only">{{ app.user.fullname }}</span>
                         </a>
-                    </md-menu-item>
-                    <md-menu-item>
+                    </li>
+                    <li>
                         <a href="{{ path('user_edit') }}">
                             <i class="fa fa-edit" aria-hidden="true"></i> {{ 'menu.user'|trans }}
                         </a>
-                    </md-menu-item>
-                    <md-menu-item>
+                    </li>
+                    <li>
                         <a href="{{ logout_path() }}">
                             <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
                         </a>
-                    </md-menu-item>
-
-                {% endset %}
-                {{ web.Menu({id:'user-menu',items:items,label:app.user.fullname}) }} {% endif %}
+                    </li>
+          </ul>
+           {% endif %}
         </div>
+          <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Languages
+        </button>
+            <ul class="dropdown-menu">
+                {% for locale in locales() %}
+                        <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"
+                                    {% else %}aria-checked="false"{% endif %} role="menuitem">
+                            <a href="{{ path(app.request.get('_route', 'blog_index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}
+                                <small>{{ locale.code[0:2] }}</small></a>
+                        </li>
+                    {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
     {% endblock %}
 </header>
 
@@ -137,6 +146,59 @@
 
 <aside id="mainNav">
     {% block sideNav %}
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Sidebar</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-body-emphasis">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-body-emphasis">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          Orders
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-body-emphasis">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+          Products
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-body-emphasis">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Customers
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle show" data-bs-toggle="dropdown" aria-expanded="true">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu text-small shadow show" data-popper-placement="top-start" data-popper-reference-hidden="" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -34px);">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
     {% endblock %}
 </aside>
 
