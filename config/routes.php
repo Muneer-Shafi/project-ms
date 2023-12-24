@@ -53,4 +53,6 @@ return function (RoutingConfigurator $routes) {
             '_locale' => '%locale%'
         ]);
 
+    $routes->withPath('/api/login');
+
 };
