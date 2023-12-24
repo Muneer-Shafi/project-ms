@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Symfony\Config\SecurityConfig;
+use App\Authentication\Security\AuthenticationEntryPoint;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 return static function (SecurityConfig $security) {
@@ -15,16 +16,20 @@ return static function (SecurityConfig $security) {
         ->class(\App\Entity\User::class)
         ->property('username');
 
+    $security->accessDecisionManager()
+        ->strategy('unanimous')
+        ->allowIfAllAbstain(false);
 
     $mainFirewall = $security
         ->firewall('main')
         ->lazy(true)
         ->provider('app_users')
-        //        ->entryPoint(AuthenticationEntryPoint::class)
-        //        ->customAuthenticators([UserAuthenticator::class])
+//        ->entryPoint(AuthenticationEntryPoint::class)
+//        ->customAuthenticators([\App\Authentication\Security\UserAuthenticator::class])
         ->lazy(true);
     $mainFirewall->entryPoint('form_login');
-//    $mainFirewall->pattern('/api')->stateless(true)->jwt([]);
+    $mainFirewall->pattern('/api')->stateless(true)->jwt([]);
+
     $mainFirewall->jsonLogin()
         ->checkPath('api_login')
         ->usernamePath('email')

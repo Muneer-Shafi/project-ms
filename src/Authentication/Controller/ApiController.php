@@ -17,15 +17,18 @@ class ApiController extends AbstractController
     {
         if (null === $user) {
             return $this->json([
-                'message' => 'missing credentials try again',
+                'message' => 'missing credentials try again1111',
             ], Response::HTTP_UNAUTHORIZED);
         }
-
-        $token = 'sometsting ija'; // somehow create an API token for $user
-
         return $this->json([
             'user' => $user->jsonSerialize(),
-            'token' => $token,
+        ]);
+    }
+    #[Route('/api/user', name: 'api_user')]
+    public function userInfo(#[CurrentUser] ?User $user,Request  $request): Response
+    {
+        return $this->json([
+            'user' => $user->jsonSerialize(),
         ]);
     }
 }
