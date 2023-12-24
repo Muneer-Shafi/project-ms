@@ -28,7 +28,7 @@ return static function (SecurityConfig $security) {
 //        ->customAuthenticators([\App\Authentication\Security\UserAuthenticator::class])
         ->lazy(true);
     $mainFirewall->entryPoint('form_login');
-//    $mainFirewall->pattern('/api')->stateless(true)->jwt([]);
+    $mainFirewall->pattern('/api')->stateless(true)->jwt([]);
 
     $mainFirewall->jsonLogin()
         ->checkPath('api_login')
