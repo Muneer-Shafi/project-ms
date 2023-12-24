@@ -1,14 +1,22 @@
 <?php
 
 declare(strict_types=1);
-namespace App\Authentication\EventSubscriber;
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace App\Authentication\EventSubscriber;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationFailureEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Events;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Response;
 
 class JWTFailureEventSubscriber implements EventSubscriberInterface
 {
@@ -28,6 +36,5 @@ class JWTFailureEventSubscriber implements EventSubscriberInterface
         $request = $this->requestStack->getCurrentRequest();
         $payload = $event->getResponse();
         $payload['ip'] = $request->getClientIp();
-
     }
 }
