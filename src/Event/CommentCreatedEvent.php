@@ -3,12 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Symfony package.
+ * This file is part of Muneer's learning project.
  *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
 namespace App\Event;

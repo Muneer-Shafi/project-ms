@@ -1,5 +1,12 @@
 <?php
+
 declare(strict_types=1);
+
+/*
+ * This file is part of Muneer's learning project.
+ *
+ * (c) Muneer shafi <mcamuneershafi@gmail.com>.
+ */
 
 namespace App\Subsidiary\Infrastructure\Controller;
 
@@ -12,10 +19,9 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class SubsidiaryController extends AbstractController
 {
     #[Route(''), IsGranted('ROLE_USER')]
-    public  function  index():Response
+    public function index(): Response
     {
-        return $this->render('subsidiary/edit.html.twig',[]
+        return $this->render('subsidiary/edit.html.twig', []
         );
     }
-
 }

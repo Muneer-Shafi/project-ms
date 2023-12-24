@@ -1,5 +1,13 @@
 <?php
+
 declare(strict_types=1);
+
+/*
+ * This file is part of Muneer's learning project.
+ *
+ * (c) Muneer shafi <mcamuneershafi@gmail.com>.
+ */
+
 namespace App\Subsidiary\Domain\Entity;
 
 use App\Subsidiary\Application\Repository\SubsidiaryRepository;
@@ -14,7 +22,7 @@ class Subsidiary
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
-    private string $code ;
+    private string $code;
 
     #[ORM\Column(length: 255)]
     private string $name;
