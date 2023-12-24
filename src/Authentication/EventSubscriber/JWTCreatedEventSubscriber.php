@@ -8,23 +8,29 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Authentication\Events;
+namespace App\Authentication\EventSubscriber;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
-use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
+use Lexik\Bundle\JWTAuthenticationBundle\Events;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-// #[AsEventListener]
-class JWTCreatedListener
+class JWTCreatedEventSubscriber implements EventSubscriberInterface
 {
     public function __construct(private readonly RequestStack $requestStack)
     {
     }
 
-    public function onJWTCreated(JWTCreatedEvent $event)
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            Events::JWT_CREATED => 'JWTAuthenticationCreated',
+        ];
+    }
+
+    public function JWTAuthenticationCreated(JWTCreatedEvent $event): void
     {
         $request = $this->requestStack->getCurrentRequest();
-
         $payload = $event->getData();
         $payload['ip'] = $request->getClientIp();
         $event->setData($payload);

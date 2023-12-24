@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of Muneer's learning project.
+ *
+ * (c) Muneer shafi <mcamuneershafi@gmail.com>.
+ */
+
 namespace DoctrineMigrations;
 
 use Doctrine\DBAL\Schema\Schema;
@@ -19,7 +25,7 @@ final class Version20230520172305 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-       $this->addSql('
+        $this->addSql('
                     CREATE TABLE `sessions` (
                         `sess_id` VARBINARY(128) NOT NULL PRIMARY KEY,
                         `sess_data` BLOB NOT NULL,
@@ -28,12 +34,10 @@ final class Version20230520172305 extends AbstractMigration
                         INDEX `sessions_sess_lifetime_idx` (`sess_lifetime`)
                     ) COLLATE utf8mb4_bin, ENGINE = InnoDB;
                 ');
-
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-
     }
 }

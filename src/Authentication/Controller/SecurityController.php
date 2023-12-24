@@ -1,7 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
+/*
+ * This file is part of Muneer's learning project.
+ *
+ * (c) Muneer shafi <mcamuneershafi@gmail.com>.
+ */
+
 namespace App\Authentication\Controller;
+
 use App\Authentication\Service\PasswordHasher;
 use App\Entity\User;
 use App\Form\UserType;
@@ -14,10 +22,10 @@ use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-
 class SecurityController extends AbstractController
 {
     use TargetPathTrait;
+
     public function __construct(private readonly PasswordHasher $passwordHasher)
     {
     }
@@ -27,11 +35,10 @@ class SecurityController extends AbstractController
         #[CurrentUser] ?User $user,
         Request $request,
         AuthenticationUtils $authenticationUtils
-    ): Response
-    {
-         if ($this->getUser()) {
-             return $this->redirectToRoute('blog_index');
-         }
+    ): Response {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('blog_index');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -54,13 +61,13 @@ class SecurityController extends AbstractController
     #[Route('/new', name: 'register_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = new User('test','test@gmail.com');
+        $user = new User('test', 'test@gmail.com');
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $user->setPassword($this->passwordHasher->getEncodedPassword($user ,$user->getPassword()));
+            $user->setPassword($this->passwordHasher->getEncodedPassword($user, $user->getPassword()));
             $entityManager->persist($user);
             $entityManager->flush();
 
