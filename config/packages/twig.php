@@ -5,9 +5,7 @@ use Symfony\Config\TwigConfig;
 
 return static function (TwigConfig $twig) {
     $twig->formThemes([
-        'form/layout.html.twig',
-        'form/fields.html.twig'
+        'bootstrap_5_layout.html.twig',
+        'bootstrap_5_horizontal_layout.html.twig'
     ]);
-
-
 };
