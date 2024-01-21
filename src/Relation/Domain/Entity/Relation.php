@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace App\Relation\Domain\Entity;
 
 use App\Entity\Currency;
-use App\Repository\RelationRepository;
+use App\Relation\DTO\RelationDTO;
+use App\Relation\Service\RelationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -186,5 +187,13 @@ class Relation
         }
 
         return $this;
+    }
+
+    public static function  create(RelationDTO $relationDTO):self
+    {
+        $relation = new self();
+        $relation->name= $relationDTO->relationName;
+        $relation->shortName= $relationDTO->relationShortName;
+        return $relation;
     }
 }

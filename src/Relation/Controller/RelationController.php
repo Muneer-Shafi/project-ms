@@ -14,7 +14,7 @@ use App\Entity\User;
 use App\Relation\Domain\Entity\Relation;
 use App\Relation\Domain\Entity\RelationAddress;
 use App\Relation\Form\RelationType;
-use App\Repository\RelationRepository;
+use App\Relation\Service\RelationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

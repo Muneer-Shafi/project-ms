@@ -12,7 +12,7 @@ return static function (GraphqliteConfig $graphQlLite): void {
             'App\GraphQl\Resolvers\Query\\',
             'App\GraphQl\Resolvers\Mutations\\',
             'App\Relation\UI\GraphQL\Resolvers\Query\\',
-            'App\Relation\UI\GraphQl\Resolvers\Mutation\\'
+            'App\Relation\UI\GraphQL\Resolvers\Mutation\\'
         ])
         ->types([
             'App\GraphQl\Types\\',

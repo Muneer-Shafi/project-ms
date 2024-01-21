@@ -8,7 +8,7 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Repository;
+namespace App\Relation\Service;
 
 use App\Relation\Domain\Entity\Relation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

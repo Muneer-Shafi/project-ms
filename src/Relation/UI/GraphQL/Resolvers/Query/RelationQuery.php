@@ -12,7 +12,7 @@ namespace App\Relation\UI\GraphQL\Resolvers\Query;
 
 use _PHPStan_d55c4f2c2\React\Dns\RecordNotFoundException;
 use App\Relation\Domain\Entity\Relation;
-use App\Repository\RelationRepository;
+use App\Relation\Service\RelationRepository;
 use TheCodingMachine\GraphQLite\Annotations\Query;
 use TheCodingMachine\GraphQLite\Types\ID;
 

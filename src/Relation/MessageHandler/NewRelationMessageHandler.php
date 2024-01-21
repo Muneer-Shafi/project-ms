@@ -10,16 +10,25 @@ declare(strict_types=1);
 
 namespace App\Relation\MessageHandler;
 
+use App\Relation\Domain\Entity\Relation;
 use App\Relation\Message\NewRelationMessage;
+use App\Relation\Service\RelationRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 
 #[AsMessageHandler]
 class NewRelationMessageHandler
 {
-    public function __invoke(NewRelationMessage $newRelationMessage)
+    public function __construct(
+        private readonly RelationRepository $relationRepository,
+    )
     {
-        $relationDto = $newRelationMessage->relationDTO();
-      dd($newRelationMessage);
+    }
+
+    public function __invoke(NewRelationMessage $newRelationMessage): Relation
+    {
+        $relation = Relation::create($newRelationMessage->relationDTO());
+        $this->relationRepository->save($relation);
+        return $relation;
     }
 }

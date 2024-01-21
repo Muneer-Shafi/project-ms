@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Relation\Domain\Entity\Relation;
-use App\Repository\RelationRepository;
+use App\Relation\Service\RelationRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
