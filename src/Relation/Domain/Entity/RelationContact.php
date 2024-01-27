@@ -12,7 +12,7 @@ namespace App\Relation\Domain\Entity;
 
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+#[ORM\Table(name: 'contact')]
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class RelationContact
 {

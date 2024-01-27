@@ -62,6 +62,12 @@ class RelationType extends AbstractType
                 'allow_delete' => true,
                 'allow_add' => true,
                 'entry_options' => ['label' => false],
+            ])
+            ->add('contacts', CollectionType::class, [
+                'entry_type' => ContactType::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'entry_options' => ['label' => false],
             ]);
         // ->add('publishedAt', DateTimePickerType::class, [
         //     'label' => 'label.published_at',

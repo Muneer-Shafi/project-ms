@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
-use App\Entity\Contact;
+use App\Relation\Domain\Entity\RelationContact;
 use Zenstruck\Foundry\ModelFactory;
 
 final class ContactFactory extends ModelFactory
@@ -49,6 +49,6 @@ final class ContactFactory extends ModelFactory
 
     protected static function getClass(): string
     {
-        return Contact::class;
+        return RelationContact::class;
     }
 }

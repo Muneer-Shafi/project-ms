@@ -10,18 +10,19 @@ declare(strict_types=1);
 
 namespace App\Relation\Message;
 
+use App\Relation\Domain\Entity\Relation;
 use App\Relation\DTO\RelationDTO;
 
 class NewRelationMessage
 {
     public function __construct(
-        private readonly RelationDTO $relationDTO
+        private readonly Relation $relation
     )
     {
     }
 
-    public function relationDTO(): RelationDTO
+    public function relation(): Relation
     {
-        return $this->relationDTO;
+        return $this->relation;
     }
 }

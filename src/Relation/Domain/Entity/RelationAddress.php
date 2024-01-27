@@ -12,8 +12,8 @@ namespace App\Relation\Domain\Entity;
 
 use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
-
-#[ORM\Entity(repositoryClass: AddressRepository::class)]
+#[ORM\Table(name: 'address')]
+#[ORM\Entity( repositoryClass: AddressRepository::class,)]
 class RelationAddress
 {
     #[ORM\Id]

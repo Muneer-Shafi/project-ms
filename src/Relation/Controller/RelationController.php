@@ -10,10 +10,14 @@ declare(strict_types=1);
 
 namespace App\Relation\Controller;
 
+use App\Entity\Currency;
 use App\Entity\User;
 use App\Relation\Domain\Entity\Relation;
 use App\Relation\Domain\Entity\RelationAddress;
+use App\Relation\Domain\Entity\RelationContact;
+use App\Relation\DTO\RelationDTO;
 use App\Relation\Form\RelationType;
+use App\Relation\Message\NewRelationMessage;
 use App\Relation\Service\RelationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,7 +33,7 @@ class RelationController extends AbstractController
 {
     public function __construct(
         private readonly RelationRepository $relationRepository,
-        private MessageBusInterface $messageBus
+        private readonly MessageBusInterface $messageBus
     ) {
     }
 
@@ -57,11 +61,34 @@ class RelationController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
     ): Response {
-        $relation = new Relation();
-        $address = new RelationAddress();
-        $address->setName('pampore');
 
-        $relation->getAddresses()->add($address);
+        $relation = Relation::create(new RelationDTO('chinar', 'CHNR','test@gmail.com'));
+        $relation->setRemarks('via graphql saved');
+        $relation->setCocNumber('COCIe333');
+        $currency = new Currency();
+        $currency->setCode('EUR');
+
+        $relation->setCurrency($currency);
+        $con = new RelationContact();
+        $con->setEmail('con@gmail');
+        $con->setGender('male');
+        $con->setFirstName('Sam');
+        $con->setLastName('bills');
+        $con->setInitials('Mr');
+        $con->setTelephone('9419038739');
+        $con->setRelation($relation);
+
+        $relation->addContact($con);
+        $message = new NewRelationMessage($relation);
+        $this->messageBus->dispatch($message);
+//        foreach ($contacts as $contact){
+//            $relation->addContact($contact);
+//        }
+//        $relation = new Relation();
+//        $address = new RelationAddress();
+//        $address->setName('pampore');
+
+//        $relation->getAddresses()->add($address);
 
         $form = $this->createForm(RelationType::class, $relation);
         $form->handleRequest($request);

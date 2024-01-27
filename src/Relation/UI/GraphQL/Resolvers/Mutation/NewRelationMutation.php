@@ -22,10 +22,10 @@ class NewRelationMutation
     #[Mutation]
 
     public function newRelation(
-        #[UseInputType(inputType: 'CreateNewRelation!')] RelationDTO $relationDto
+        #[UseInputType(inputType: 'CreateNewRelation!')] Relation $relation,
     ): void
     {
-        $message = new NewRelationMessage($relationDto);
+        $message = new NewRelationMessage($relation);
         $this->messageBus->dispatch($message);
     }
 }

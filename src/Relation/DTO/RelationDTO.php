@@ -7,7 +7,8 @@ class RelationDTO
 {
     public function __construct(
         public string $relationName,
-        public string $relationShortName
+        public string $relationShortName,
+        public string $email,
     )
     {
     }

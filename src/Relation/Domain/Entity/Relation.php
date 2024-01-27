@@ -44,7 +44,7 @@ class Relation
     #[ORM\JoinColumn(nullable: false)]
     private ?Currency $currency = null;
 
-    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationContact::class)]
+    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationContact::class,cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $contacts;
 
     #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationAddress::class)]
@@ -137,9 +137,24 @@ class Relation
     {
         return $this->contacts;
     }
+    public function setContacts(array $contacts): void
+    {
+        $contacts = new ArrayCollection($contacts);
+        foreach ($contacts as $contact) {
+            if (!$this->contacts->contains($contact)) {
+                $this->addContact($contact);
+            }
+        }
+        foreach ($this->contacts as $existingContact) {
+            if (!$contacts->contains($existingContact)) {
+                $this->contacts->removeElement($existingContact);
+            }
+        }
+    }
 
     public function addContact(RelationContact $contact): self
     {
+        $contact->setRelation($this);
         if (!$this->contacts->contains($contact)) {
             $this->contacts->add($contact);
             $contact->setRelation($this);
@@ -167,7 +182,7 @@ class Relation
         return $this->addresses;
     }
 
-    public function addAddress(Address $address): self
+    public function addAddress(RelationAddress $address): self
     {
         if (!$this->addresses->contains($address)) {
             $this->addresses->add($address);
@@ -177,7 +192,7 @@ class Relation
         return $this;
     }
 
-    public function removeAddress(Address $address): self
+    public function removeAddress(RelationAddress $address): self
     {
         if ($this->addresses->removeElement($address)) {
             // set the owning side to null (unless already changed)
@@ -194,6 +209,7 @@ class Relation
         $relation = new self();
         $relation->name= $relationDTO->relationName;
         $relation->shortName= $relationDTO->relationShortName;
+        $relation->email= $relationDTO->email;
         return $relation;
     }
 }

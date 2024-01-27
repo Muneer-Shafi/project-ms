@@ -27,8 +27,8 @@ class NewRelationMessageHandler
 
     public function __invoke(NewRelationMessage $newRelationMessage): Relation
     {
-        $relation = Relation::create($newRelationMessage->relationDTO());
-        $this->relationRepository->save($relation);
-        return $relation;
+//        dd($saved,$newRelationMessage->relation());
+        $this->relationRepository->save($newRelationMessage->relation(),flush: true);
+        return $newRelationMessage->relation();
     }
 }
