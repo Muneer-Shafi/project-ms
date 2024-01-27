@@ -22,7 +22,7 @@ class DeleteRelationMessageHandler
     public function __invoke(DeleteRelationMessage $message): Relation
     {
         $relation = $this->relationRepository->find($message->relationId);
-        $this->relationRepository->remove($relation);
+        $this->relationRepository->remove($relation,true);
         return $relation;
     }
 }

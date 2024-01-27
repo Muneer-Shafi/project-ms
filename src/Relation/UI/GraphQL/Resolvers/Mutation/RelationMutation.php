@@ -13,7 +13,7 @@ use TheCodingMachine\GraphQLite\Annotations\Mutation;
 use TheCodingMachine\GraphQLite\Annotations\UseInputType;
 use TheCodingMachine\GraphQLite\Types\ID;
 
-class NewRelationMutation
+class RelationMutation
 {
     public function __construct(
         private readonly MessageBusInterface $messageBus
@@ -24,10 +24,14 @@ class NewRelationMutation
     #[Mutation]
     public function newRelation(
         #[UseInputType(inputType: 'CreateNewRelation!')] Relation $relation,
-    ): void
+    ): Relation
     {
         $message = new NewRelationMessage($relation);
-        $this->messageBus->dispatch($message);
+        $result = $this->messageBus->dispatch($message)->getMessage();
+//        assert($result instanceof NewRelationMessage);
+//        dd($message->relation(),$result->relation());
+
+        return $message->relation();
     }
 
     #[Mutation]
