@@ -151,6 +151,20 @@ class Relation
             }
         }
     }
+    public function setAddresses(array $addresses): void
+    {
+        $addresses = new ArrayCollection($addresses);
+        foreach ($addresses as $address) {
+            if (!$this->addresses->contains($address)) {
+                $this->addContact($address);
+            }
+        }
+        foreach ($this->addresses as $existingAddress) {
+            if (!$addresses->contains($existingAddress)) {
+                $this->addresses->removeElement($existingAddress);
+            }
+        }
+    }
 
     public function addContact(RelationContact $contact): self
     {

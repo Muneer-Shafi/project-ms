@@ -58,9 +58,9 @@
                     <li>{{ form_row(address.telephone) }}</li>
                     <li>{{ form_row(address.initials) }}</li>
                 {% endfor %}
-                <button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add
-                    a Address
+                <button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">New Contact
                 </button>
+{#                {{ form_widget(form.contacts.vars.button_add, {label: '+ Add Item', attr: {class: 'btn btn-outline-primary'}}) }}#}
             </ul>
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -74,9 +74,9 @@
                     <li>{{ form_row(address.country) }}</li>
                     <li>{{ form_row(address.city) }}</li>
                 {% endfor %}
-                <button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add
-                    a Address
-                </button>
+{#                <button type="button" class="add_item_link btn btn-danger" data-collection-holder-class="addresses">Add#}
+{#                    a Address#}
+{#                </button>#}
             </ul>
         </div>
     </div>

@@ -8,6 +8,7 @@ use App\Factory\AddressFactory;
 use App\Factory\ContactFactory;
 use App\Factory\RelationFactory;
 use App\Relation\Domain\Entity\Relation;
+use App\Relation\Domain\Entity\RelationAddress;
 use App\Relation\Domain\Entity\RelationContact;
 use App\Relation\DTO\RelationDTO;
 use TheCodingMachine\GraphQLite\Annotations\Factory;
@@ -20,40 +21,37 @@ final class RelationInput
      */
     #[Factory(name: 'CreateNewRelation', default: false)]
     public function createRelation(
-        string $relationName,
-        string $relationShortName,
-        string $email,
-        #[UseInputType(inputType: '[RelationContacts!]!')] array $contacts,
+        string                                                   $relationName,
+        string                                                   $relationShortName,
+        string                                                   $email,
+        #[UseInputType(inputType: '[RelationContact!]!')] array $contacts,
+        #[UseInputType(inputType: '[RelationAddress!]!')] array $addresses,
     ): Relation
     {
 
-        $relation = Relation::create(new RelationDTO($relationName, $relationShortName,$email));
+        $relation = Relation::create(new RelationDTO($relationName, $relationShortName, $email));
         $relation->setRemarks('via graphql saved');
         $relation->setCocNumber('COCIe333');
         $currency = new Currency();
         $currency->setCode('EUR');
-
         $relation->setCurrency($currency);
-        $con = new RelationContact();
-        $con->setEmail('con@gmail');
-        $con->setGender('male');
-        $con->setFirstName('Sam');
-        $con->setLastName('bills');
-        $con->setRelation($relation);
-
-//        $relation->addContact($con);
-//        foreach ($contacts as $contact){
-//            $relation->addContact($contact);
-//        }
+        $relation->setContacts($contacts);
         return $relation;
     }
 
-    #[Factory(name: 'RelationContacts', default: false)]
-    public function contacts(string $firstName, string $lastName): RelationContact
+    #[Factory(name: 'RelationContact', default: false)]
+    public function contacts(string $firstName, string $lastName, string $email, string $gender, string $telephone): RelationContact
     {
-        $contact = new RelationContact();
-        $contact->setFirstName($firstName);
-        $contact->setLastName($lastName);
-        return $contact;
+        return RelationContact::create(
+            firstName: $firstName, lastName: $lastName, email: $email, gender: $gender, telephone: $telephone
+        );
+    }
+
+    #[Factory(name: 'RelationAddress', default: false)]
+    public function addresses(string $name, string $city, string $addressLine1, string $addressLine2, string $pinCode): RelationAddress
+    {
+        return RelationAddress::create(
+            name: $name, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, pinCode: $pinCode
+        );
     }
 }

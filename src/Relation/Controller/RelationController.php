@@ -61,30 +61,7 @@ class RelationController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
     ): Response {
-
-        $relation = Relation::create(new RelationDTO('chinar', 'CHNR','test@gmail.com'));
-        $relation->setRemarks('via graphql saved');
-        $relation->setCocNumber('COCIe333');
-        $currency = new Currency();
-        $currency->setCode('EUR');
-
-        $relation->setCurrency($currency);
-        $con = new RelationContact();
-        $con->setEmail('con@gmail');
-        $con->setGender('male');
-        $con->setFirstName('Sam');
-        $con->setLastName('bills');
-        $con->setInitials('Mr');
-        $con->setTelephone('9419038739');
-        $con->setRelation($relation);
-
-        $relation->addContact($con);
-        $message = new NewRelationMessage($relation);
-        $this->messageBus->dispatch($message);
-//        foreach ($contacts as $contact){
-//            $relation->addContact($contact);
-//        }
-//        $relation = new Relation();
+        $relation = new Relation();
 //        $address = new RelationAddress();
 //        $address->setName('pampore');
 

@@ -28,7 +28,7 @@ class RelationContact
     private ?string $lastName = null;
 
     #[ORM\Column(name: 'intials', length: 50)]
-    private string $initials;
+    private string $initials='Mr';
 
     #[ORM\Column(length: 50)]
     private string $gender;
@@ -129,5 +129,23 @@ class RelationContact
         $this->relation = $relation;
 
         return $this;
+    }
+
+    public static function create(
+        string $firstName,
+        string $lastName,
+        string $email,
+        string $gender,
+        string $telephone
+    ):self
+    {
+        $contact = new self();
+        $contact->firstName=$firstName;
+        $contact->lastName=$lastName;
+        $contact->email=$email;
+        $contact->gender=$gender;
+        $contact->telephone=$telephone;
+        return  $contact;
+
     }
 }

@@ -115,4 +115,22 @@ class RelationAddress
 
         return $this;
     }
+
+    public static function create(
+        string $name,
+        string $addressLine1,
+        string $addressLine2,
+        string $city,
+        string $pinCode
+    ):self
+    {
+        $address = new self();
+        $address->name=$name;
+        $address->addressLine2=$addressLine2;
+        $address->addressLine1=$addressLine1;
+        $address->city=$city;
+        $address->pinCode=$pinCode;
+        return  $address;
+
+    }
 }
