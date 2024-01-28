@@ -8,7 +8,7 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Form;
+namespace App\Relation\Form;
 
 use App\Relation\Domain\Entity\RelationAddress;
 use Symfony\Component\Form\AbstractType;
@@ -54,7 +54,7 @@ class AddressType extends AbstractType
             //     'help' => 'help.post_publication',
             // ])
             ->add('country', CountryType::class, [
-                'mapped' => false,
+                'mapped' => true,
                 'label' => 'label.country',
                 'help' => 'help.country',
             ]);

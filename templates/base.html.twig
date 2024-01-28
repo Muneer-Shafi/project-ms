@@ -23,24 +23,17 @@
 
         #pageHeader {
             grid-area: header;
-            border:1px solid red ;
         }
 
         #pageFooter {
             grid-area: footer;
-            border:1px solid blue ;
-
         }
 
         #main-content {
             grid-area: article;
-            border:1px solid darkgreen ;
-
         }
         #mainNav {
             grid-area: nav;
-            border:1px solid orange ;
-
         }
 
         /* Stack the layout on small devices/viewports. */
@@ -70,7 +63,9 @@
 
 <header class="columns space-between" id="pageHeader">
     {% block header %}
+
     <div class="container">
+
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
@@ -185,24 +180,8 @@
         </a>
       </li>
     </ul>
-    <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle show" data-bs-toggle="dropdown" aria-expanded="true">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>mdo</strong>
-      </a>
-      <ul class="dropdown-menu text-small shadow show" data-popper-placement="top-start" data-popper-reference-hidden="" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -34px);">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
   </div>
     {% endblock %}
 </aside>
-
-
 </body>
 </html>

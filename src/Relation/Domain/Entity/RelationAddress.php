@@ -36,6 +36,9 @@ class RelationAddress
     #[ORM\Column(length: 255)]
     private ?string $city = null;
 
+    #[ORM\Column(length: 100)]
+    private string $country = '';
+
     #[ORM\ManyToOne(inversedBy: 'addresses')]
     private ?Relation $relation = null;
 
@@ -96,8 +99,17 @@ class RelationAddress
     {
         return $this->city;
     }
+    public function getCountry(): string
+    {
+        return $this->country;
+    }
 
-    public function setCity(string $city): self
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }public function setCity(string $city): self
     {
         $this->city = $city;
 

@@ -72,6 +72,7 @@ final class AddressFactory extends ModelFactory
     {
         return [
             'city' => self::faker()->city(),
+            'country' => self::faker()->countryCode(),
             'name' => self::faker()->streetAddress(),
             'pinCode' => self::faker()->postcode(),
             'addressLine1' => self::faker()->streetAddress(),

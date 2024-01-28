@@ -234,6 +234,10 @@
                 <source>label.role</source>
                 <target>Role</target>
             </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Name</target>
+            </trans-unit>
             <trans-unit id="label.content">
                 <source>label.content</source>
                 <target>Content</target>

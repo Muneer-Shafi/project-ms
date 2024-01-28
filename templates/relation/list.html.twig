@@ -1,27 +1,29 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <h1>Relations</h1>
-    <table class="info-table">
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Short name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Currency</th>
-            <th scope="col">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for relation in relations %}
-        <tr class="table-active">
-            <th scope="row">{{ relation.name }}</th>
-            <td>{{ relation.shortName }}</td>
-            <td>{{ relation.email }}</td>
-            <td>{{ relation.currency.code }}</td>
-            <td><a  class="btn btn-primary" href="{{ path('relation_edit', {id: relation.id}) }}">view </a></td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="overflow-x-auto">
+        <table class="table table-zebra">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Short name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Currency</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for relation in relations %}
+                <tr class="table-active">
+                    <th scope="row">{{ relation.name }}</th>
+                    <td>{{ relation.shortName }}</td>
+                    <td>{{ relation.email }}</td>
+                    <td>{{ relation.currency.code }}</td>
+                    <td><a class="btn btn-primary" href="{{ path('relation_edit', {id: relation.id}) }}">view </a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}

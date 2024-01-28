@@ -2,69 +2,151 @@
         {{ attributes }}
 >
     {{ form_start(form) }}
-    <div class="row">
-        <div class="col-4">
-            {{ form_row(form.name) }}
-            {{ form_row(form.shortName) }}
-            {{ form_row(form.cocNumber) }}
-            {{ form_row(form.country) }}
-            {{ form_row(form.remarks) }}
+    <button type="submit" class="btn btn-success" formnovalidate>Save</button>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                    role="tab" aria-controls="home" aria-selected="true">General
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false">Contact
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                    role="tab" aria-controls="contact" aria-selected="false">Address
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel"
+             aria-labelledby="home-tab">
+            <div class="row">
+                <div class="col-4">
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.shortName) }}
+                    {{ form_row(form.cocNumber) }}
+                    {{ form_row(form.country) }}
+                    {{ form_row(form.remarks) }}
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <table class="table table-borderless form-no-mb">
+                <thead>
+                <tr>
+                    <td>Initials</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                    <td>Gender</td>
+                    <td>Telephone</td>
+                    <td>{{  'label.role'|trans }}</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key, contact in form.contacts %}
+                    <tr>
+                        <td>
+                            {{ form_row(contact.initials,{
+                                label:false,
+                            }) }}
+                        </td>
+                        <td>
+                            {{ form_row(contact.firstName,{
+                                label:false,
+                            }) }}
+                        </td>
+
+                        <td>
+                            {{ form_row(contact.lastName,{
+                                label:false,
+                            } ) }}
+                        </td>
+                        <td>
+                            {{ form_row(contact.email,{
+                                label:false,
+                            }) }}
+                        </td>
+                        <td>
+                            {{ form_row(contact.gender,{
+                                label:false,
+                            }) }}
+                        </td>
+                        <td>
+                            {{ form_row(contact.telephone,{
+                                label:false,
+                            }) }}
+                        </td>
+                        <td>
+                            {{ form_row(contact.vars.button_delete, {label: 'X', attr: {class: 'btn btn-outline-danger'}}) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {{ form_widget(form.contacts.vars.button_add, {label: '+ Add Item', attr: {class: 'btn btn-outline-primary'}}) }}
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <table class="table table-borderless form-no-mb">
+                <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Address line 1</td>
+                    <td>Address line 2</td>
+                    <td>Pin code</td>
+                    <td>city</td>
+                    <td>country</td>
+                    <td>{{  'label.action'|trans }}</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key, address in form.addresses %}
+                    <tr>
+                        <td>
+                            {{ form_row(address.name,{
+                                label:false,
+                            }) }}
+                        </td>
+                        <td>
+                            {{ form_row(address.addressLine1,{
+                                label:false,
+                            }) }}
+                        </td>
+
+                        <td>
+                            {{ form_row(address.addressLine2,{
+                                label:false,
+                            } ) }}
+                        </td>
+                        <td>
+                            {{ form_row(address.pinCode,{
+                                label:false,
+                            }) }}
+                        </td>
+                        <td>
+                            {{ form_row(address.city,{
+                                label:false,
+                            }) }}
+                        </td>
+                        <td>
+                            {{ form_row(address.country,{
+                                label:false,
+                            }) }}
+                        </td>
+                        <td>
+                            {{ form_row(address.vars.button_delete, {label: 'X', attr: {class: 'btn btn-outline-danger'}}) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {{ form_widget(form.addresses.vars.button_add, {label: '+ Add Item', attr: {class: 'btn btn-outline-primary'}}) }}
         </div>
     </div>
-    <table class="table table-borderless form-no-mb">
-        <thead>
-        <tr>
-            <td>Initials</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Email</td>
-            <td>Gender</td>
-            <td>Telephone</td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for key, contact in form.contacts %}
-            <tr>
-                <td>
-                    {{ form_row(contact.initials,{
-                        label:false,
-                    }) }}
-                </td>
-                <td>
-                    {{ form_row(contact.firstName,{
-                        label:false,
-                    }) }}
-                </td>
 
-                <td>
-                    {{ form_row(contact.lastName,{
-                        label:false,
-                    } ) }}
-                </td>
-                <td>
-                    {{ form_row(contact.email,{
-                        label:false,
-                    }) }}
-                </td>
-                <td>
-                    {{ form_row(contact.gender,{
-                        label:false,
-                    }) }}
-                </td>
-                <td>
-                    {{ form_row(contact.telephone,{
-                        label:false,
-                    }) }}
-                </td>
-                <td>
-                    {{ form_row(contact.vars.button_delete, {label: 'X', attr: {class: 'btn btn-outline-danger'}}) }}
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    {{ form_widget(form.contacts.vars.button_add, {label: '+ Add Item', attr: {class: 'btn btn-outline-primary'}}) }}
-
-    <button type="submit" class="btn btn-success" formnovalidate>Save</button>
     {{ form_end(form) }}
 </div>
