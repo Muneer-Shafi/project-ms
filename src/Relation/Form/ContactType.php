@@ -20,27 +20,27 @@ class ContactType extends AbstractType
         $builder
             ->add('firstName', null, [
                 'attr' => ['autofocus' => true],
-                'label' => 'label.name',
+//                'label' => 'label.name',
             ])
             ->add('lastName', TextType::class, [
                 'help' => 'help.lastName',
-                'label' => 'label.lastName',
+//                'label' => 'label.lastName',
             ])
             ->add('email', TextType::class, [
                 'help' => 'help.email',
-                'label' => 'label.email',
+//                'label' => 'label.email',
             ])
             ->add('telephone', TextType::class, [
                 'help' => 'help.telephone',
-                'label' => 'label.telephone',
+//                'label' => 'label.telephone',
             ])
             ->add('gender', null, [
                 'help' => 'help.gender',
-                'label' => 'label.gender',
+//                'label' => 'label.gender',
             ])
             ->add('initials', null, [
                 'help' => 'help.initials',
-                'label' => 'label.initials',
+//                'label' => 'label.initials',
             ]);
 
     }

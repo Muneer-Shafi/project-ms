@@ -23,6 +23,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 
 class RelationType extends AbstractType
 {
@@ -57,17 +58,21 @@ class RelationType extends AbstractType
                 'help' => 'help.country',
                 'label' => 'label.country',
             ])
-            ->add('addresses', CollectionType::class, [
-                'entry_type' => AddressType::class,
-                'allow_delete' => true,
-                'allow_add' => true,
-                'entry_options' => ['label' => false],
-            ])
-            ->add('contacts', CollectionType::class, [
+//            ->add('addresses', LiveCollectionType::class, [
+//                'entry_type' => AddressType::class,
+//                'entry_options' => ['label' => false],
+//                'label' => false,
+//                'allow_add' => true,
+//                'allow_delete' => true,
+//                'by_reference' => false,
+//            ])
+            ->add('contacts', LiveCollectionType::class, [
                 'entry_type' => ContactType::class,
-                'allow_delete' => true,
-                'allow_add' => true,
                 'entry_options' => ['label' => false],
+                'label' => false,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
             ]);
         // ->add('publishedAt', DateTimePickerType::class, [
         //     'label' => 'label.published_at',

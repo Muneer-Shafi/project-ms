@@ -79,6 +79,7 @@ class RelationController extends AbstractController
 
         return $this->render('relation/edit.html.twig', [
             'user' => $user,
+            'relation'=>$relation,
             'form' => $form,
         ]);
     }
@@ -98,7 +99,7 @@ class RelationController extends AbstractController
         }
 
         return $this->render('relation/edit.html.twig', [
-            'post' => $relation,
+            'relation' => $relation,
             'form' => $form,
         ]);
     }

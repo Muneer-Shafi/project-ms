@@ -1,0 +1,70 @@
+<div
+        {{ attributes }}
+>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-4">
+            {{ form_row(form.name) }}
+            {{ form_row(form.shortName) }}
+            {{ form_row(form.cocNumber) }}
+            {{ form_row(form.country) }}
+            {{ form_row(form.remarks) }}
+        </div>
+    </div>
+    <table class="table table-borderless form-no-mb">
+        <thead>
+        <tr>
+            <td>Initials</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Gender</td>
+            <td>Telephone</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for key, contact in form.contacts %}
+            <tr>
+                <td>
+                    {{ form_row(contact.initials,{
+                        label:false,
+                    }) }}
+                </td>
+                <td>
+                    {{ form_row(contact.firstName,{
+                        label:false,
+                    }) }}
+                </td>
+
+                <td>
+                    {{ form_row(contact.lastName,{
+                        label:false,
+                    } ) }}
+                </td>
+                <td>
+                    {{ form_row(contact.email,{
+                        label:false,
+                    }) }}
+                </td>
+                <td>
+                    {{ form_row(contact.gender,{
+                        label:false,
+                    }) }}
+                </td>
+                <td>
+                    {{ form_row(contact.telephone,{
+                        label:false,
+                    }) }}
+                </td>
+                <td>
+                    {{ form_row(contact.vars.button_delete, {label: 'X', attr: {class: 'btn btn-outline-danger'}}) }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ form_widget(form.contacts.vars.button_add, {label: '+ Add Item', attr: {class: 'btn btn-outline-primary'}}) }}
+
+    <button type="submit" class="btn btn-success" formnovalidate>Save</button>
+    {{ form_end(form) }}
+</div>
