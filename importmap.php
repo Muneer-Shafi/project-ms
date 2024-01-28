@@ -193,4 +193,38 @@ return [
     '@vue/reactivity' => [
         'version' => '3.4.15',
     ],
+    'daisyui' => [
+        'version' => '4.6.0',
+    ],
+    'postcss-js' => [
+        'version' => '4.0.1',
+    ],
+    'picocolors' => [
+        'version' => '1.0.0',
+    ],
+    'css-selector-tokenizer' => [
+        'version' => '0.8.0',
+    ],
+    'culori/require' => [
+        'version' => '3.3.0',
+    ],
+    'daisyui/dist/full.min.css' => [
+        'version' => '4.6.0',
+        'type' => 'css',
+    ],
+    'camelcase-css' => [
+        'version' => '2.0.1',
+    ],
+    'postcss' => [
+        'version' => '8.4.33',
+    ],
+    'fastparse' => [
+        'version' => '1.1.2',
+    ],
+    'cssesc' => [
+        'version' => '3.0.0',
+    ],
+    'nanoid/non-secure' => [
+        'version' => '3.3.7',
+    ],
 ];

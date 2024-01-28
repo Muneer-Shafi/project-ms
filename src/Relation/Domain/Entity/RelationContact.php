@@ -28,7 +28,7 @@ class RelationContact
     private ?string $lastName = null;
 
     #[ORM\Column(name: 'intials', length: 50)]
-    private string $initials='Mr';
+    private string $initials ='Mr';
 
     #[ORM\Column(length: 50)]
     private string $gender;
@@ -40,7 +40,7 @@ class RelationContact
     private string $email;
 
     #[ORM\ManyToOne(inversedBy: 'contacts')]
-    private Relation $relation;
+    private ?Relation $relation;
 
     public function getId(): ?int
     {
@@ -76,9 +76,9 @@ class RelationContact
         return $this->initials;
     }
 
-    public function setInitials(string $initials): self
+    public function setInitials(?string $initials): self
     {
-        $this->initials = $initials;
+        $this->initials = $initials ??'Mr';
 
         return $this;
     }

@@ -6,62 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{% block title %}Symfony Demo application{% endblock %}</title>
     <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('blog_rss') }}">
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-        <style>
-            body {
-                display: grid;
-                grid-template-areas:
+    <style>
+        body {
+            display: grid;
+            grid-template-areas:
                                     "nav header header"
                                     "nav article article"
                                     "nav footer footer";
-                grid-template-rows: 80px 1fr 70px;
-                grid-template-columns: 300px 1fr 15%;
-                grid-row-gap: 10px;
-                grid-column-gap: 10px;
-                height: 100vh;
-                margin: 0;
-            }
+            grid-template-rows: 80px 1fr 70px;
+            grid-template-columns: 300px 1fr 15%;
+            grid-row-gap: 10px;
+            grid-column-gap: 10px;
+            height: 100vh;
+            margin: 0;
+        }
 
-            #pageHeader {
-                grid-area: header;
-                border:1px solid red ;
-            }
+        #pageHeader {
+            grid-area: header;
+            border:1px solid red ;
+        }
 
-            #pageFooter {
-                grid-area: footer;
-                border:1px solid blue ;
+        #pageFooter {
+            grid-area: footer;
+            border:1px solid blue ;
 
-            }
+        }
 
-            #main-content {
-                grid-area: article;
-                border:1px solid darkgreen ;
+        #main-content {
+            grid-area: article;
+            border:1px solid darkgreen ;
 
-            }
-            #mainNav {
-                grid-area: nav;
-                border:1px solid orange ;
+        }
+        #mainNav {
+            grid-area: nav;
+            border:1px solid orange ;
 
-            }
+        }
 
-            /* Stack the layout on small devices/viewports. */
-            @media all and (max-width: 575px) {
-                body {
-                    grid-template-areas:
+        /* Stack the layout on small devices/viewports. */
+        @media all and (max-width: 575px) {
+            body {
+                grid-template-areas:
                                       "header"
                                       "article"
                                       "nav"
                                       "footer";
-                    grid-template-rows: 80px 1fr 70px 1fr 70px;
-                    grid-template-columns: 1fr;
-                }
+                grid-template-rows: 80px 1fr 70px 1fr 70px;
+                grid-template-columns: 1fr;
             }
-        </style>
+        }
+    </style>
+    {% block stylesheets %}
     {% endblock %}
     {% block javascripts %}
-{% block importmap %}{{ importmap('app') }}{% endblock %}
-        {{ encore_entry_script_tags('app') }}
+        {% block importmap %}
+            {{ importmap('app') }}
+        {% endblock %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>

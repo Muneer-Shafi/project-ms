@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Relation\Form;
 
@@ -34,11 +35,11 @@ class ContactType extends AbstractType
                 'help' => 'help.telephone',
 //                'label' => 'label.telephone',
             ])
-            ->add('gender', null, [
+            ->add('gender', TextType::class, [
                 'help' => 'help.gender',
 //                'label' => 'label.gender',
             ])
-            ->add('initials', null, [
+            ->add('initials', TextType::class, [
                 'help' => 'help.initials',
 //                'label' => 'label.initials',
             ]);

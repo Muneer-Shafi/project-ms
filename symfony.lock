@@ -670,6 +670,9 @@
     "symfonycasts/sass-bundle": {
         "version": "v0.2.5"
     },
+    "symfonycasts/tailwind-bundle": {
+        "version": "v0.5.0"
+    },
     "thecodingmachine/graphqlite-bundle": {
         "version": "6.0",
         "recipe": {
