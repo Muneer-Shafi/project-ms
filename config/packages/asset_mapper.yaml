@@ -1,0 +1,14 @@
+framework:
+    asset_mapper:
+        # The paths to make available to the asset mapper.
+        paths:
+            - assets/
+        excluded_patterns:
+            - '*/assets/styles/_*.scss'
+            - '*/assets/styles/**/_*.scss'
+
+react:
+    controllers_path: '%kernel.project_dir%/assets/build/react/controllers'
+
+#svelte:
+#    controllers_path: '%kernel.project_dir%/assets/build/svelte/controllers'

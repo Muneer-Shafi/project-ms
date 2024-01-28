@@ -1,9 +1,8 @@
-import "./main.css";
-import 'bootstrap'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { registerReactControllerComponents } from '@symfony/ux-react';
+// import './styles/app.scss';
 
+// start the Stimulus application
+import './bootstrap.js';
 
-registerReactControllerComponents(
-  require.context("./react/controllers", true, /\.(j|t)sx?$/)
-);
+// imported to initialize global plugins
+// dropdown, collapse, tab
+import * as bootstrap from 'bootstrap';

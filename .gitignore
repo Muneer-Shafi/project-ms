@@ -12,7 +12,7 @@
 /public/bundles/
 /public/build/
 /var/
-
+/.vscode/
 /vendor/
 /docker/mysql
 ###< symfony/framework-bundle ###
@@ -21,12 +21,21 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
-###> symfony/webpack-encore-bundle ###
-/node_modules/
-npm-debug.log
-yarn-error.log
-###< symfony/webpack-encore-bundle ###
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
 
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
