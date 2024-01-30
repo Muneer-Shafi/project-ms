@@ -35,8 +35,6 @@ services:
       MYSQL_PASSWORD: test
     ports:
         - "127.0.0.1:3306:3306"
-#    ports:
-#      - '3307:3306'
     volumes:
       - ./docker/mysql:/var/lib/mysql
 

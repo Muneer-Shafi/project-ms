@@ -1,0 +1,29 @@
+.components-container {
+  background: var(--bs-body-bg);
+  border-radius: 15px;
+  border: 0.66px solid var(--bs-secondary-bg-subtle);
+
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+.ux-container {
+  border: 1px solid var(--bs-secondary-bg-subtle);
+  border-radius: 12px;
+}
+
+.markdown-container {
+  border: 1px solid var(--bs-secondary-bg-subtle);
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.markdown-form-render-container {
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 4px;
+  width: 100%;
+}
