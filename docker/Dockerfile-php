@@ -26,7 +26,7 @@ RUN pecl install -o -f xdebug \
 COPY build/php/opcache.ini /usr/local/etc/php/conf.d/
 COPY build/php/custom.ini /usr/local/etc/php/conf.d/
 COPY build/php/error_reporting.ini /usr/local/etc/php/conf.d/
-COPY build/php/xdebug.ini /usr/local/etc/php/conf.d/
+
 
 
 RUN #curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

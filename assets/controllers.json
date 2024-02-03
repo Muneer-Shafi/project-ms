@@ -11,12 +11,6 @@
                 }
             }
         },
-        "@symfony/ux-chartjs": {
-            "chart": {
-                "enabled": true,
-                "fetch": "lazy"
-            }
-        },
         "@symfony/ux-cropperjs": {
             "cropper": {
                 "enabled": true,

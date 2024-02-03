@@ -15,19 +15,11 @@
  */
 return [
     'app' => [
-        'path' => './assets/app.tsx',
+        'path' => './assets/app.js',
         'entrypoint' => true,
     ],
     'app-react' => [
         'path' => './assets/app-react.js',
-        'entrypoint' => true,
-    ],
-    'app-svelte' => [
-        'path' => './assets/app-svelte.js',
-        'entrypoint' => true,
-    ],
-    'app-vue' => [
-        'path' => './assets/app-vue.js',
         'entrypoint' => true,
     ],
     '@symfony/stimulus-bundle' => [
@@ -105,9 +97,6 @@ return [
     ],
     'snarkdown' => [
         'version' => '2.0.0',
-    ],
-    'chart.js/auto' => [
-        'version' => '3.9.1',
     ],
     'cropperjs' => [
         'version' => '1.6.1',
@@ -202,5 +191,8 @@ return [
     ],
     'svelte/internal' => [
         'version' => '3.59.2',
+    ],
+    '@symfony/ux-live-component' => [
+        'path' => './vendor/symfony/ux-live-component/assets/dist/live_controller.js',
     ],
 ];
