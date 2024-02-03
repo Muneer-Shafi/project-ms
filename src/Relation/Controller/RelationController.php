@@ -48,6 +48,8 @@ class RelationController extends AbstractController
     #[Route('/', name: 'relation_index', methods: ['GET'])]
     public function index(): Response
     {
+
+        
         $relations = $this->relationRepository->findAll();
 
         return $this->render('relation/list.html.twig', [
@@ -62,11 +64,6 @@ class RelationController extends AbstractController
         EntityManagerInterface $entityManager,
     ): Response {
         $relation = new Relation();
-//        $address = new RelationAddress();
-//        $address->setName('pampore');
-
-//        $relation->getAddresses()->add($address);
-
         $form = $this->createForm(RelationType::class, $relation);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

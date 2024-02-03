@@ -15,7 +15,7 @@
  */
 return [
     'app' => [
-        'path' => './assets/app.js',
+        'path' => './assets/app.tsx',
         'entrypoint' => true,
     ],
     'app-react' => [
@@ -112,15 +112,6 @@ return [
     'cropperjs' => [
         'version' => '1.6.1',
     ],
-    'svelte/transition' => [
-        'version' => '4.2.9',
-    ],
-    'svelte/animate' => [
-        'version' => '4.2.9',
-    ],
-    'svelte/internal' => [
-        'version' => '3.59.2',
-    ],
     'highlight.js/lib/core' => [
         'version' => '11.9.0',
     ],
@@ -162,15 +153,6 @@ return [
     'scheduler' => [
         'version' => '0.23.0',
     ],
-    '@vue/runtime-dom' => [
-        'version' => '3.4.15',
-    ],
-    '@vue/compiler-dom' => [
-        'version' => '3.4.15',
-    ],
-    '@vue/shared' => [
-        'version' => '3.4.15',
-    ],
     'path-to-regexp' => [
         'version' => '6.2.1',
     ],
@@ -183,15 +165,6 @@ return [
     'bootstrap/dist/css/bootstrap.min.css' => [
         'version' => '5.3.2',
         'type' => 'css',
-    ],
-    '@vue/runtime-core' => [
-        'version' => '3.4.15',
-    ],
-    '@vue/compiler-core' => [
-        'version' => '3.4.15',
-    ],
-    '@vue/reactivity' => [
-        'version' => '3.4.15',
     ],
     'daisyui' => [
         'version' => '4.6.0',
@@ -226,5 +199,8 @@ return [
     ],
     'nanoid/non-secure' => [
         'version' => '3.3.7',
+    ],
+    'svelte/internal' => [
+        'version' => '3.59.2',
     ],
 ];

@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gd \
         intl
 
+RUN pecl install -o -f xdebug \
+    && docker-php-ext-enable xdebug
+
 COPY build/php/opcache.ini /usr/local/etc/php/conf.d/
 COPY build/php/custom.ini /usr/local/etc/php/conf.d/
 COPY build/php/error_reporting.ini /usr/local/etc/php/conf.d/

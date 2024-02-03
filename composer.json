@@ -17,6 +17,7 @@
         "league/commonmark": "^2.4",
         "lexik/jwt-authentication-bundle": "*",
         "pagerfanta/twig": "^3.8",
+        "sensiolabs/typescript-bundle": "^0.1.2",
         "symfony/asset": "6.4.*",
         "symfony/asset-mapper": "6.4.*",
         "symfony/console": "6.4.*",

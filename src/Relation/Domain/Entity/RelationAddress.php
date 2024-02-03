@@ -104,12 +104,13 @@ class RelationAddress
         return $this->country;
     }
 
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
+    // public function setCountry(string $country): self
+    // {
+    //     $this->country = $country;
 
-        return $this;
-    }public function setCity(string $city): self
+    //     return $this;
+    // }
+    public function setCity(string $city): self
     {
         $this->city = $city;
 
