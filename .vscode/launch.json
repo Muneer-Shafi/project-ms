@@ -2,13 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch built-in server and debug",
+      "name": "Launch  debug",
       "type": "php",
       "request": "launch",
       "port": 9003,
       "pathMappings": {
-        "/var/www/project/" :"${workspaceFolder}"
+        "/var/www/project/": "${workspaceFolder}"
       }
-    }
+    },
   ]
 }

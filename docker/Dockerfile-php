@@ -24,7 +24,6 @@ RUN pecl install -o -f xdebug \
     && docker-php-ext-enable xdebug
 
 COPY build/php/opcache.ini /usr/local/etc/php/conf.d/
-COPY build/php/custom.ini /usr/local/etc/php/conf.d/
 COPY build/php/error_reporting.ini /usr/local/etc/php/conf.d/
 
 
@@ -38,8 +37,6 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
-#RUN pecl install xdebug \
-#    && docker-php-ext-enable xdebug
 
 #RUN wget --no-check-certificate https://phar.phpunit.de/phpunit-6.5.3.phar && \
 #    mv phpunit*.phar phpunit.phar && \

@@ -7,4 +7,5 @@ import "./bootstrap.js";
 // dropdown, collapse, tab
 import * as bootstrap from "bootstrap";
 
-// console.log("welcome to asset mappper");
+
+console.log("welcome to asset mappper");
