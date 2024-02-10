@@ -48,11 +48,7 @@ class RelationController extends AbstractController
     #[Route('/', name: 'relation_index', methods: ['GET'])]
     public function index(): Response
     {
-
-        xdebug_info();
-
         $relations = $this->relationRepository->findAll();
-        exit;
         return $this->render('relation/list.html.twig', [
             'relations' => $relations,
         ]);

@@ -1,8 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1>Relations</h1>
-    <div class="overflow-x-auto">
-        <table class="table table-zebra">
+
+<div class="text-sm breadcrumbs">
+  <ul>
+    <li><a>Relation</a></li> 
+    <li><a>Documents</a></li> 
+    <li>Add Document</li>
+  </ul>
+</div>
+  <div class="overflow-x-auto">
+  <table class="table table-xs table-zebra">
             <thead>
             <tr>
                 <th scope="col">Name</th>
@@ -19,7 +26,7 @@
                     <td>{{ relation.shortName }}</td>
                     <td>{{ relation.email }}</td>
                     <td>{{ relation.currency.code }}</td>
-                    <td><a class="btn btn-primary" href="{{ path('relation_edit', {id: relation.id}) }}">view </a></td>
+                    <td><a class="btn btn-sm btn-primary" href="{{ path('relation_edit', {id: relation.id}) }}">view </a></td>
                 </tr>
             {% endfor %}
             </tbody>

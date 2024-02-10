@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace App\Relation\Domain\Entity;
 
+use App\Entity\Contract;
 use App\Entity\Currency;
 use App\Relation\DTO\RelationDTO;
 use App\Relation\Service\RelationRepository;
@@ -50,10 +51,14 @@ class Relation
     #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationAddress::class)]
     private Collection $addresses;
 
+    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: Contract::class, orphanRemoval: true)]
+    private Collection $contracts;
+
     public function __construct()
     {
         $this->contacts = new ArrayCollection();
         $this->addresses = new ArrayCollection();
+        $this->contracts = new ArrayCollection();
     }
 
     public function getId(): int
@@ -225,5 +230,35 @@ class Relation
         $relation->shortName= $relationDTO->relationShortName;
         $relation->email= $relationDTO->email;
         return $relation;
+    }
+
+    /**
+     * @return Collection<int, Contract>
+     */
+    public function getContracts(): Collection
+    {
+        return $this->contracts;
+    }
+
+    public function addContract(Contract $contract): static
+    {
+        if (!$this->contracts->contains($contract)) {
+            $this->contracts->add($contract);
+            $contract->setRelation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContract(Contract $contract): static
+    {
+        if ($this->contracts->removeElement($contract)) {
+            // set the owning side to null (unless already changed)
+            if ($contract->getRelation() === $this) {
+                $contract->setRelation(null);
+            }
+        }
+
+        return $this;
     }
 }

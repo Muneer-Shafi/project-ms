@@ -43,8 +43,8 @@ return [
     '@app/translations/configuration' => [
         'path' => 'var/translations/configuration.js',
     ],
-    'bootstrap' => [
-        'version' => '5.3.2',
+    '@symfony/ux-live-component' => [
+        'path' => './vendor/symfony/ux-live-component/assets/dist/live_controller.js',
     ],
     '@popperjs/core' => [
         'version' => '2.11.8',
@@ -65,32 +65,32 @@ return [
         'version' => '18.2.0',
     ],
     'vue' => [
-        'version' => '3.4.15',
+        'version' => '3.4.18',
         'package_specifier' => 'vue/dist/vue.esm-bundler.js',
     ],
     'swup' => [
-        'version' => '3.1.1',
+        'version' => '4.6.0',
     ],
     'delegate-it' => [
         'version' => '6.0.1',
     ],
     '@swup/debug-plugin' => [
-        'version' => '3.0.0',
+        'version' => '4.0.4',
     ],
     '@swup/fade-theme' => [
-        'version' => '1.0.5',
+        'version' => '2.0.0',
     ],
     '@swup/forms-plugin' => [
-        'version' => '2.0.1',
+        'version' => '3.4.2',
     ],
     '@swup/slide-theme' => [
-        'version' => '1.0.5',
+        'version' => '2.0.0',
     ],
     '@swup/plugin' => [
-        'version' => '2.0.3',
+        'version' => '4.0.0',
     ],
     '@hotwired/turbo' => [
-        'version' => '7.3.0',
+        'version' => '8.0.2',
     ],
     'typed.js' => [
         'version' => '2.1.0',
@@ -156,7 +156,7 @@ return [
         'type' => 'css',
     ],
     'daisyui' => [
-        'version' => '4.6.0',
+        'version' => '4.6.2',
     ],
     'postcss-js' => [
         'version' => '4.0.1',
@@ -168,17 +168,17 @@ return [
         'version' => '0.8.0',
     ],
     'culori/require' => [
-        'version' => '3.3.0',
+        'version' => '4.0.1',
     ],
     'daisyui/dist/full.min.css' => [
-        'version' => '4.6.0',
+        'version' => '4.6.2',
         'type' => 'css',
     ],
     'camelcase-css' => [
         'version' => '2.0.1',
     ],
     'postcss' => [
-        'version' => '8.4.33',
+        'version' => '8.4.35',
     ],
     'fastparse' => [
         'version' => '1.1.2',
@@ -187,12 +187,34 @@ return [
         'version' => '3.0.0',
     ],
     'nanoid/non-secure' => [
-        'version' => '3.3.7',
+        'version' => '5.0.5',
     ],
     'svelte/internal' => [
-        'version' => '3.59.2',
+        'version' => '4.2.10',
     ],
-    '@symfony/ux-live-component' => [
-        'path' => './vendor/symfony/ux-live-component/assets/dist/live_controller.js',
+    '@vue/runtime-dom' => [
+        'version' => '3.4.18',
+    ],
+    '@vue/compiler-dom' => [
+        'version' => '3.4.18',
+    ],
+    '@vue/shared' => [
+        'version' => '3.4.18',
+    ],
+    '@vue/runtime-core' => [
+        'version' => '3.4.18',
+    ],
+    '@vue/compiler-core' => [
+        'version' => '3.4.18',
+    ],
+    '@vue/reactivity' => [
+        'version' => '3.4.18',
+    ],
+    'flowbite' => [
+        'version' => '2.2.1',
+    ],
+    'flowbite/dist/flowbite.min.css' => [
+        'version' => '2.2.1',
+        'type' => 'css',
     ],
 ];
