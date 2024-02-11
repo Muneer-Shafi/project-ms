@@ -217,4 +217,7 @@ return [
         'version' => '2.2.1',
         'type' => 'css',
     ],
+    'bootstrap' => [
+        'version' => '5.3.2',
+    ],
 ];

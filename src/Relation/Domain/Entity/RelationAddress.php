@@ -12,8 +12,9 @@ namespace App\Relation\Domain\Entity;
 
 use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
+
 #[ORM\Table(name: 'address')]
-#[ORM\Entity( repositoryClass: AddressRepository::class,)]
+#[ORM\Entity(repositoryClass: AddressRepository::class,)]
 class RelationAddress
 {
     #[ORM\Id]
@@ -135,15 +136,13 @@ class RelationAddress
         string $addressLine2,
         string $city,
         string $pinCode
-    ):self
-    {
+    ): self {
         $address = new self();
-        $address->name=$name;
-        $address->addressLine2=$addressLine2;
-        $address->addressLine1=$addressLine1;
-        $address->city=$city;
-        $address->pinCode=$pinCode;
+        $address->name = $name;
+        $address->addressLine2 = $addressLine2;
+        $address->addressLine1 = $addressLine1;
+        $address->city = $city;
+        $address->pinCode = $pinCode;
         return  $address;
-
     }
 }

@@ -1,23 +1,10 @@
 {% extends 'base.html.twig' %}
-{# {% form_theme form _self %} #}
-{# {%- block form_row -%} #}
-{#    {%- set widget_attr = {} -%} #}
-{#    {%- if help is not empty -%} #}
-{#        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%} #}
-{#    {%- endif -%} #}
-{#    <div class="form-group"> #}
-{#    {{- form_label(form) -}} #}
-{#    {{- form_errors(form) -}} #}
-{#    {{- form_widget(form, widget_attr) -}} #}
-{#    {{- form_help(form) -}} #}
-{#    </div> #}
-{# {%- endblock form_row -%} #}
-{# {% block form_label %} #}
-{#    <div style="background: red"> #}
-{#        <li>{{ label }}</li> #}
-{#    </div> #}
 
-{# {% endblock %} #}
+ {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
 {% block body_id 'user_edit' %}
 {% block body %}
     <twig:RelationForm  :form="form" :relation="relation"/>
