@@ -43,6 +43,9 @@ class RelationAddress
     #[ORM\ManyToOne(inversedBy: 'addresses')]
     private ?Relation $relation = null;
 
+    
+   
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,12 +108,12 @@ class RelationAddress
         return $this->country;
     }
 
-    // public function setCountry(string $country): self
-    // {
-    //     $this->country = $country;
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
 
-    //     return $this;
-    // }
+        return $this;
+    }
     public function setCity(string $city): self
     {
         $this->city = $city;

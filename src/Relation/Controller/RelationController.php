@@ -19,6 +19,7 @@ use App\Relation\DTO\RelationDTO;
 use App\Relation\Form\RelationType;
 use App\Relation\Message\NewRelationMessage;
 use App\Relation\Service\RelationRepository;
+use App\Subsidiary\Application\Repository\SubsidiaryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,21 +34,15 @@ class RelationController extends AbstractController
 {
     public function __construct(
         private readonly RelationRepository $relationRepository,
+        private readonly SubsidiaryRepository $subsidiaryRepository,
         private readonly MessageBusInterface $messageBus
     ) {
     }
-
-    #[Route('/home', name: 'relation_index', methods: ['GET'])]
-    public function home(): Response
+    #[Route('/list', name: 'relation_list', methods: ['GET'])]
+    public function list(): Response
     {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
 
-    #[Route('/', name: 'relation_index', methods: ['GET'])]
-    public function index(): Response
-    {
+        // dd($this->subsidiaryRepository->findAll());
         $relations = $this->relationRepository->findAll();
         return $this->render('relation/list.html.twig', [
             'relations' => $relations,
@@ -111,10 +106,6 @@ class RelationController extends AbstractController
         if (!$this->isCsrfTokenValid('delete', $token)) {
             return $this->redirectToRoute('admin_post_index');
         }
-
-        // Delete the tags associated with this blog post. This is done automatically
-        // by Doctrine, except for SQLite (the database used in this application)
-        // because foreign key support is not enabled by default in SQLite
         $relation->getAddresses()->clear();
 
         $entityManager->remove($relation);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c54c5fcf913a255e7c551466f58c8a9c",
+    "content-hash": "d01f19621766d7cd54cfefdc157b409d",
     "packages": [
         {
             "name": "babdev/pagerfanta-bundle",
@@ -9676,16 +9676,16 @@
         },
         {
             "name": "symfony/ux-autocomplete",
-            "version": "2.x-dev",
+            "version": "v2.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-autocomplete.git",
-                "reference": "0966e60072be7a5b5cb433675254c7e9e4c93517"
+                "reference": "8cbf828b5e1e5d08b3daf557a72d4ec874ae7d38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-autocomplete/zipball/0966e60072be7a5b5cb433675254c7e9e4c93517",
-                "reference": "0966e60072be7a5b5cb433675254c7e9e4c93517",
+                "url": "https://api.github.com/repos/symfony/ux-autocomplete/zipball/8cbf828b5e1e5d08b3daf557a72d4ec874ae7d38",
+                "reference": "8cbf828b5e1e5d08b3daf557a72d4ec874ae7d38",
                 "shasum": ""
             },
             "require": {
@@ -9719,7 +9719,6 @@
                 "zenstruck/browser": "^1.1",
                 "zenstruck/foundry": "^1.33"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "thanks": {
@@ -9748,7 +9747,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-autocomplete/tree/v2.14.0"
+                "source": "https://github.com/symfony/ux-autocomplete/tree/v2.14.2"
             },
             "funding": [
                 {
@@ -9764,7 +9763,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-30T15:40:36+00:00"
+            "time": "2024-02-03T21:01:32+00:00"
         },
         {
             "name": "symfony/ux-cropperjs",
@@ -15367,7 +15366,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "symfony/stimulus-bundle": 20,
-        "symfony/ux-autocomplete": 20,
         "symfony/ux-cropperjs": 20,
         "symfony/ux-dropzone": 20,
         "symfony/ux-lazy-image": 20,

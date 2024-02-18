@@ -14,6 +14,7 @@ use App\Entity\Contract;
 use App\Entity\Currency;
 use App\Relation\DTO\RelationDTO;
 use App\Relation\Service\RelationRepository;
+use App\Subsidiary\Domain\Entity\Subsidiary;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -51,14 +52,15 @@ class Relation
     #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationAddress::class)]
     private Collection $addresses;
 
-    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: Contract::class, orphanRemoval: true)]
-    private Collection $contracts;
+    #[ORM\ManyToOne()]
+    public ?Subsidiary $subsidiary = null;
+
+
 
     public function __construct()
     {
         $this->contacts = new ArrayCollection();
         $this->addresses = new ArrayCollection();
-        $this->contracts = new ArrayCollection();
     }
 
     public function getId(): int

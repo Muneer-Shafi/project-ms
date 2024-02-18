@@ -12,6 +12,7 @@ use App\Factory\CurrencyFactory;
 use App\Factory\ProductFactory;
 use App\Factory\ProductGroupFactory;
 use App\Factory\RelationFactory;
+use App\Factory\SubsidiaryFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -31,6 +32,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         UserFactory::createMany(50);
+        SubsidiaryFactory::createMany(50);
         CurrencyFactory::createMany(5);
 
         ProductGroupFactory::createMany(5);

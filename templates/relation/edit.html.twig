@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block body_id 'user_edit' %}
+{% block body %}
  {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }}
             </div>
         {% endfor %}
-{% block body_id 'user_edit' %}
-{% block body %}
     <twig:RelationForm  :form="form" :relation="relation"/>
  {% endblock %}
 {% block sidebar %}

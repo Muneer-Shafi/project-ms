@@ -11,6 +11,8 @@ declare(strict_types=1);
 namespace App\Relation\Form;
 
 use App\Relation\Domain\Entity\Relation;
+use App\Subsidiary\Domain\Entity\Subsidiary;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -30,6 +32,12 @@ class RelationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('subsidiary', EntityType::class, [
+                'class'=>Subsidiary::class,
+                'label' => 'Subsidiary',
+                'choice_label' => 'code',
+                'autocomplete' => true,
+            ])
             ->add('name', null, [
                 'attr' => ['autofocus' => true],
                 'label' => 'label.name',
