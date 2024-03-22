@@ -43,20 +43,20 @@ return [
     '@app/translations/configuration' => [
         'path' => 'var/translations/configuration.js',
     ],
-    '@symfony/ux-live-component' => [
-        'path' => './vendor/symfony/ux-live-component/assets/dist/live_controller.js',
+    'bootstrap' => [
+        'version' => '5.3.2',
     ],
     '@popperjs/core' => [
         'version' => '2.11.8',
     ],
     'stimulus-clipboard' => [
-        'version' => '4.0.1',
+        'version' => '3.3.0',
     ],
     '@hotwired/stimulus' => [
-        'version' => '3.2.2',
+        'version' => '3.2.1',
     ],
     'tom-select' => [
-        'version' => '2.3.1',
+        'version' => '2.2.2',
     ],
     'react' => [
         'version' => '18.2.0',
@@ -65,14 +65,14 @@ return [
         'version' => '18.2.0',
     ],
     'vue' => [
-        'version' => '3.4.18',
+        'version' => '3.3.0',
         'package_specifier' => 'vue/dist/vue.esm-bundler.js',
     ],
     'swup' => [
-        'version' => '3.1.1',
+        'version' => '3.0.6',
     ],
     'delegate-it' => [
-        'version' => '6.0.1',
+        'version' => '3.0.1',
     ],
     '@swup/debug-plugin' => [
         'version' => '3.0.0',
@@ -87,46 +87,76 @@ return [
         'version' => '1.0.5',
     ],
     '@swup/plugin' => [
-        'version' => '2.0.3',
+        'version' => '2.0.2',
     ],
     '@hotwired/turbo' => [
         'version' => '7.3.0',
     ],
     'typed.js' => [
-        'version' => '2.1.0',
+        'version' => '2.0.16',
     ],
     'snarkdown' => [
         'version' => '2.0.0',
     ],
+    'chart.js/auto' => [
+        'version' => '3.9.1',
+    ],
     'cropperjs' => [
-        'version' => '1.6.1',
+        'version' => '1.5.13',
+    ],
+    'svelte/transition' => [
+        'version' => '3.59.1',
+    ],
+    'svelte/animate' => [
+        'version' => '3.59.1',
+    ],
+    'svelte/internal' => [
+        'version' => '3.59.1',
     ],
     'highlight.js/lib/core' => [
-        'version' => '11.9.0',
+        'version' => '11.7.0',
     ],
     'highlight.js/lib/languages/javascript' => [
-        'version' => '11.9.0',
+        'version' => '11.7.0',
     ],
     'highlight.js/lib/languages/php' => [
-        'version' => '11.9.0',
+        'version' => '11.7.0',
     ],
     'highlight.js/lib/languages/twig' => [
-        'version' => '11.9.0',
+        'version' => '11.7.0',
     ],
     'highlight.js/lib/languages/xml' => [
-        'version' => '11.9.0',
+        'version' => '11.7.0',
     ],
     'intl-messageformat' => [
-        'version' => '10.5.11',
+        'version' => '10.3.5',
+    ],
+    '@vue/runtime-dom' => [
+        'version' => '3.3.4',
+    ],
+    '@vue/runtime-core' => [
+        'version' => '3.3.4',
+    ],
+    '@vue/shared' => [
+        'version' => '3.3.4',
+    ],
+    '@vue/reactivity' => [
+        'version' => '3.3.4',
+    ],
+    '@vue/compiler-dom' => [
+        'version' => '3.3.4',
+    ],
+    '@vue/compiler-core' => [
+        'version' => '3.3.4',
     ],
     'tslib' => [
         'version' => '2.6.2',
     ],
     '@formatjs/icu-messageformat-parser' => [
-        'version' => '2.7.6',
+        'version' => '2.6.2',
     ],
     '@formatjs/icu-skeleton-parser' => [
-        'version' => '1.8.0',
+        'version' => '1.6.2',
     ],
     '@formatjs/fast-memoize' => [
         'version' => '2.2.0',
@@ -142,82 +172,7 @@ return [
     'scheduler' => [
         'version' => '0.23.0',
     ],
-    'path-to-regexp' => [
-        'version' => '6.2.1',
-    ],
-    '@swup/theme' => [
-        'version' => '2.1.0',
-    ],
-    '@kurkle/color' => [
-        'version' => '0.3.2',
-    ],
-    'bootstrap/dist/css/bootstrap.min.css' => [
-        'version' => '5.3.2',
-        'type' => 'css',
-    ],
-    'daisyui' => [
-        'version' => '4.6.2',
-    ],
-    'postcss-js' => [
-        'version' => '4.0.1',
-    ],
-    'picocolors' => [
-        'version' => '1.0.0',
-    ],
-    'css-selector-tokenizer' => [
-        'version' => '0.8.0',
-    ],
-    'culori/require' => [
-        'version' => '4.0.1',
-    ],
-    'daisyui/dist/full.min.css' => [
-        'version' => '4.6.2',
-        'type' => 'css',
-    ],
-    'camelcase-css' => [
-        'version' => '2.0.1',
-    ],
-    'postcss' => [
-        'version' => '8.4.35',
-    ],
-    'fastparse' => [
-        'version' => '1.1.2',
-    ],
-    'cssesc' => [
-        'version' => '3.0.0',
-    ],
-    'nanoid/non-secure' => [
-        'version' => '5.0.5',
-    ],
-    'svelte/internal' => [
-        'version' => '3.59.2',
-    ],
-    '@vue/runtime-dom' => [
-        'version' => '3.4.18',
-    ],
-    '@vue/compiler-dom' => [
-        'version' => '3.4.18',
-    ],
-    '@vue/shared' => [
-        'version' => '3.4.18',
-    ],
-    '@vue/runtime-core' => [
-        'version' => '3.4.18',
-    ],
-    '@vue/compiler-core' => [
-        'version' => '3.4.18',
-    ],
-    '@vue/reactivity' => [
-        'version' => '3.4.18',
-    ],
-    'flowbite' => [
-        'version' => '2.2.1',
-    ],
-    'flowbite/dist/flowbite.min.css' => [
-        'version' => '2.2.1',
-        'type' => 'css',
-    ],
-    'bootstrap' => [
-        'version' => '5.3.2',
+    '@symfony/ux-live-component' => [
+        'path' => './vendor/symfony/ux-live-component/assets/dist/live_controller.js',
     ],
 ];

@@ -54,10 +54,10 @@ final class SubsidiaryFactory extends ModelFactory
     {
         return [
             'active' => self::faker()->boolean(),
-            'address' => self::faker()->text(255),
-            'code' => self::faker()->text(100),
-            'country' => self::faker()->text(50),
-            'name' => self::faker()->text(255),
+            'address' => self::faker()->address(),
+            'code' => self::faker()->companySuffix(),
+            'country' => self::faker()->country(),
+            'name' => self::faker()->company(),
         ];
     }
 
