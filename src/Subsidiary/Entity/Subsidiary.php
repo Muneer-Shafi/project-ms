@@ -8,9 +8,9 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Subsidiary\Domain\Entity;
+namespace App\Subsidiary\Entity;
 
-use App\Subsidiary\Application\Repository\SubsidiaryRepository;
+use App\Subsidiary\Repository\SubsidiaryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SubsidiaryRepository::class)]

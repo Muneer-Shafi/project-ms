@@ -1,10 +1,10 @@
 <?php
 
 declare(strict_types=1);
-namespace App\Subsidiary\Infrastructure\GraphQL\Resolvers\Query;
+namespace App\Subsidiary\GraphQL\Resolvers\Query;
 
-use App\Subsidiary\Application\Repository\SubsidiaryRepository;
-use App\Subsidiary\Domain\Entity\Subsidiary;
+use App\Subsidiary\Repository\SubsidiaryRepository;
+use App\Subsidiary\Entity\Subsidiary;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use TheCodingMachine\GraphQLite\Annotations\Query;
 use TheCodingMachine\GraphQLite\Types\ID;

@@ -18,7 +18,7 @@ use TheCodingMachine\GraphQLite\Annotations\Type;
 final class PageInfo
 {
     public function __construct(
-        readonly private PostConnection $postConnection
+         private PostConnection $postConnection
     ) {
     }
 
@@ -36,7 +36,7 @@ final class PageInfo
     #[Field]
     public function endCursor(): ?string
     {
-        $cursor = $this->postConnection->postRepository->endCursor($this->postConnection->first, $this->postConnection->after)?->value;
+        $cursor = $this->postConnection->postRepository->endCursor((int)$this->postConnection->first, $this->postConnection->after)?->value;
 
         return null === $cursor ? null : (string) $cursor;
     }
@@ -44,7 +44,7 @@ final class PageInfo
     #[Field]
     public function hasNextPage(): bool
     {
-        return $this->postConnection->postRepository->hasNextPage($this->postConnection->first, $this->postConnection->after);
+        return $this->postConnection->postRepository->hasNextPage((int)$this->postConnection->first, $this->postConnection->after);
     }
 
     #[Field]

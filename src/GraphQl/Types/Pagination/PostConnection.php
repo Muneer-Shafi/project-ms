@@ -21,9 +21,9 @@ final class PostConnection
      * @param positive-int $first
      */
     public function __construct(
-        readonly public ?Cursor $after,
-        readonly public int $first,
-        readonly public DoctrinePostRepository $postRepository
+        public  ?Cursor $after,
+        public  ?int $first,
+        public  DoctrinePostRepository $postRepository
     ) {
     }
 
@@ -35,7 +35,7 @@ final class PostConnection
     #[Field]
     public function edges(): array
     {
-        return $this->postRepository->getEdges($this->first, $this->after);
+        return $this->postRepository->getEdges((int)$this->first, $this->after);
     }
 
     #[Field]

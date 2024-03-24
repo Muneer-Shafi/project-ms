@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Subsidiary\Infrastructure\GraphQL\Types\Output;
+namespace App\Subsidiary\GraphQL\Types\Output;
 
-use \App\Subsidiary\Domain\Entity\Subsidiary as SubsidiaryEntity;
+use \App\Subsidiary\Entity\Subsidiary as SubsidiaryEntity;
 use TheCodingMachine\GraphQLite\Annotations\Field;
 use TheCodingMachine\GraphQLite\Annotations\Type;
 

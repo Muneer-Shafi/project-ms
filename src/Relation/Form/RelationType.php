@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace App\Relation\Form;
 
 use App\Relation\Domain\Entity\Relation;
-use App\Subsidiary\Domain\Entity\Subsidiary;
-use App\Subsidiary\Domain\Field\SubsidiaryAutocompleteField;
+use App\Subsidiary\Entity\Subsidiary;
+use App\Subsidiary\Field\SubsidiaryAutocompleteField;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;

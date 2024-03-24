@@ -19,7 +19,7 @@ use App\Relation\DTO\RelationDTO;
 use App\Relation\Form\RelationType;
 use App\Relation\Message\NewRelationMessage;
 use App\Relation\Service\RelationRepository;
-use App\Subsidiary\Application\Repository\SubsidiaryRepository;
+use App\Subsidiary\Repository\SubsidiaryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

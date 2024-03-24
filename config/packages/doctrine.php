@@ -55,8 +55,8 @@ return static function (ContainerConfigurator $containerConfigurator, DoctrineCo
         ->mapping('Subsidiary')
         ->isBundle(false)
         ->type('attribute')
-        ->dir('%kernel.project_dir%/src/Subsidiary/Domain/Entity')
-        ->prefix('App\Subsidiary\Domain\Entity')
+        ->dir('%kernel.project_dir%/src/Subsidiary/Entity')
+        ->prefix('App\Subsidiary\Entity')
     ;
 
 

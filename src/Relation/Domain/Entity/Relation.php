@@ -14,7 +14,7 @@ use App\Entity\Contract;
 use App\Entity\Currency;
 use App\Relation\DTO\RelationDTO;
 use App\Relation\Service\RelationRepository;
-use App\Subsidiary\Domain\Entity\Subsidiary;
+use App\Subsidiary\Entity\Subsidiary;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

@@ -8,9 +8,9 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Subsidiary\Application\Repository;
+namespace App\Subsidiary\Repository;
 
-use App\Subsidiary\Domain\Entity\Subsidiary;
+use App\Subsidiary\Entity\Subsidiary;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

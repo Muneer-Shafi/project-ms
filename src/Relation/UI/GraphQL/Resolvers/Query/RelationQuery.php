@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace App\Relation\UI\GraphQL\Resolvers\Query;
 
-use _PHPStan_d55c4f2c2\React\Dns\RecordNotFoundException;
 use App\Relation\Domain\Entity\Relation;
 use App\Relation\Service\RelationRepository;
 use TheCodingMachine\GraphQLite\Annotations\Query;
@@ -33,14 +32,14 @@ class RelationQuery
     }
 
     /**
-     * @throws RecordNotFoundException
+     * @throws NotFoundException
      */
     #[Query]
     public function relation(ID $relationId): Relation
     {
         $relation = $this->relationRepository->find((string) $relationId);
         if (null === $relation) {
-            throw new RecordNotFoundException(sprintf('Relation of Id: %s not found', $relationId->val()));
+            throw new NotFoundException(sprintf('Relation of Id: %s not found', $relationId->val()));
         }
 
         return $relation;

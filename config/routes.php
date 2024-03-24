@@ -39,7 +39,7 @@ return function (RoutingConfigurator $routes) {
         ->defaults([
             '_locale' => '%locale%'
         ]);
-    $routes->import('../src/Subsidiary/Infrastructure/Controller', 'annotation')
+    $routes->import('../src/Subsidiary/Controller', 'annotation')
         ->prefix('/{_locale}')
         ->requirements(['_locale' => '%app_locales%'])
         ->defaults([

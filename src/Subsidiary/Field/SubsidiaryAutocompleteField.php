@@ -8,9 +8,9 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Subsidiary\Domain\Field;
+namespace App\Subsidiary\Field;
 
-use App\Subsidiary\Domain\Entity\Subsidiary;
+use App\Subsidiary\Entity\Subsidiary;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;

@@ -24,11 +24,11 @@ return static function (SecurityConfig $security) {
         ->firewall('main')
         ->lazy(true)
         ->provider('app_users')
-//        ->entryPoint(AuthenticationEntryPoint::class)
-//        ->customAuthenticators([\App\Authentication\Security\UserAuthenticator::class])
+        //        ->entryPoint(AuthenticationEntryPoint::class)
+        //        ->customAuthenticators([\App\Authentication\Security\UserAuthenticator::class])
         ->lazy(true);
     $mainFirewall->entryPoint('form_login');
-//    $mainFirewall->pattern('/api')->stateless(true)->jwt([]);
+    //    $mainFirewall->pattern('/api')->stateless(true)->jwt([]);
 
     $mainFirewall->jsonLogin()
         ->checkPath('api_login')

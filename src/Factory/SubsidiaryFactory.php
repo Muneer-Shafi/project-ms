@@ -8,8 +8,8 @@
 
 namespace App\Factory;
 
-use App\Subsidiary\Application\Repository\SubsidiaryRepository;
-use App\Subsidiary\Domain\Entity\Subsidiary;
+use App\Subsidiary\Repository\SubsidiaryRepository;
+use App\Subsidiary\Entity\Subsidiary;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;

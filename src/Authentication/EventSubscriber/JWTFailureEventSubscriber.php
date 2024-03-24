@@ -32,6 +32,5 @@ class JWTFailureEventSubscriber implements EventSubscriberInterface
     {
         $request = $this->requestStack->getCurrentRequest();
         $payload = $event->getResponse();
-        $payload['ip'] = $request->getClientIp();
     }
 }
