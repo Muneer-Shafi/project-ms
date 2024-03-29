@@ -58,6 +58,10 @@ final class SubsidiaryFactory extends ModelFactory
             'code' => self::faker()->companySuffix(),
             'country' => self::faker()->country(),
             'name' => self::faker()->company(),
+            'city' => self::faker()->city(),
+            'website' => self::faker()->domainName(),
+            'zipCode' => self::faker()->postcode(),
+            'abbreviationName' => self::faker()->companySuffix(),
         ];
     }
 

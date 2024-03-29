@@ -74,21 +74,4 @@ class Currency
 
         return $this;
     }
-
-    public function getRelation(): ?Relation
-    {
-        return $this->relation;
-    }
-
-    public function setRelation(Relation $relation): self
-    {
-        // set the owning side of the relation if necessary
-        if ($relation->getCurrency() !== $this) {
-            $relation->setCurrency($this);
-        }
-
-        $this->relation = $relation;
-
-        return $this;
-    }
 }

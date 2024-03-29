@@ -72,6 +72,7 @@ final class RelationFactory extends ModelFactory
     {
         return [
             'currency' => CurrencyFactory::new(),
+            'subsidiary' => SubsidiaryFactory::new(),
             'name' => self::faker()->company(),
             'shortName' => self::faker()->companySuffix(),
             'email' => self::faker()->email(),

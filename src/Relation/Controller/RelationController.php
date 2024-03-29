@@ -42,11 +42,17 @@ class RelationController extends AbstractController
     public function list(): Response
     {
 
-        // dd($this->subsidiaryRepository->findAll());
-        $relations = $this->relationRepository->findAll();
         return $this->render('relation/list.html.twig', [
             'relations' => $relations,
         ]);
+    }
+
+    #[Route('/api', name: 'relation_api', methods: ['GET'])]
+    public function api(): Response
+    {
+
+        $relations = $this->relationRepository->findAll();
+        return $this->json(data: $relations, status: 200);
     }
 
     #[Route('/new', name: 'relation_new', methods: ['GET', 'POST'])]
@@ -68,7 +74,7 @@ class RelationController extends AbstractController
 
         return $this->render('relation/edit.html.twig', [
             'user' => $user,
-            'relation'=>$relation,
+            'relation' => $relation,
             'form' => $form,
         ]);
     }
@@ -91,6 +97,13 @@ class RelationController extends AbstractController
             'relation' => $relation,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/api/{id<\d+>}/edit', name: 'relation_edit', methods: ['GET'])]
+    // #[IsGranted('edit', subject: 'relation', message: 'Posts can only be edited by their authors.')]
+    public function editApi(Request $request, Relation $relation, EntityManagerInterface $entityManager): Response
+    {
+        return $this->json($relation);
     }
 
     /**

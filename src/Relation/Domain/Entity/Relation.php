@@ -18,6 +18,8 @@ use App\Subsidiary\Entity\Subsidiary;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 #[ORM\Entity(repositoryClass: RelationRepository::class)]
 class Relation
@@ -40,16 +42,22 @@ class Relation
     private ?string $email = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+
     private ?string $remarks = null;
 
-    #[ORM\OneToOne(inversedBy: 'relation', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne()]
     #[ORM\JoinColumn(nullable: false)]
+  
     private ?Currency $currency = null;
 
-    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationContact::class,cascade: ['persist', 'remove'], orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationContact::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    #[Ignore]
+    #[Groups(['food_category_trucks'])]
     private Collection $contacts;
 
     #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationAddress::class)]
+    #[Ignore]
+    #[Groups(['food_category_trucks'])]
     private Collection $addresses;
 
     #[ORM\ManyToOne()]
@@ -139,7 +147,9 @@ class Relation
 
         return $this;
     }
-
+    /**
+     * @return Collection<int, RelationContact>
+     */
     public function getContacts(): Collection
     {
         return $this->contacts;
@@ -196,7 +206,7 @@ class Relation
     }
 
     /**
-     * @return Collection<int, Address>
+     * @return Collection<int, RelationAddress>
      */
     public function getAddresses(): Collection
     {
@@ -225,42 +235,12 @@ class Relation
         return $this;
     }
 
-    public static function  create(RelationDTO $relationDTO):self
+    public static function  create(RelationDTO $relationDTO): self
     {
         $relation = new self();
-        $relation->name= $relationDTO->relationName;
-        $relation->shortName= $relationDTO->relationShortName;
-        $relation->email= $relationDTO->email;
+        $relation->name = $relationDTO->relationName;
+        $relation->shortName = $relationDTO->relationShortName;
+        $relation->email = $relationDTO->email;
         return $relation;
-    }
-
-    /**
-     * @return Collection<int, Contract>
-     */
-    public function getContracts(): Collection
-    {
-        return $this->contracts;
-    }
-
-    public function addContract(Contract $contract): static
-    {
-        if (!$this->contracts->contains($contract)) {
-            $this->contracts->add($contract);
-            $contract->setRelation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeContract(Contract $contract): static
-    {
-        if ($this->contracts->removeElement($contract)) {
-            // set the owning side to null (unless already changed)
-            if ($contract->getRelation() === $this) {
-                $contract->setRelation(null);
-            }
-        }
-
-        return $this;
     }
 }
