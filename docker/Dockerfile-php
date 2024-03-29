@@ -51,3 +51,4 @@ RUN mkdir -p /var/www/.composer
 RUN chown -R www-data:www-data /var/www/.composer
 #RUN composer self-update
 WORKDIR /var/www/project/
+RUN composer install
