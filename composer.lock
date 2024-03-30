@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1482ca864378865db3bcf0412c8650b",
+    "content-hash": "bb4ef6d526b6537b75df1e552aa0348f",
     "packages": [
         {
             "name": "babdev/pagerfanta-bundle",
@@ -88,65 +88,6 @@
                 }
             ],
             "time": "2023-06-01T01:04:54+00:00"
-        },
-        {
-            "name": "beberlei/porpaginas",
-            "version": "v2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/beberlei/porpaginas.git",
-                "reference": "5288d6d106aac62236fd62c6e74aa67be9227cfe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/beberlei/porpaginas/zipball/5288d6d106aac62236fd62c6e74aa67be9227cfe",
-                "reference": "5288d6d106aac62236fd62c6e74aa67be9227cfe",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8"
-            },
-            "require-dev": {
-                "doctrine/orm": ">=2.2",
-                "knplabs/knp-components": "@stable",
-                "pagerfanta/pagerfanta": "@stable",
-                "phake/phake": "@stable",
-                "phpunit/phpunit": "^7|^8|^9",
-                "symfony/cache": "@stable",
-                "symfony/event-dispatcher": "@stable",
-                "twig/twig": "@stable"
-            },
-            "suggest": {
-                "pagerfanta/pagerfanta": "For rendering pagination with Pagerfanta"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Porpaginas\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                }
-            ],
-            "description": "Library that generically solves several pagination issues with DAO/repository abstractions.",
-            "keywords": [
-                "page",
-                "pagination",
-                "paginator",
-                "paging"
-            ],
-            "support": {
-                "issues": "https://github.com/beberlei/porpaginas/issues",
-                "source": "https://github.com/beberlei/porpaginas/tree/v2.1"
-            },
-            "time": "2023-02-17T15:26:17+00:00"
         },
         {
             "name": "composer/semver",

@@ -22,7 +22,6 @@ use TheCodingMachine\GraphQLite\Containers\NotFoundException;
 final class PostQuery
 {
     public function __construct(
-        private readonly PostRepository $postRepository,
         private readonly DoctrinePostRepository $doctrinePostRepository
     ) {
     }
