@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Entity\MessageHandler;
+namespace App\Abc\Entity;
 
-class EntityMessageHandler
+class Abc
 {
     // Your class definition goes here
 }

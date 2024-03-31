@@ -52,16 +52,16 @@ class CreateFolderCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $arg1 = $input->getArgument('arg1');
         $subFolders = [
-            self::CONTROLLER, 
-            self::ENTITY, 
-            self::DTO, 
-            self::SERVICE, 
-            self::REPOSITORY, 
-            self::MESSAGE, 
-            self::MESSAGEHANDLER, 
-            self::FORM, 
+            self::CONTROLLER,
+            self::ENTITY,
+            self::DTO,
+            self::SERVICE,
+            self::REPOSITORY,
+            self::MESSAGE,
+            self::MESSAGEHANDLER,
+            self::FORM,
             self::EVENTSUBSCRIBER
-        
+
         ];
 
         if ($arg1) {
@@ -94,10 +94,12 @@ class CreateFolderCommand extends Command
                 $fileName = $folderName . $subFolder . '.php';
                 $classFilePath = $subFolderPath . '/' . $fileName;
                 $className = $folderName . $subFolder;
-                if($subFolder ===self::ENTITY){
-                    $fileName = $folderName.'.php';
+
+                if ($subFolder === self::ENTITY) {
+                    $fileName = $folderName . '.php';
+                    $classFilePath = $subFolderPath . '/' . $fileName;
                 }
-                $classContent =$this->getClassContent($folderName,$subFolder,$className);
+                $classContent = $this->getClassContent($folderName, $subFolder, $className);
                 if (!file_put_contents($classFilePath, $classContent)) {
                     $output->writeln('Failed to create class file: ' . $fileName);
                     return Command::FAILURE;
@@ -114,18 +116,18 @@ class CreateFolderCommand extends Command
     {
 
         $val = match ($subFolder) {
-            Self::CONTROLLER => $this->controllerContent($folderName,$subFolder, $className),
-            Self::ENTITY => $this->entityFileContent($folderName,$subFolder, $className),
-            Self::FORM => $this->normalFileContent($folderName,$subFolder, $className),
-            Self::SERVICE => $this->normalFileContent($folderName,$subFolder, $className),
-            Self::REPOSITORY => $this->normalFileContent($folderName,$subFolder, $className),
-            Self::MESSAGE => $this->normalFileContent($folderName,$subFolder, $className),
-            Self::MESSAGEHANDLER => $this->normalFileContent($folderName,$subFolder, $className),
-            Self::EVENTSUBSCRIBER => $this->normalFileContent($folderName,$subFolder, $className),
-            Self::DTO => $this->normalFileContent($folderName,$subFolder, $className),
-            default => $this->normalFileContent($folderName,$subFolder, $className),
+            Self::CONTROLLER => $this->controllerContent($folderName, $subFolder, $className),
+            Self::ENTITY => $this->entityFileContent($folderName, $subFolder, $className),
+            Self::FORM => $this->normalFileContent($folderName, $subFolder, $className),
+            Self::SERVICE => $this->normalFileContent($folderName, $subFolder, $className),
+            Self::REPOSITORY => $this->normalFileContent($folderName, $subFolder, $className),
+            Self::MESSAGE => $this->normalFileContent($folderName, $subFolder, $className),
+            Self::MESSAGEHANDLER => $this->normalFileContent($folderName, $subFolder, $className),
+            Self::EVENTSUBSCRIBER => $this->normalFileContent($folderName, $subFolder, $className),
+            Self::DTO => $this->normalFileContent($folderName, $subFolder, $className),
+            default => $this->normalFileContent($folderName, $subFolder, $className),
         };
-    
+
 
         return $val;
     }
@@ -179,6 +181,8 @@ class CreateFolderCommand extends Command
     }
     private function entityFileContent(string $folderName, string $subFolder, string $className): string
     {
+
+        $repositoryClass= $folderName."Repository";
         return
             <<<EOD
                 <?php
@@ -187,9 +191,18 @@ class CreateFolderCommand extends Command
 
                 namespace App\\$folderName\\$subFolder;
 
+                use App\Common\Trait\TimestampableEntity;
+                use App\\$folderName\\Repository\\$repositoryClass;
+                use Doctrine\ORM\Mapping as ORM;
+
+
+                #[ORM\Entity(repositoryClass: $repositoryClass::class)]
                 class $folderName
                 {
-                    // Your class definition goes here
+                    public function __construct()
+                    {
+                    }
+                                        
                 }
                 EOD;
     }
