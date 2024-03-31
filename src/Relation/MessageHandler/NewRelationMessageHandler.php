@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\Relation\MessageHandler;
 
-use App\Relation\Domain\Entity\Relation;
+use App\Relation\Entity\Relation;
 use App\Relation\Message\NewRelationMessage;
 use App\Relation\Service\RelationRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;

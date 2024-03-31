@@ -24,7 +24,7 @@ final class RelationContact extends AbstractController
     use LiveCollectionTrait;
 
     #[LiveProp(fieldName: 'formData')]
-    public ?\App\Relation\Domain\Entity\RelationContact $contacts;
+    public ?\App\Relation\Entity\RelationContact $contacts;
 
     protected function instantiateForm(): FormInterface
     {

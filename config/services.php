@@ -26,8 +26,6 @@ return function (ContainerConfigurator $container) {
     $services->load('App\\', '../src/')
         ->exclude('../src/{DependencyInjection,Entity,Kernel.php}');
 
-//    $services->load('Relation\\', '../src/Relation/')
-//        ->exclude(['../src/Relation/Domain']);
 
 
     $services->set(CommentNotificationSubscriber::class)->args(

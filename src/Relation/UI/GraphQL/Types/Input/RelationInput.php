@@ -4,12 +4,9 @@ declare(strict_types=1);
 namespace App\Relation\UI\GraphQL\Types\Input;
 
 use App\Entity\Currency;
-use App\Factory\AddressFactory;
-use App\Factory\ContactFactory;
-use App\Factory\RelationFactory;
-use App\Relation\Domain\Entity\Relation;
-use App\Relation\Domain\Entity\RelationAddress;
-use App\Relation\Domain\Entity\RelationContact;
+use App\Relation\Entity\Relation;
+use App\Relation\Entity\RelationAddress;
+use App\Relation\Entity\RelationContact;
 use App\Relation\DTO\RelationDTO;
 use TheCodingMachine\GraphQLite\Annotations\Factory;
 use TheCodingMachine\GraphQLite\Annotations\UseInputType;

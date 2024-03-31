@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Relation\Form;
 
-use App\Relation\Domain\Entity\RelationAddress;
-use App\Relation\Domain\Entity\RelationContact;
+use App\Relation\Entity\RelationAddress;
+use App\Relation\Entity\RelationContact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;

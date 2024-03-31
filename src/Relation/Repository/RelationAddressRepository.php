@@ -6,28 +6,28 @@
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Repository;
+namespace App\Relation\Repository;
 
-use App\Entity\Address;
+use App\Relation\Entity\RelationAddress;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Address>
+ * @extends ServiceEntityRepository<RelationAddress>
  *
- * @method Address|null find($id, $lockMode = null, $lockVersion = null)
- * @method Address|null findOneBy(array $criteria, array $orderBy = null)
- * @method Address[]    findAll()
- * @method Address[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method RelationAddress|null find($id, $lockMode = null, $lockVersion = null)
+ * @method RelationAddress|null findOneBy(array $criteria, array $orderBy = null)
+ * @method RelationAddress[]    findAll()
+ * @method RelationAddress[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AddressRepository extends ServiceEntityRepository
+class RelationAddressRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Address::class);
+        parent::__construct($registry, RelationAddress::class);
     }
 
-    public function save(Address $entity, bool $flush = false): void
+    public function save(RelationAddress $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -36,7 +36,7 @@ class AddressRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Address $entity, bool $flush = false): void
+    public function remove(RelationAddress $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -46,7 +46,7 @@ class AddressRepository extends ServiceEntityRepository
     }
 
     //    /**
-    //     * @return Address[] Returns an array of Address objects
+    //     * @return RelationAddress[] Returns an array of RelationAddress objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -60,7 +60,7 @@ class AddressRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Address
+    //    public function findOneBySomeField($value): ?RelationAddress
     //    {
     //        return $this->createQueryBuilder('a')
     //            ->andWhere('a.exampleField = :val')

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
-use App\Relation\Domain\Entity\Relation;
+use App\Relation\Entity\Relation;
 use App\Relation\Service\RelationRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;

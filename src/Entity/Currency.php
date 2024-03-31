@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Relation\Domain\Entity\Relation;
+use App\Relation\Entity\Relation;
 use App\Repository\CurrencyRepository;
 use Doctrine\ORM\Mapping as ORM;
 

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\Relation\Message;
 
-use App\Relation\Domain\Entity\Relation;
+use App\Relation\Entity\Relation;
 use App\Relation\DTO\RelationDTO;
 
 class NewRelationMessage

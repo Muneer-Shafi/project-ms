@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Relation\UI\GraphQL\Resolvers\Mutation;
 
-use App\Relation\Domain\Entity\Relation;
+use App\Relation\Entity\Relation;
 use App\Relation\DTO\RelationDTO;
 use App\Relation\Message\DeleteRelationMessage;
 use App\Relation\Message\NewRelationMessage;

@@ -6,28 +6,28 @@
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Repository;
+namespace App\Relation\Repository;
 
-use App\Entity\Contact;
+use App\Relation\Entity\RelationContact;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Contact>
+ * @extends ServiceEntityRepository<RelationContact>
  *
- * @method Contact|null find($id, $lockMode = null, $lockVersion = null)
- * @method Contact|null findOneBy(array $criteria, array $orderBy = null)
- * @method Contact[]    findAll()
- * @method Contact[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method RelationContact|null find($id, $lockMode = null, $lockVersion = null)
+ * @method RelationContact|null findOneBy(array $criteria, array $orderBy = null)
+ * @method RelationContact[]    findAll()
+ * @method RelationContact[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ContactRepository extends ServiceEntityRepository
+class RelationContactRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Contact::class);
+        parent::__construct($registry, RelationContact::class);
     }
 
-    public function save(Contact $entity, bool $flush = false): void
+    public function save(RelationContact $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -36,7 +36,7 @@ class ContactRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Contact $entity, bool $flush = false): void
+    public function remove(RelationContact $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -46,7 +46,7 @@ class ContactRepository extends ServiceEntityRepository
     }
 
     //    /**
-    //     * @return Contact[] Returns an array of Contact objects
+    //     * @return RelationContact[] Returns an array of RelationContact objects
     //     */
     //    public function findByExampleField($value): array
     //    {

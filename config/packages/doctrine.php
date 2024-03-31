@@ -33,8 +33,8 @@ return static function (ContainerConfigurator $containerConfigurator, DoctrineCo
 //        ->mapping('User')
 //        ->isBundle(false)
 //        ->type('attribute')
-//        ->dir('%kernel.project_dir%/src/User/Domain/Entity')
-//        ->prefix('App\User\Domain\Entity');
+//        ->dir('%kernel.project_dir%/src/User/Entity')
+//        ->prefix('App\User\Entity');
 //
     $defaultEntityManagerConfig
         ->mapping('App')
@@ -48,8 +48,8 @@ return static function (ContainerConfigurator $containerConfigurator, DoctrineCo
         ->mapping('Relation')
         ->isBundle(false)
         ->type('attribute')
-        ->dir('%kernel.project_dir%/src/Relation/Domain/Entity')
-        ->prefix('App\Relation\Domain\Entity')
+        ->dir('%kernel.project_dir%/src/Relation/Entity')
+        ->prefix('App\Relation\Entity')
     ;
     $defaultEntityManagerConfig
         ->mapping('Subsidiary')

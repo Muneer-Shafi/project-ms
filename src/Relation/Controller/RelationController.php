@@ -12,9 +12,9 @@ namespace App\Relation\Controller;
 
 use App\Entity\Currency;
 use App\Entity\User;
-use App\Relation\Domain\Entity\Relation;
-use App\Relation\Domain\Entity\RelationAddress;
-use App\Relation\Domain\Entity\RelationContact;
+use App\Relation\Entity\Relation;
+use App\Relation\Entity\RelationAddress;
+use App\Relation\Entity\RelationContact;
 use App\Relation\DTO\RelationDTO;
 use App\Relation\Form\RelationType;
 use App\Relation\Message\NewRelationMessage;

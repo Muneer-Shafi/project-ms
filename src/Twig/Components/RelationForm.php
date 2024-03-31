@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace App\Twig\Components;
 
-use App\Relation\Domain\Entity\Relation;
+use App\Relation\Entity\Relation;
 use App\Relation\Form\ContactType;
 use App\Relation\Form\RelationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

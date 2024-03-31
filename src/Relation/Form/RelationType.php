@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\Relation\Form;
 
-use App\Relation\Domain\Entity\Relation;
+use App\Relation\Entity\Relation;
 use App\Subsidiary\Entity\Subsidiary;
 use App\Subsidiary\Field\SubsidiaryAutocompleteField;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

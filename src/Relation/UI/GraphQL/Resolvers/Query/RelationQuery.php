@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\Relation\UI\GraphQL\Resolvers\Query;
 
-use App\Relation\Domain\Entity\Relation;
+use App\Relation\Entity\Relation;
 use App\Relation\Service\RelationRepository;
 use TheCodingMachine\GraphQLite\Annotations\Query;
 use TheCodingMachine\GraphQLite\Types\ID;

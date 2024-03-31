@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\Relation\Service;
 
-use App\Relation\Domain\Entity\Relation;
+use App\Relation\Entity\Relation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

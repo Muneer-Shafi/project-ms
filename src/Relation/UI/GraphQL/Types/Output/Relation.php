@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace App\Relation\UI\GraphQL\Types\Output;
 
-use App\Relation\Domain\Entity\Relation as RelationEntity;
-use App\Relation\Domain\Entity\RelationAddress;
-use App\Relation\Domain\Entity\RelationContact;
+use App\Relation\Entity\Relation as RelationEntity;
+use App\Relation\Entity\RelationAddress;
+use App\Relation\Entity\RelationContact;
 use TheCodingMachine\GraphQLite\Annotations\Field;
 use TheCodingMachine\GraphQLite\Annotations\Type;
 
