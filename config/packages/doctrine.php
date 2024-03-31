@@ -58,6 +58,13 @@ return static function (ContainerConfigurator $containerConfigurator, DoctrineCo
         ->dir('%kernel.project_dir%/src/Subsidiary/Entity')
         ->prefix('App\Subsidiary\Entity')
     ;
+    $defaultEntityManagerConfig
+        ->mapping('Product')
+        ->isBundle(false)
+        ->type('attribute')
+        ->dir('%kernel.project_dir%/src/Product/Entity')
+        ->prefix('App\Product\Entity')
+    ;
 
 
     if ($containerConfigurator->env() === 'test') {

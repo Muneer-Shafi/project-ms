@@ -6,28 +6,28 @@
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Repository;
+namespace App\Product\Repository;
 
-use App\Entity\ProductGroup;
+use App\Product\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<ProductGroup>
+ * @extends ServiceEntityRepository<Product>
  *
- * @method ProductGroup|null find($id, $lockMode = null, $lockVersion = null)
- * @method ProductGroup|null findOneBy(array $criteria, array $orderBy = null)
- * @method ProductGroup[]    findAll()
- * @method ProductGroup[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Product|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Product|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Product[]    findAll()
+ * @method Product[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ProductGroupRepository extends ServiceEntityRepository
+class ProductRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ProductGroup::class);
+        parent::__construct($registry, Product::class);
     }
 
-    public function save(ProductGroup $entity, bool $flush = false): void
+    public function save(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -36,7 +36,7 @@ class ProductGroupRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(ProductGroup $entity, bool $flush = false): void
+    public function remove(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -46,7 +46,7 @@ class ProductGroupRepository extends ServiceEntityRepository
     }
 
     //    /**
-    //     * @return ProductGroup[] Returns an array of ProductGroup objects
+    //     * @return Product[] Returns an array of Product objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -60,7 +60,7 @@ class ProductGroupRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?ProductGroup
+    //    public function findOneBySomeField($value): ?Product
     //    {
     //        return $this->createQueryBuilder('p')
     //            ->andWhere('p.exampleField = :val')

@@ -2,20 +2,13 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Muneer's learning project.
- *
- * (c) Muneer shafi <mcamuneershafi@gmail.com>.
- */
-
-namespace App\Entity;
+namespace App\Product\Entity;
 
 use App\Common\Trait\TimestampableEntity;
-use App\Product\Entity\ProductGroup;
-use App\Repository\ProductRepository;
+use App\Product\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-
+#[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
     use TimestampableEntity;

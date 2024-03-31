@@ -8,10 +8,10 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Entity;
+namespace App\Product\Entity;
 
 use App\Common\Trait\TimestampableEntity;
-use App\Repository\ProductGroupRepository;
+use App\Product\Repository\ProductGroupRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

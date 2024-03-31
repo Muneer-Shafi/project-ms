@@ -94,6 +94,9 @@ class CreateFolderCommand extends Command
                 $fileName = $folderName . $subFolder . '.php';
                 $classFilePath = $subFolderPath . '/' . $fileName;
                 $className = $folderName . $subFolder;
+                if($subFolder ===self::ENTITY){
+                    $fileName = $folderName.'.php';
+                }
                 $classContent =$this->getClassContent($folderName,$subFolder,$className);
                 if (!file_put_contents($classFilePath, $classContent)) {
                     $output->writeln('Failed to create class file: ' . $fileName);
@@ -112,7 +115,7 @@ class CreateFolderCommand extends Command
 
         $val = match ($subFolder) {
             Self::CONTROLLER => $this->controllerContent($folderName,$subFolder, $className),
-            Self::ENTITY => $this->normalFileContent($folderName,$subFolder, $className),
+            Self::ENTITY => $this->entityFileContent($folderName,$subFolder, $className),
             Self::FORM => $this->normalFileContent($folderName,$subFolder, $className),
             Self::SERVICE => $this->normalFileContent($folderName,$subFolder, $className),
             Self::REPOSITORY => $this->normalFileContent($folderName,$subFolder, $className),
@@ -169,6 +172,22 @@ class CreateFolderCommand extends Command
                 namespace App\\$folderName\\$subFolder;
 
                 class $className
+                {
+                    // Your class definition goes here
+                }
+                EOD;
+    }
+    private function entityFileContent(string $folderName, string $subFolder, string $className): string
+    {
+        return
+            <<<EOD
+                <?php
+
+                declare(strict_types=1);
+
+                namespace App\\$folderName\\$subFolder;
+
+                class $folderName
                 {
                     // Your class definition goes here
                 }
