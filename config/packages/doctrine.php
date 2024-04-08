@@ -56,7 +56,14 @@ return static function (ContainerConfigurator $containerConfigurator, DoctrineCo
         ->isBundle(false)
         ->type('attribute')
         ->dir('%kernel.project_dir%/src/Subsidiary/Entity')
-        ->prefix('App\Subsidiary\Entity')
+        ->prefix('App\Subsidiary\Entity');
+
+    $defaultEntityManagerConfig
+        ->mapping('Authentication')
+        ->isBundle(false)
+        ->type('attribute')
+        ->dir('%kernel.project_dir%/src/Authentication/Entity')
+        ->prefix('App\Authentication\Entity')
     ;
     $defaultEntityManagerConfig
         ->mapping('Product')

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Authentication\Security\AccessTokenHandler;
 use Symfony\Config\SecurityConfig;
 use App\Authentication\Security\AuthenticationEntryPoint;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -42,6 +43,12 @@ return static function (SecurityConfig $security) {
         ->checkPath('security_login')
         ->enableCsrf(true)
         ->defaultTargetPath('blog_index');
+
+    $mainFirewall->accessToken()
+        ->tokenHandler(AccessTokenHandler::class);
+
+
+        
 
 
     $mainFirewall->rememberMe()

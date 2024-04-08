@@ -8,7 +8,7 @@
 
 namespace App\Factory;
 
-use App\Entity\ProductGroup;
+use App\Product\Entity\ProductGroup;
 use App\Repository\ProductGroupRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;

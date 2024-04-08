@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ApiController extends AbstractController
 {
@@ -34,6 +35,7 @@ class ApiController extends AbstractController
     }
 
     #[Route('/api/user', name: 'api_user')]
+    #[IsGranted('IS_AUTHENTICATED')]
     public function userInfo(#[CurrentUser] ?User $user, Request $request): Response
     {
         return $this->json([
