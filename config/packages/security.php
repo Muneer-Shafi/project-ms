@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Authentication\Entity\User;
+use App\Authentication\Security\AccessTokenFailureHandler;
 use App\Authentication\Security\AccessTokenHandler;
 use Symfony\Config\SecurityConfig;
-use App\Authentication\Security\AuthenticationEntryPoint;
-use App\Authentication\Security\AuthenticationFailureHandler;
+
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 return static function (SecurityConfig $security) {
@@ -17,15 +18,15 @@ return static function (SecurityConfig $security) {
     $apiFirewall
         ->pattern('^/external_api')
         ->accessToken()
-        ->tokenHandler(AccessTokenHandler::class);
-        // ->failureHandler(AuthenticationFailureHandler::class);
+        ->tokenHandler(AccessTokenHandler::class)
+        ->failureHandler(AccessTokenFailureHandler::class);
 
 
     $apiFirewall->provider('app_users');
     $security
         ->provider('app_users')
         ->entity()
-        ->class(\App\Entity\User::class)
+        ->class(User::class)
         ->property('username');
 
     $security->accessDecisionManager()

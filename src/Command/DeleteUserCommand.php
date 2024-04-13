@@ -10,8 +10,9 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Entity\User;
-use App\Repository\UserRepository;
+
+use App\Authentication\Entity\User;
+use App\Authentication\Repository\UserRepository;
 use App\Utils\Validator;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;

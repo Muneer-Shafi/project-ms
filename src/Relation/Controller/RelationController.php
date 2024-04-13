@@ -10,8 +10,7 @@ declare(strict_types=1);
 
 namespace App\Relation\Controller;
 
-use App\Entity\Currency;
-use App\Entity\User;
+use App\Authentication\Entity\User;
 use App\Relation\Entity\Relation;
 use App\Relation\Entity\RelationAddress;
 use App\Relation\Entity\RelationContact;
@@ -41,7 +40,7 @@ class RelationController extends AbstractController
     #[Route('/list', name: 'relation_list', methods: ['GET'])]
     public function list(): Response
     {
-
+        $relations = $this->relationRepository->findAll();
         return $this->render('relation/list.html.twig', [
             'relations' => $relations,
         ]);
@@ -50,7 +49,6 @@ class RelationController extends AbstractController
     #[Route('/api', name: 'relation_api', methods: ['GET'])]
     public function api(): Response
     {
-
         $relations = $this->relationRepository->findAll();
         return $this->json(data: $relations, status: 200);
     }

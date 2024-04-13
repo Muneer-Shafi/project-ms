@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\GraphQl\Types\Output;
 
-use App\Entity\Currency as CurrencyEntity;
+use App\Currency\Entity\Currency as CurrencyEntity;
 use TheCodingMachine\GraphQLite\Annotations\Field;
 use TheCodingMachine\GraphQLite\Annotations\Type;
 

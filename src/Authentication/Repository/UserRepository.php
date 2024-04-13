@@ -8,9 +8,10 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Repository;
+namespace App\Authentication\Repository;
 
-use App\Entity\User;
+
+use App\Authentication\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

@@ -8,7 +8,8 @@
 
 namespace App\Authentication\Entity;
 
-use App\Repository\AccessTokenRepository;
+
+use App\Authentication\Repository\AccessTokenRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Uid\Uuid;

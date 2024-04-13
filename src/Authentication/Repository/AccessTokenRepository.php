@@ -3,11 +3,9 @@
 namespace App\Authentication\Repository;
 
 use App\Authentication\Entity\AccessToken;
-use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AccessTokenRepository extends ServiceEntityRepository
 {
@@ -40,15 +38,4 @@ class AccessTokenRepository extends ServiceEntityRepository
         
     }
 
-    public function generateToken(): string
-    {
-        $token = $this->tokenGenerator->generateToken();
-
-        // Hash the token
-        $hashedToken = $this->passwordEncoder->encodePassword(null, $token);
-
-        // Use the hashed token as needed
-        // For example, return it in a JSON response
-        return $hashedToken;
-    }
 }

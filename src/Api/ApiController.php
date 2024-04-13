@@ -8,7 +8,7 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Authentication\Controller;
+namespace App\Api;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

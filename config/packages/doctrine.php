@@ -72,6 +72,13 @@ return static function (ContainerConfigurator $containerConfigurator, DoctrineCo
         ->dir('%kernel.project_dir%/src/Product/Entity')
         ->prefix('App\Product\Entity')
     ;
+    $defaultEntityManagerConfig
+        ->mapping('Currency')
+        ->isBundle(false)
+        ->type('attribute')
+        ->dir('%kernel.project_dir%/src/Currency/Entity')
+        ->prefix('App\Currency\Entity')
+    ;
 
 
     if ($containerConfigurator->env() === 'test') {

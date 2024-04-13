@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerInterface;
 
-class AuthenticationFailureHandler //implements AuthenticationFailureHandlerInterface
+class AccessTokenFailureHandler implements AuthenticationFailureHandlerInterface
 {
     private $urlGenerator;
 

@@ -8,9 +8,10 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Entity;
+namespace App\Authentication\Entity;
 
-use App\Repository\UserRepository;
+
+use App\Authentication\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Authentication\Entity\User;
 use App\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

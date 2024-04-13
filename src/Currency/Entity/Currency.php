@@ -2,16 +2,11 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Muneer's learning project.
- *
- * (c) Muneer shafi <mcamuneershafi@gmail.com>.
- */
+namespace App\Currency\Entity;
 
-namespace App\Entity;
-
+use App\Common\Trait\TimestampableEntity;
+use App\Currency\Repository\CurrencyRepository;
 use App\Relation\Entity\Relation;
-use App\Repository\CurrencyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CurrencyRepository::class)]

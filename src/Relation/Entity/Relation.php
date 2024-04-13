@@ -10,8 +10,10 @@ declare(strict_types=1);
 
 namespace App\Relation\Entity;
 
-use App\Entity\Contract;
-use App\Entity\Currency;
+
+
+
+use App\Currency\Entity\Currency;
 use App\Relation\DTO\RelationDTO;
 use App\Relation\Service\RelationRepository;
 use App\Subsidiary\Entity\Subsidiary;

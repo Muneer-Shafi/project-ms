@@ -1,14 +1,10 @@
 <?php
 
-/*
- * This file is part of Muneer's learning project.
- *
- * (c) Muneer shafi <mcamuneershafi@gmail.com>.
- */
+declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Currency\Repository;
 
-use App\Entity\Currency;
+use App\Currency\Entity\Currency;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

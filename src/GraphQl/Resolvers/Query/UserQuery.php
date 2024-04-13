@@ -10,8 +10,9 @@ declare(strict_types=1);
 
 namespace App\GraphQl\Resolvers\Query;
 
-use App\Entity\User;
-use App\Repository\UserRepository;
+
+use App\Authentication\Entity\User;
+use App\Authentication\Repository\UserRepository;
 use TheCodingMachine\GraphQLite\Annotations\Query;
 
 final class UserQuery

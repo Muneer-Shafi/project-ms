@@ -10,7 +10,8 @@ declare(strict_types=1);
 
 namespace App\GraphQl\Resolvers\Query;
 
-use App\Entity\User;
+
+use App\Authentication\Entity\User;
 use App\GraphQl\Types\Pagination\Cursor;
 use App\GraphQl\Types\Pagination\PostConnection;
 use App\Repository\DoctrinePostRepository;

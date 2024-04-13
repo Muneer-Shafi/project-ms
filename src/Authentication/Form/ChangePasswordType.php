@@ -8,9 +8,10 @@ declare(strict_types=1);
  * (c) Muneer shafi <mcamuneershafi@gmail.com>.
  */
 
-namespace App\Form;
+namespace App\Authentication\Form;
 
-use App\Entity\User;
+
+use App\Authentication\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;

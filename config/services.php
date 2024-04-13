@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler;
 use Symfony\Component\Security\Http\Logout\LogoutUrlGenerator;
 
-return function (ContainerConfigurator $container) {
+return static function (ContainerConfigurator $container) {
     $container->parameters()
         ->set('locale', 'en')
         ->set('app_locales', 'ar|en|fr|de|es|cs|nl|ru|uk|ro|pt_BR|pl|it|ja|id|ca|sl|hr|zh_CN|bg|tr|lt|bs|sr_Cyrl|sr_Latn|eu')
@@ -31,6 +31,17 @@ return function (ContainerConfigurator $container) {
         ->exclude([
             __DIR__ . '/../src/Api/Entity',
             __DIR__ . '/../src/Api/VO',
+        ]);
+
+    $services
+        ->load('App\Authentication\\', __DIR__ . '/../src/Authentication/**/*')
+        ->exclude([
+            __DIR__ . '/../src/Authentication/Entity',
+        ]);
+    $services
+        ->load('App\Currency\\', __DIR__ . '/../src/Currency/**/*')
+        ->exclude([
+            __DIR__ . '/../src/Currency/Entity',
         ]);
 
     $services->set(CommentNotificationSubscriber::class)->args(

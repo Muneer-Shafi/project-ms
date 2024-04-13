@@ -10,8 +10,9 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Entity\User;
-use App\Repository\UserRepository;
+
+use App\Authentication\Entity\User;
+use App\Authentication\Repository\UserRepository;
 use App\Utils\Validator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -180,8 +181,7 @@ class AddUserCommand extends Command
         $this->validateUserData($username, $plainPassword, $email, $fullName);
 
         // create the user and hash its password
-        $user = new User();
-        $user->setFullName($fullName);
+        $user = new User(username: $username, email: $email,);
         $user->setUsername($username);
         $user->setEmail($email);
         $user->setRoles([$isAdmin ? 'ROLE_ADMIN' : 'ROLE_USER']);
