@@ -64,7 +64,7 @@ class AccessToken
         $this->name = $name;
         $this->description = $description;
         $this->createdAt = new \DateTimeImmutable();
-        $this->expiresAt = new \DateTimeImmutable();
+        $this->expiresAt = (new \DateTimeImmutable())->modify('+30 days');
     }
 
     public function getToken(): ?string
@@ -82,6 +82,10 @@ class AccessToken
     public function isValid(): bool
     {
         return $this->isValid;
+    }
+    public function isExpired(): bool
+    {
+        return $this->createdAt >$this->expiresAt;
     }
 
     public function setIsValid(bool $isValid): static

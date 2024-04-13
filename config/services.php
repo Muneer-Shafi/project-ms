@@ -26,7 +26,12 @@ return function (ContainerConfigurator $container) {
     $services->load('App\\', '../src/')
         ->exclude('../src/{DependencyInjection,Entity,Kernel.php}');
 
-
+    $services
+        ->load('App\Api\\', __DIR__ . '/../src/Api/**/*')
+        ->exclude([
+            __DIR__ . '/../src/Api/Entity',
+            __DIR__ . '/../src/Api/VO',
+        ]);
 
     $services->set(CommentNotificationSubscriber::class)->args(
 
