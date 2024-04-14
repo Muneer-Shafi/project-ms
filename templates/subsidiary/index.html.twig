@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="overflow-x-auto">
+        <table class="table table-xs table-zebra">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Abbr</th>
+                <th scope="col">Short name</th>
+                <th scope="col">city</th>
+                <th scope="col">country</th>
+                <th scope="col">website</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for subsidiary in subsidiaries %}
+                <tr class="table-active">
+                    <th scope="row">{{ subsidiary.name }}</th>
+                    <td>{{ subsidiary.abbreviationName }}</td>
+                    <td>{{ subsidiary.code }}</td>
+                    <td>{{ subsidiary.city }}</td>
+                    <td>{{ subsidiary.country }}</td>
+                    <td>{{ subsidiary.website }}</td>
+                    <td><a class="btn btn-sm btn-primary" href="{{ path('subsidiary_edit', {id: subsidiary.id}) }}">view </a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
