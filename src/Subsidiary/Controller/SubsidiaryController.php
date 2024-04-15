@@ -10,7 +10,12 @@ declare(strict_types=1);
 
 namespace App\Subsidiary\Controller;
 
+use App\Relation\Entity\Relation;
+use App\Subsidiary\Entity\Subsidiary;
+use App\Subsidiary\Repository\SubsidiaryRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -18,10 +23,25 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/subsidiary'), IsGranted('ROLE_USER')]
 class SubsidiaryController extends AbstractController
 {
-    #[Route(''), IsGranted('ROLE_USER')]
-    public function index(): Response
+    public function __construct(
+        private readonly SubsidiaryRepository $subsidiaryRepository,
+    )
     {
-        return $this->render('subsidiary/edit.html.twig', []
-        );
+    }
+
+    #[Route('',name:'subsidiary_list'), IsGranted('ROLE_USER')]
+    public function indexAction(): Response
+    {
+        return $this->render('subsidiary/index.html.twig', [
+           'subsidiaries' => $this->subsidiaryRepository->findAll(),
+        ]);
+    }
+    #[Route('/{id<\d+>}/edit', name: 'subsidiary_edit', methods: ['GET', 'POST'])]
+    public function editAction(Request $request, Subsidiary $subsidiary, EntityManagerInterface $entityManager): Response
+    {
+        dd($subsidiary);
+        return $this->render('subsidiary/edit.html.twig', [
+           'subsidiary' => $subsidiary,
+        ]);
     }
 }

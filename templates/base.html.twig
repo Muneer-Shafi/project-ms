@@ -32,6 +32,7 @@
         #main-content {
             grid-area: article;
         }
+
         #mainNav {
             grid-area: nav;
         }
@@ -44,79 +45,93 @@
         {% endblock %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.2/dist/full.min.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.2/dist/full.min.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body id="{% block body_id %}{% endblock %}">
 
 <header class="columns space-between" id="pageHeader">
     {% block header %}
-    <div class="navbar bg-base-100">
-  <div class="flex-1">
-    <a class="btn btn-ghost text-xl">daisyUI</a>
-  </div>
-      <div class="flex flex-horizontal">
-  
-        <ul class="menu menu-horizontal px-1">
-          <li>
-            <details>
-              <summary>
-                Parent
-              </summary>
-              <ul class="p-2 bg-base-100 rounded-t-none">
-                            {% for locale in locales() %}
-                        <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"
-                                    {% else %}aria-checked="false"{% endif %} role="menuitem">
-                            <a href="{{ path(app.request.get('_route', 'blog_index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}
-                                <small>{{ locale.code[0:2] }}</small></a>
-                        </li>
-                  {% endfor %}
-              </ul>
-            </details>
-        
-          </li>
-        </ul>
-      </div>
-  <div class="flex-none gap-2">
-    <div class="form-control">
-      <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-    </div>
-    <div class="dropdown dropdown-end">
-       {% if app.user %}
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        <div class="navbar bg-base-100">
+            <div class="flex-1">
+                <a class="btn btn-ghost text-xl">Cloud Erp </a>
+            </div>
+            <div class="flex flex-horizontal">
+
+                <ul class="menu menu-horizontal px-1">
+                    <li>
+                        <details>
+                            <summary>
+                                Parent
+                            </summary>
+                            <ul class="p-2 bg-base-100 rounded-t-none">
+                                {% for locale in locales() %}
+                                    <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ path(app.request.get('_route', 'blog_index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}
+                                            <small>{{ locale.code[0:2] }}</small></a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-none gap-2">
+                <div class="form-control">
+                    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto"/>
+                </div>
+                <div class="dropdown dropdown-end">
+                    {% if app.user %}
+                        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                            <div class="w-10 rounded-full">
+                                <img alt="Tailwind CSS Navbar component"
+                                     src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"/>
+                            </div>
+                        </div>
+                        <ul tabindex="0"
+                            class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                            <li>
+                                <a class="justify-between">
+                                    Profile
+                                    <span class="badge">New</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_edit') }}">
+                                    <i class="fa fa-edit" aria-hidden="true"></i> {{ 'menu.user'|trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ logout_path() }}">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-      </div>
-      <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-        <li>
-          <a class="justify-between">
-            Profile
-            <span class="badge">New</span>
-          </a>
-        </li>
-        <li>
-                <a href="{{ path('user_edit') }}">
-                    <i class="fa fa-edit" aria-hidden="true"></i> {{ 'menu.user'|trans }}
-                </a>
-            </li>
-            <li>
-                <a href="{{ logout_path() }}">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
-                </a>
-            </li>   
-      </ul>
-      {% endif %}
-    </div>
-  </div>
-</div>
 
     {% endblock %}
 </header>
 
 
 <main id="main-content">
+    {% block breadcrumbs %}
+        <div class="text-sm breadcrumbs">
+            <ul>
+                <li><a>Subsidiary</a></li>
+                <li><a>Documents</a></li>
+                <li>Add Document</li>
+                <li>
+                    <twig:RelationDropdown></twig:RelationDropdown>
+                </li>
+            </ul>
+        </div>
+    {% endblock %}
     {{ include('default/_flash_messages.html.twig') }}
     {% block body %}{% endblock %}
 </main>
@@ -126,27 +141,40 @@
 </footer>
 
 <aside id="mainNav">
-        {% block sideNav %}
-    <ul class="menu bg-base-200 w-56 rounded-box">
-      <li>
-        <a>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-        Item 2
-        </a>
-      </li>
-      <li>
-        <a>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Item 1
-        </a>
-      </li>
-      <li>
-        <a>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-          Item 3
-        </a>
-      </li>
-    </ul>
+    {% block sideNav %}
+        <div class="drawer">
+            <input id="my-drawer" type="checkbox" class="drawer-toggle"/>
+            <div class="drawer-content">
+                <!-- Page content here -->
+                <label for="my-drawer" class="btn btn-primary drawer-button">Open drawer</label>
+            </div>
+            <div class="drawer-side">
+                <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+
+
+                <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                    <div>
+                        <img src="{{ asset('images/cloud-erp.png') }}">
+                    </div>
+                    <!-- Sidebar content here -->
+                    <li><a href="{{ path('subsidiary_list') }}">Subsidiary</a></li>
+                    <li><a href="{{ path('relation_list') }}">Relation</a></li>
+                    <li><a href="{{ path('subsidiary_list') }}">Users</a></li>
+                    <li><a href="{{ path('product_list') }}">Products</a></li>
+                    <li><a href="{{ path('subsidiary_list') }}">Subsidiary</a></li>
+                    <li><a>Sidebar Item 2</a></li>
+
+                    <div class="dropdown w-100">
+                        <div tabindex="0" role="button" class="btn m-1">Packaging</div>
+                        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><a>Item 1</a></li>
+                            <li><a>Item 2</a></li>
+                        </ul>
+                    </div>
+
+                </ul>
+            </div>
+        </div>
     {% endblock %}
 </aside>
 </body>

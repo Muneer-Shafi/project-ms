@@ -78,7 +78,6 @@ class RelationController extends AbstractController
     }
 
     #[Route('/{id<\d+>}/edit', name: 'relation_edit', methods: ['GET', 'POST'])]
-    // #[IsGranted('edit', subject: 'relation', message: 'Posts can only be edited by their authors.')]
     public function edit(Request $request, Relation $relation, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(RelationType::class, $relation);
