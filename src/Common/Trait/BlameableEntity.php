@@ -10,13 +10,14 @@ declare(strict_types=1);
 
 namespace App\Common\Trait;
 
-use App\Entity\User;
+use App\Authentication\Entity\User;
+
 use Doctrine\ORM\Mapping as ORM;
 
 trait BlameableEntity
 {
     #[ORM\Column(nullable: true)]
-    protected \User $createdBy;
+    protected User $createdBy;
 
     #[ORM\Column(nullable: true)]
     protected User $updatedBy;

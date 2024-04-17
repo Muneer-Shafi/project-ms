@@ -1,6 +1,8 @@
 api_platform:
-    title: Hello API Platform
+
     version: 1.0.0
+    mapping:
+        paths: ['%kernel.project_dir%/src/Relation', '%kernel.project_dir%/src/Subsidiary']
     formats:
         jsonld: ['application/ld+json']
     docs_formats:

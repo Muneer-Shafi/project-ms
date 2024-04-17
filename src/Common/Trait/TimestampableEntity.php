@@ -18,7 +18,7 @@ trait TimestampableEntity
     protected \DateTimeInterface $createdAt;
 
     #[ORM\Column(nullable: true)]
-    protected DateTimeInterface $updatedAt;
+    protected \DateTimeInterface $updatedAt;
 
     public function getCreatedAt(): \DateTimeInterface
     {
@@ -30,12 +30,12 @@ trait TimestampableEntity
         $this->createdAt = $createdAt;
     }
 
-    public function getUpdatedAt(): DateTimeInterface
+    public function getUpdatedAt(): \DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(DateTimeInterface $updatedAt): void
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }

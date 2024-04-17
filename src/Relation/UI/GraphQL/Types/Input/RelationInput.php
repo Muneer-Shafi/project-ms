@@ -26,7 +26,7 @@ final class RelationInput
     ): Relation
     {
 
-        $relation = Relation::create(new RelationDTO($relationName, $relationShortName, $email));
+        $relation = Relation::create(new RelationDTO(null,$relationName, $relationShortName, $email));
         $relation->setRemarks('via graphql saved');
         $relation->setCocNumber('COCIe333');
         $currency = new Currency();

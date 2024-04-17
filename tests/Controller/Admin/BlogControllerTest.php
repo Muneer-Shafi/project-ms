@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Admin;
 
-use App\Entity\User;
+use App\Authentication\Entity\User;
+use App\Authentication\Repository\UserRepository;
 use App\Repository\PostRepository;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -93,7 +93,7 @@ class BlogControllerTest extends WebTestCase
      */
     public function testAdminNewPost(): void
     {
-        $postTitle = 'Blog Post Title '.mt_rand();
+        $postTitle = 'Blog Post Title ' . mt_rand();
         $postSummary = $this->generateRandomString(255);
         $postContent = $this->generateRandomString(1024);
 
@@ -119,7 +119,7 @@ class BlogControllerTest extends WebTestCase
 
     public function testAdminNewDuplicatedPost(): void
     {
-        $postTitle = 'Blog Post Title '.mt_rand();
+        $postTitle = 'Blog Post Title ' . mt_rand();
         $postSummary = $this->generateRandomString(255);
         $postContent = $this->generateRandomString(1024);
 
@@ -153,7 +153,7 @@ class BlogControllerTest extends WebTestCase
      */
     public function testAdminEditPost(): void
     {
-        $newBlogPostTitle = 'Blog Post Title '.mt_rand();
+        $newBlogPostTitle = 'Blog Post Title ' . mt_rand();
 
         $this->client->request('GET', '/en/admin/post/1/edit');
         $this->client->submitForm('Save changes', [

@@ -11,12 +11,13 @@ declare(strict_types=1);
 namespace App\GraphQl\Types\Output;
 
 use App\Entity\Comment as CommentEntity;
-use App\Entity\User;
+use App\Authentication\Entity\User;
+
 use DateTimeImmutable;
 use TheCodingMachine\GraphQLite\Annotations\Field;
 use TheCodingMachine\GraphQLite\Annotations\Type;
 
-#[Type(class: CommentEntity::class, name: 'CommentType', )]
+#[Type(class: CommentEntity::class, name: 'CommentType',)]
 final class Comment
 {
     #[Field]

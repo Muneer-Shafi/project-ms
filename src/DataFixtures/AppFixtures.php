@@ -2,10 +2,11 @@
 
 namespace App\DataFixtures;
 
+use App\Authentication\Entity\User;
 use App\Entity\Comment;
 use App\Entity\Post;
 use App\Entity\Tag;
-use App\Entity\User;
+
 use App\Factory\AddressFactory;
 use App\Factory\ContactFactory;
 use App\Factory\CurrencyFactory;
@@ -51,13 +52,12 @@ class AppFixtures extends Fixture
     private function loadUsers(ObjectManager $manager): void
     {
         foreach ($this->getUserData() as [$firstName, $lastName, $username, $password, $email, $roles]) {
-            $user = new User($username, $email);
+            $user = new User(username:$username, email: (string)$email);
             $hashPassword = $this->passwordHasher->hashPassword($user, $password);
             $user->setFirstName($firstName);
             $user->setUsername($username);
             $user->setLastName($lastName);
             $user->setPassword($this->passwordHasher->hashPassword($user, $password));
-            $user->setEmail($email);
             $user->setRoles($roles);
             $manager->persist($user);
             $this->addReference($username, $user);
@@ -97,7 +97,7 @@ class AppFixtures extends Fixture
                 $comment = new Comment();
                 $comment->setAuthor($commentAuthor);
                 $comment->setContent($this->getRandomText(random_int(255, 512)));
-                $comment->setPublishedAt(new \DateTime('now + '.$i.'seconds'));
+                $comment->setPublishedAt(new \DateTime('now + ' . $i . 'seconds'));
 
                 $post->addComment($comment);
             }
@@ -158,7 +158,7 @@ class AppFixtures extends Fixture
                 $this->slugger->slug($title)->lower(),
                 $this->getRandomText(),
                 $this->getPostContent(),
-                (new \DateTime('now - '.$i.'days'))->setTime(random_int(8, 17), random_int(7, 49), random_int(0, 59)),
+                (new \DateTime('now - ' . $i . 'days'))->setTime(random_int(8, 17), random_int(7, 49), random_int(0, 59)),
                 // Ensure that the first post is written by Jane Doe to simplify tests
                 $user,
                 $this->getRandomTags(),
@@ -273,7 +273,7 @@ class AppFixtures extends Fixture
 
         return array_map(function ($tagName) {
             /** @var Tag $tag */
-            $tag = $this->getReference('tag-'.$tagName);
+            $tag = $this->getReference('tag-' . $tagName);
 
             return $tag;
         }, $selectedTags);

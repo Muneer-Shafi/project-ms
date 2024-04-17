@@ -10,7 +10,8 @@ declare(strict_types=1);
 
 namespace App\Authentication\Service;
 
-use App\Entity\User;
+use App\Authentication\Entity\User;
+
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class PasswordHasher

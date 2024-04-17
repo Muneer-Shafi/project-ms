@@ -10,7 +10,8 @@ declare(strict_types=1);
 
 namespace App\Api;
 
-use App\Entity\User;
+use App\Authentication\Entity\User;;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

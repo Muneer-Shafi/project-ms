@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace App\EventSubscriber;
 
 use App\Entity\Post;
-use App\Entity\User;
+use App\Authentication\Entity\User;
+
 use App\Event\CommentCreatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Mailer\MailerInterface;
@@ -56,7 +57,7 @@ class CommentNotificationSubscriber implements EventSubscriberInterface
 
         $linkToPost = $this->urlGenerator->generate('blog_post', [
             'slug' => $post->getSlug(),
-            '_fragment' => 'comment_'.$comment->getId(),
+            '_fragment' => 'comment_' . $comment->getId(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
 
         $subject = $this->translator->trans('notification.comment_created');

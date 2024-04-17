@@ -12,7 +12,8 @@ namespace App\Authentication\Controller;
 
 use App\Authentication\Form\UserType;
 use App\Authentication\Service\PasswordHasher;
-use App\Entity\User;
+use App\Authentication\Entity\User;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

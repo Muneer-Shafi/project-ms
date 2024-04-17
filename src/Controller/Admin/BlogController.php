@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\Post;
-use App\Entity\User;
+use App\Authentication\Entity\User;
+
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use App\Security\PostVoter;

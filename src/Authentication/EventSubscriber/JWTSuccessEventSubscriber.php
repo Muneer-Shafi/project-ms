@@ -10,7 +10,8 @@ declare(strict_types=1);
 
 namespace App\Authentication\EventSubscriber;
 
-use App\Entity\User;
+use App\Authentication\Entity\User;
+
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Events;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

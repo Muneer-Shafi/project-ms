@@ -8,7 +8,8 @@
 
 namespace App\Factory;
 
-use App\Entity\User;
+use App\Authentication\Entity\User;
+
 use App\Repository\UserRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;

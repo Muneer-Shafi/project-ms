@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace App\Subsidiary\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Metadata\ApiResource;
 use App\Subsidiary\Repository\SubsidiaryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
