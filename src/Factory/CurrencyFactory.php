@@ -10,7 +10,8 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
-use App\Entity\Currency;
+use App\Currency\Entity\Currency as EntityCurrency;
+
 use App\Repository\CurrencyRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -88,6 +89,6 @@ final class CurrencyFactory extends ModelFactory
 
     protected static function getClass(): string
     {
-        return Currency::class;
+        return EntityCurrency::class;
     }
 }

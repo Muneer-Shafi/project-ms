@@ -22,17 +22,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Table(name: 'user')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    public function __construct(
-        #[ORM\Column(type: Types::STRING, unique: true)]
-        #[Assert\NotBlank]
-        #[Assert\Length(min: 2, max: 50)]
-        private string $username,
+    
+    #[ORM\Column(type: Types::STRING, unique: true)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2, max: 50)]
+    private string $username;
 
-        #[ORM\Column(type: Types::STRING, unique: true)]
-        #[Assert\Email]
-        private string $email,
-    ) {
-    }
+    #[ORM\Column(type: Types::STRING, unique: true)]
+    #[Assert\Email]
+    private string $email;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

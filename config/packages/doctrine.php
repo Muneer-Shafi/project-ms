@@ -29,13 +29,7 @@ return static function (ContainerConfigurator $containerConfigurator, DoctrineCo
         ->autoMapping('true')
     ;
 
-//    $defaultEntityManagerConfig
-//        ->mapping('User')
-//        ->isBundle(false)
-//        ->type('attribute')
-//        ->dir('%kernel.project_dir%/src/User/Entity')
-//        ->prefix('App\User\Entity');
-//
+
     $defaultEntityManagerConfig
         ->mapping('App')
         ->isBundle(false)

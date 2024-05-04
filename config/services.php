@@ -33,11 +33,11 @@ return static function (ContainerConfigurator $container) {
             __DIR__ . '/../src/Api/VO',
         ]);
 
-    $services
-        ->load('App\Authentication\\', __DIR__ . '/../src/Authentication/**/*')
-        ->exclude([
-            __DIR__ . '/../src/Authentication/Entity',
-        ]);
+    // $services
+    //     ->load('App\Authentication\\', __DIR__ . '/../src/Authentication/**/*')
+    //     ->exclude([
+    //         __DIR__ . '/../src/Authentication/Entity',
+    //     ]);
     $services
         ->load('App\Currency\\', __DIR__ . '/../src/Currency/**/*')
         ->exclude([

@@ -52,10 +52,12 @@ class AppFixtures extends Fixture
     private function loadUsers(ObjectManager $manager): void
     {
         foreach ($this->getUserData() as [$firstName, $lastName, $username, $password, $email, $roles]) {
-            $user = new User(username:$username, email: (string)$email);
+            $user = new User();
             $hashPassword = $this->passwordHasher->hashPassword($user, $password);
             $user->setFirstName($firstName);
             $user->setUsername($username);
+            $user->setEmail((String)$email);
+
             $user->setLastName($lastName);
             $user->setPassword($this->passwordHasher->hashPassword($user, $password));
             $user->setRoles($roles);
