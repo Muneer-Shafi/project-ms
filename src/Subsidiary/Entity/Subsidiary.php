@@ -54,7 +54,7 @@ class Subsidiary
     /**
      * @var Collection<int, BankAccount>
      */
-    #[ORM\OneToMany(mappedBy: 'subsidiary', targetEntity: BankAccount::class)]
+    #[ORM\OneToMany(mappedBy: 'subsidiary', targetEntity: BankAccount::class,cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $bankAccounts;
 
     public function __construct()
@@ -181,6 +181,20 @@ class Subsidiary
     public function getBankAccounts(): Collection
     {
         return $this->bankAccounts;
+    }
+    public function setBankAccounts(array $bankAccounts): void
+    {
+        $bankAccounts = new ArrayCollection($bankAccounts);
+        foreach ($bankAccounts as $contact) {
+            if (!$this->bankAccounts->contains($contact)) {
+                $this->addBankAccount($contact);
+            }
+        }
+        foreach ($this->bankAccounts as $existingAccount) {
+            if (!$bankAccounts->contains($existingAccount)) {
+                $this->bankAccounts->removeElement($existingAccount);
+            }
+        }
     }
 
     public function addBankAccount(BankAccount $bankAccount): static

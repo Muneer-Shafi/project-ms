@@ -24,16 +24,16 @@ use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 
 class RelationType extends AbstractType
 {
-    // Form types are services, so you can inject other services in them if needed
-    public function __construct(
-        private SluggerInterface $slugger
-    ) {
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-//            ->add('subsidiary', SubsidiaryAutocompleteField::class)
+            ->add('subsidiary',EntityType::class, [
+                'class' => Subsidiary::class,
+                'choice_label' => 'name',
+                'label' => 'label.subsidiary',
+                'help' => 'help.subsidiary',
+                'required' => false,
+            ])
             ->add('name', null, [
                 'attr' => ['autofocus' => true],
                 'label' => 'label.name',

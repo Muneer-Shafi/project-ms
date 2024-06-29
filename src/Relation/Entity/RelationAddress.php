@@ -108,11 +108,9 @@ class RelationAddress
         return $this->country;
     }
 
-    public function setCountry(?string $country): self
+    public function setCountry(?string $country): void
     {
         $this->country = $country;
-
-        return $this;
     }
     public function setCity(string $city): self
     {

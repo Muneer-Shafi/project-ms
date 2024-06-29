@@ -1,0 +1,61 @@
+<div  {{ attributes }} >
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.abbreviationName) }}
+    {{ form_row(form.code) }}
+    {{ form_row(form.city) }}
+    {{ form_row(form.country) }}
+    {{ form_row(form.website) }}
+    {{ form_row(form.address) }}
+    {{ form_row(form.zipCode) }}
+
+    <table class="table table-borderless form-no-mb">
+        <thead>
+        <tr>
+            <td>Account Number</td>
+            <td>currency</td>
+            <td>Name</td>
+            <td>Iban Number</td>
+            <td>Swift Code</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for key, account in form.bankAccounts %}
+            <tr>
+                <td>
+                    {{ form_row(account.accountNumber,{
+                        label:false,
+                    }) }}
+                </td>
+                <td>
+                    {{ form_row(account.currency,{
+                        label:false,
+                    }) }}
+                </td>
+
+                <td>
+                    {{ form_row(account.name,{
+                        label:false,
+                    } ) }}
+                </td>
+                <td>
+                    {{ form_row(account.ibanNumber,{
+                        label:false,
+                    }) }}
+                </td>
+                <td>
+                    {{ form_row(account.swiftCode,{
+                        label:false,
+                    }) }}
+                </td>
+                <td>
+                    {{ form_row(account.vars.button_delete, {label: 'X', attr: {class: 'btn btn-sm btn-error'}}) }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        {{ form_widget(form.bankAccounts.vars.button_add, {label: '+ Add Item', attr: {class: 'btn btn-primary'}}) }}
+    </table>
+    <button class="btn btn-primary" type="submit">Save</button>
+    {{ form_end(form) }}
+</div>

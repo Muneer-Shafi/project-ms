@@ -55,7 +55,7 @@ class Relation
     #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationContact::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $contacts;
 
-    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationAddress::class)]
+    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationAddress::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
 
     private Collection $addresses;
 

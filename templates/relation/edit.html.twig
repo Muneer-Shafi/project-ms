@@ -1,23 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block body_id 'user_edit' %}
+{% block body_id 'relation' %}
 {% block body %}
- {% for message in app.flashes('success') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <twig:RelationForm  :form="form" :relation="relation"/>
  {% endblock %}
-{% block sidebar %}
-    <div class="section">
-        <a href="{{ path('user_change_password') }}" class="btn btn-lg btn-block btn-danger">
-            <i class="fa fa-lock" aria-hidden="true"></i>
-            {{ 'action.change_password'|trans }}
-        </a>
-    </div>
 
-    {{ parent() }}
-
-    {{ show_source_code(_self) }}{% endblock %}
-
+{% block breadcrumbs %}
+{% endblock %}

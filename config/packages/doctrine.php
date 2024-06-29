@@ -51,6 +51,12 @@ return static function (ContainerConfigurator $containerConfigurator, DoctrineCo
         ->type('attribute')
         ->dir('%kernel.project_dir%/src/Subsidiary/Entity')
         ->prefix('App\Subsidiary\Entity');
+    $defaultEntityManagerConfig
+        ->mapping('BankAccount')
+        ->isBundle(false)
+        ->type('attribute')
+        ->dir('%kernel.project_dir%/src/BankAccount/Entity')
+        ->prefix('App\BankAccount\Entity');
 
     $defaultEntityManagerConfig
         ->mapping('Authentication')

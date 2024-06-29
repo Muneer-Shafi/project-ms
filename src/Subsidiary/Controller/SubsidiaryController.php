@@ -43,6 +43,7 @@ class SubsidiaryController extends AbstractController
     {
         $form = $this->createForm(SubsidiaryType::class, $subsidiary);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'subsidiary.updated_successfully');
