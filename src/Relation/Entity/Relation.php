@@ -53,13 +53,10 @@ class Relation
     private ?Currency $currency = null;
 
     #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationContact::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
-    #[Ignore]
-    #[Groups(['food_category_trucks'])]
     private Collection $contacts;
 
     #[ORM\OneToMany(mappedBy: 'relation', targetEntity: RelationAddress::class)]
-    #[Ignore]
-    #[Groups(['food_category_trucks'])]
+
     private Collection $addresses;
 
     #[ORM\ManyToOne()]

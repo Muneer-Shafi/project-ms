@@ -33,7 +33,7 @@ class RelationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('subsidiary', SubsidiaryAutocompleteField::class)
+//            ->add('subsidiary', SubsidiaryAutocompleteField::class)
             ->add('name', null, [
                 'attr' => ['autofocus' => true],
                 'label' => 'label.name',

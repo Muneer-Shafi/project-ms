@@ -85,7 +85,7 @@ class RelationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-            $this->addFlash('success', 'relation$relation.updated_successfully');
+            $this->addFlash('success', 'relation.updated_successfully');
 
             return $this->redirectToRoute('relation_edit', ['id' => $relation->getId()]);
         }
@@ -96,7 +96,7 @@ class RelationController extends AbstractController
         ]);
     }
 
-    #[Route('/api/{id<\d+>}/edit', name: 'relation_edit', methods: ['GET'])]
+    #[Route('/api/{id<\d+>}/edit', name: 'relation_api_edit', methods: ['GET'])]
     // #[IsGranted('edit', subject: 'relation', message: 'Posts can only be edited by their authors.')]
     public function editApi(Request $request, Relation $relation, EntityManagerInterface $entityManager): Response
     {

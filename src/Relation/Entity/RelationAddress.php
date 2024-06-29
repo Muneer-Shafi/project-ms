@@ -10,11 +10,11 @@ declare(strict_types=1);
 
 namespace App\Relation\Entity;
 
-use App\Repository\AddressRepository;
+use App\Relation\Repository\RelationAddressRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'address')]
-#[ORM\Entity(repositoryClass: AddressRepository::class,)]
+#[ORM\Entity(repositoryClass: RelationAddressRepository::class,)]
 class RelationAddress
 {
     #[ORM\Id]
@@ -38,7 +38,7 @@ class RelationAddress
     private ?string $city = null;
 
     #[ORM\Column(length: 100)]
-    private string $country = '';
+    private ?string $country = '';
 
     #[ORM\ManyToOne(inversedBy: 'addresses')]
     private ?Relation $relation = null;
@@ -108,7 +108,7 @@ class RelationAddress
         return $this->country;
     }
 
-    public function setCountry(string $country): self
+    public function setCountry(?string $country): self
     {
         $this->country = $country;
 
@@ -138,7 +138,8 @@ class RelationAddress
         string $addressLine1,
         string $addressLine2,
         string $city,
-        string $pinCode
+        string $pinCode,
+        string $country
     ): self {
         $address = new self();
         $address->name = $name;
@@ -146,6 +147,7 @@ class RelationAddress
         $address->addressLine1 = $addressLine1;
         $address->city = $city;
         $address->pinCode = $pinCode;
+        $address->country = $country;
         return  $address;
     }
 }

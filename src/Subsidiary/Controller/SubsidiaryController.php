@@ -12,6 +12,7 @@ namespace App\Subsidiary\Controller;
 
 use App\Relation\Entity\Relation;
 use App\Subsidiary\Entity\Subsidiary;
+use App\Subsidiary\Form\SubsidiaryType;
 use App\Subsidiary\Repository\SubsidiaryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,19 +30,28 @@ class SubsidiaryController extends AbstractController
     {
     }
 
-    #[Route('',name:'subsidiary_list'), IsGranted('ROLE_USER')]
+    #[Route('', name: 'subsidiary_list'), IsGranted('ROLE_USER')]
     public function indexAction(): Response
     {
         return $this->render('subsidiary/index.html.twig', [
-           'subsidiaries' => $this->subsidiaryRepository->findAll(),
+            'subsidiaries' => $this->subsidiaryRepository->findAll(),
         ]);
     }
+
     #[Route('/{id<\d+>}/edit', name: 'subsidiary_edit', methods: ['GET', 'POST'])]
     public function editAction(Request $request, Subsidiary $subsidiary, EntityManagerInterface $entityManager): Response
     {
-        dd($subsidiary);
+        $form = $this->createForm(SubsidiaryType::class, $subsidiary);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'subsidiary.updated_successfully');
+            return $this->redirectToRoute('subsidiary_edit', ['id' => $subsidiary->getId()]);
+        }
+
         return $this->render('subsidiary/edit.html.twig', [
-           'subsidiary' => $subsidiary,
+            'subsidiary' => $subsidiary,
+            'form' => $form,
         ]);
     }
 }

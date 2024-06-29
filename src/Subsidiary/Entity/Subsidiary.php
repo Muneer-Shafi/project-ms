@@ -10,9 +10,10 @@ declare(strict_types=1);
 
 namespace App\Subsidiary\Entity;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Metadata\ApiResource;
+use App\BankAccount\Entity\BankAccount;
 use App\Subsidiary\Repository\SubsidiaryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SubsidiaryRepository::class)]
@@ -49,6 +50,17 @@ class Subsidiary
 
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $abbreviationName = null;
+
+    /**
+     * @var Collection<int, BankAccount>
+     */
+    #[ORM\OneToMany(mappedBy: 'subsidiary', targetEntity: BankAccount::class)]
+    private Collection $bankAccounts;
+
+    public function __construct()
+    {
+        $this->bankAccounts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -159,6 +171,36 @@ class Subsidiary
     public function setAbbreviationName(?string $abbreviationName): static
     {
         $this->abbreviationName = $abbreviationName;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, BankAccount>
+     */
+    public function getBankAccounts(): Collection
+    {
+        return $this->bankAccounts;
+    }
+
+    public function addBankAccount(BankAccount $bankAccount): static
+    {
+        if (!$this->bankAccounts->contains($bankAccount)) {
+            $this->bankAccounts->add($bankAccount);
+            $bankAccount->setSubsidiary($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBankAccount(BankAccount $bankAccount): static
+    {
+        if ($this->bankAccounts->removeElement($bankAccount)) {
+            // set the owning side to null (unless already changed)
+            if ($bankAccount->getSubsidiary() === $this) {
+                $bankAccount->setSubsidiary(null);
+            }
+        }
 
         return $this;
     }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>{% block title %}Symfony Demo application{% endblock %}</title>
+    <title>{% block title %}CloudErp{% endblock %}</title>
     <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('blog_rss') }}">
     <style>
         body {
@@ -114,26 +114,22 @@
                 </div>
             </div>
         </div>
-
     {% endblock %}
 </header>
-
-
 <main id="main-content">
     {% block breadcrumbs %}
         <div class="text-sm breadcrumbs">
             <ul>
-                <li><a>Subsidiary</a></li>
+                <li><a href="{{ path('subsidiary_list') }}">Subsidiary</a></li>
                 <li><a>Documents</a></li>
                 <li>Add Document</li>
-                <li>
-                    <twig:RelationDropdown></twig:RelationDropdown>
-                </li>
             </ul>
         </div>
     {% endblock %}
-    {{ include('default/_flash_messages.html.twig') }}
-    {% block body %}{% endblock %}
+
+    {% block body %}
+        {{ include('default/_flash_messages.html.twig') }}
+    {% endblock %}
 </main>
 <footer id="pageFooter">
     {% block footer %}
